@@ -1,7 +1,6 @@
 # SONDA-Validation
 
 # Projeto-SONDA
-=============
 
 O projeto SONDA tem como principal objetivo implementar uma infraestrutura física e de recursos humanos destinada à montagem e melhoramento da base de dados de superfície necessária ao levantamento dos recursos de energia solar e eólica no Brasil e consequente planejamento de seu uso.
 
