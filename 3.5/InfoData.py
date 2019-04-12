@@ -1,16 +1,15 @@
-# Importar struct para conversão Double para LongBits
+# Import module for Double to LongBit conversion
 import struct
 
 
-# Função de conversão de Double para LongBits
+# Convert Double to LongBits
 def doubleToLongBits(double):
     return int.from_bytes(struct.pack('d', double), 'little')
 
 
-# Classe principal InfoData
 class InfoData:
 
-    # Função de inicialização, setando os argumentos a seus respectivos atributos passados ou None
+    # Init function, setting parameters to the respective attributes (None if not passed)
     def __init__(self, id=None, inputData=None, outputData=None, outputCode=None, outputReport=None, station=None,
                  observation=None, dateOfValidation=None, latitudeOfStation=None, longitudeOfStation=None, month=None,
                  year=None):
@@ -27,7 +26,7 @@ class InfoData:
         self.month = month
         self.year = year
 
-    # Gets e Sets específicos de cada atributo (retornos e atribuições)
+    # Specified getters and setters
     def getId(self):
         return self.id
 
@@ -100,13 +99,14 @@ class InfoData:
     def setYear(self, year):
         self.year = year
 
-    # Função que cria Hash da instância com base em seus atributos
+    # Attribute based hash function
     def hashCode(self):
         PRIME = 31
         RESULT = 1
         temp1 = doubleToLongBits(self.latitudeOfStation)
         temp2 = doubleToLongBits(self.longitudeOfStation)
 
+        # hash(var) => standard hash function in Python
         RESULT = PRIME * RESULT + (0 if self.id is None else hash(self.id))
         RESULT = PRIME * RESULT + (0 if self.inputData is None else hash(self.inputData))
         RESULT = PRIME * RESULT + (0 if self.outputData is None else hash(self.outputData))
@@ -116,6 +116,7 @@ class InfoData:
         RESULT = PRIME * RESULT + (0 if self.station is None else hash(self.station))
         RESULT = PRIME * RESULT + (0 if self.dateOfValidation is None else hash(self.dateOfValidation))
 
+        # (var % 0x100000000) >> 32) => unsigned right bit-shift operation (same as >>> operator in Java)
         RESULT = PRIME * RESULT + int(temp1 ^ ((temp1 % 0x100000000) >> 32))
         RESULT = PRIME * RESULT + int(temp2 ^ ((temp2 % 0x100000000) >> 32))
 
@@ -124,7 +125,7 @@ class InfoData:
 
         return RESULT
 
-    # Função que compara dois objetos retornando True se iguais ou False se diferentes em qualquer nível
+    # Compare two instances returning True or False
     def equals(self, obj):
         try:
             obj
@@ -208,7 +209,7 @@ class InfoData:
 
         return True
 
-    # Função para criar String com os atributos da instância específica
+    # Attribute based string create function
     def toString(self):
         builder = "InfoData [Id= " + str(self.id)
         + ", Arquivo de Entrada= " + str(self.inputData)
