@@ -376,3 +376,4 @@ class Loader:
             raise IOError("Erro durante a escrita do arquivo", output)
 
 
+
