@@ -17,20 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="75">
+              <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="89" selection-start-line="5" selection-start-column="89" selection-end-line="5" selection-end-column="89" />
+            <state relative-caret-position="-3092">
+              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -55,8 +55,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Loader.py" />
         <option value="$PROJECT_DIR$/InfoData.py" />
+        <option value="$PROJECT_DIR$/Loader.py" />
       </list>
     </option>
   </component>
@@ -141,7 +141,7 @@
       <updated>1554389441810</updated>
       <workItem from="1554389444064" duration="125000" />
       <workItem from="1554894987968" duration="11338000" />
-      <workItem from="1555066849765" duration="12996000" />
+      <workItem from="1555066849765" duration="13359000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -154,7 +154,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24459000" />
+    <option name="totallyTimeSpent" value="24822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1547" height="875" extended-state="6" />
@@ -201,20 +201,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Tradução da classe InfoData para python" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe InfoData para python" />
+    <MESSAGE value="Tradução da classe InfoData para python&#10;Tradução da classe Loader até função writeData para python" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe InfoData para python&#10;Tradução da classe Loader até função writeData para python" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Loader.py">
+    <entry file="file://$PROJECT_DIR$/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="89" selection-start-line="5" selection-start-column="89" selection-end-line="5" selection-end-column="89" />
+          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InfoData.py">
+    <entry file="file://$PROJECT_DIR$/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="-3092">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
         </state>
       </provider>
     </entry>
