@@ -211,13 +211,13 @@ class InfoData:
 
     # Attribute based string create function
     def toString(self):
-        builder = "InfoData [Id= " + str(self.id)
-        + ", Arquivo de Entrada= " + str(self.inputData)
-        + ", Nome da Estação= " + str(self.station)
-        + ", Data de Validação= " + str(self.dateOfValidation)
-        + ", Latitude da Estação= " + str(self.latitudeOfStation)
-        + ", Longitude da Estação= " + str(self.longitudeOfStation)
-        + ", Observação= " + str(self.observation)
-        + "]"
+        builder = "InfoData [Id= " + str(self.id) \
+            + ", Arquivo de Entrada= " + str(self.inputData) \
+            + ", Nome da Estação= " + str(self.station) \
+            + ", Data de Validação= " + str(self.dateOfValidation) \
+            + ", Latitude da Estação= " + str(self.latitudeOfStation) \
+            + ", Longitude da Estação= " + str(self.longitudeOfStation) \
+            + ", Observação= " + str(self.observation) \
+            + "]"
 
         return builder

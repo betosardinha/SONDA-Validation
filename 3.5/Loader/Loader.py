@@ -9,11 +9,11 @@ class Loader:
         self.numberOfColumns = numberOfColumns
         self.numberOfRows = numberOfRows
         self.temp = np.array([])
-        self.lines = np.array([])
-        self.data = np.array([])
         self.data = np.array([])
         self.limits = np.array([])
         self.code = np.array([])
+
+        self.line = None
 
         # Object basic variables and constants
         self.d0 = 0.006918
@@ -373,7 +373,420 @@ class Loader:
 
             bfOut.close()
         except IOError:
-            raise IOError("Erro durante a escrita do arquivo", output)
+            raise IOError("Erro durante a escrita do arquivo: ", output)
+
+    def writeCode(self, output, dataArray, codeArray, id):
+        try:
+            bfOut = open(output, 'w')
+            for i in range(len(dataArray)):
+                # Header
+                bfOut.write(f"{id};")
+                bfOut.write(f"{dataArray[i][1]:.0f};")
+                bfOut.write(f"{dataArray[i][2]:.0f};")
+                bfOut.write(f"{dataArray[i][3]:.0f};")
+
+                # Global Radiation
+                if codeArray[i][4] == 9999:
+                    bfOut.write(f"{codeArray[i][4]}")
+                elif codeArray[i][4] == 599:
+                    bfOut.write(f"{codeArray[i][4]}")
+                elif codeArray[i][4] == 529:
+                    bfOut.write(f"{codeArray[i][4]}")
+                elif codeArray[i][4] == 299:
+                    bfOut.write(f"{codeArray[i][4]}")
+                elif codeArray[i][4] == 552:
+                    bfOut.write(f"{codeArray[i][4]}")
+                elif codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][4] == -5555:
+                    bfOut.write("N/S")
+
+                # Direct Radiation
+                if codeArray[i][28] == 9999:
+                    bfOut.write(f"{codeArray[i][28]}")
+                elif codeArray[i][28] == 599:
+                    bfOut.write(f"{codeArray[i][28]}")
+                elif codeArray[i][28] == 529:
+                    bfOut.write(f"{codeArray[i][28]}")
+                elif codeArray[i][28] == 299:
+                    bfOut.write(f"{codeArray[i][28]}")
+                elif codeArray[i][28] == 552:
+                    bfOut.write(f"{codeArray[i][28]}")
+                elif codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][28] == -5555:
+                    bfOut.write("N/S")
+
+                # Diffuse Radiation
+                if codeArray[i][8] == 9999:
+                    bfOut.write(f"{codeArray[i][8]}")
+                elif codeArray[i][8] == 599:
+                    bfOut.write(f"{codeArray[i][8]}")
+                elif codeArray[i][8] == 529:
+                    bfOut.write(f"{codeArray[i][8]}")
+                elif codeArray[i][8] == 299:
+                    bfOut.write(f"{codeArray[i][8]}")
+                elif codeArray[i][8] == 552:
+                    bfOut.write(f"{codeArray[i][8]}")
+                elif codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][8] == -5555:
+                    bfOut.write("N/S")
+
+                # Long-Wave
+                if codeArray[i][32] == 9999:
+                    bfOut.write(f"{codeArray[i][32]}")
+                elif codeArray[i][32] == 599:
+                    bfOut.write(f"{codeArray[i][32]}")
+                elif codeArray[i][32] == 529:
+                    bfOut.write(f"{codeArray[i][32]}")
+                elif codeArray[i][32] == 299:
+                    bfOut.write(f"{codeArray[i][32]}")
+                elif codeArray[i][32] == 552:
+                    bfOut.write(f"{codeArray[i][32]}")
+                elif codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][32] == -5555:
+                    bfOut.write("N/S")
+
+                # Par
+                if codeArray[i][12] == 9999:
+                    bfOut.write(f"{codeArray[i][12]}")
+                elif codeArray[i][12] == 599:
+                    bfOut.write(f"{codeArray[i][12]}")
+                elif codeArray[i][12] == 529:
+                    bfOut.write(f"{codeArray[i][12]}")
+                elif codeArray[i][12] == 299:
+                    bfOut.write(f"{codeArray[i][12]}")
+                elif codeArray[i][12] == 552:
+                    bfOut.write(f"{codeArray[i][12]}")
+                elif codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][12] == -5555:
+                    bfOut.write("N/S")
+
+                # Lux
+                if codeArray[i][16] == 9999:
+                    bfOut.write(f"{codeArray[i][16]}")
+                elif codeArray[i][16] == 599:
+                    bfOut.write(f"{codeArray[i][16]}")
+                elif codeArray[i][16] == 529:
+                    bfOut.write(f"{codeArray[i][16]}")
+                elif codeArray[i][16] == 299:
+                    bfOut.write(f"{codeArray[i][16]}")
+                elif codeArray[i][16] == 552:
+                    bfOut.write(f"{codeArray[i][16]}")
+                elif codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
+                    bfOut.write("N/A")
+                elif codeArray[i][16] == -5555:
+                    bfOut.write("N/S")
+
+                # Temperature
+                if codeArray[i][20] == 9999:
+                    bfOut.write(f"{codeArray[i][20]}")
+                elif codeArray[i][20] == 559:
+                    bfOut.write(f"{codeArray[i][20]}")
+                elif codeArray[i][20] == 299:
+                    bfOut.write(f"{codeArray[i][20]}")
+                elif codeArray[i][20] == 552:
+                    bfOut.write(f"{codeArray[i][20]}")
+                elif codeArray[i][20] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][20] == -5555:
+                    bfOut.write("N/S")
+
+                # Humidity
+                if codeArray[i][21] == 9:
+                    bfOut.write(f"00{codeArray[i][21]}")
+                elif codeArray[i][21] == 552:
+                    bfOut.write(f"{codeArray[i][21]}")
+                elif codeArray[i][21] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][21] == -5555:
+                    bfOut.write("N/S")
+
+                # Pressure
+                if codeArray[i][22] == 99:
+                    bfOut.write(f"0{codeArray[i][22]}")
+                elif codeArray[i][22] == 559:
+                    bfOut.write(f"{codeArray[i][22]}")
+                elif codeArray[i][22] == 529:
+                    bfOut.write(f"{codeArray[i][22]}")
+                elif codeArray[i][22] == 299:
+                    bfOut.write(f"{codeArray[i][22]}")
+                elif codeArray[i][22] == 552:
+                    bfOut.write(f"{codeArray[i][22]}")
+                elif codeArray[i][22] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][22] == -5555:
+                    bfOut.write("N/S")
+
+                # Precipitation
+                if codeArray[i][23] == 999:
+                    bfOut.write(f"{codeArray[i][23]}")
+                elif codeArray[i][23] == 559:
+                    bfOut.write(f"{codeArray[i][23]}")
+                elif codeArray[i][23] == 529:
+                    bfOut.write(f"{codeArray[i][23]}")
+                elif codeArray[i][23] == 299:
+                    bfOut.write(f"{codeArray[i][23]}")
+                elif codeArray[i][23] == 552:
+                    bfOut.write(f"{codeArray[i][23]}")
+                elif codeArray[i][23] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][23] == -5555:
+                    bfOut.write("N/S")
+
+                # Speed
+                if codeArray[i][24] == 999:
+                    bfOut.write(f"{codeArray[i][24]}")
+                elif codeArray[i][24] == 559:
+                    bfOut.write(f"{codeArray[i][24]}")
+                elif codeArray[i][24] == 529:
+                    bfOut.write(f"{codeArray[i][24]}")
+                elif codeArray[i][24] == 299:
+                    bfOut.write(f"{codeArray[i][24]}")
+                elif codeArray[i][24] == 552:
+                    bfOut.write(f"{codeArray[i][24]}")
+                elif codeArray[i][24] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][24] == -5555:
+                    bfOut.write("N/S")
+
+                # Direction
+                if codeArray[i][25] == 999:
+                    bfOut.write(f"{codeArray[i][25]}")
+                elif codeArray[i][25] == 559:
+                    bfOut.write(f"{codeArray[i][25]}")
+                elif codeArray[i][25] == 529:
+                    bfOut.write(f"{codeArray[i][25]}")
+                elif codeArray[i][25] == 299:
+                    bfOut.write(f"{codeArray[i][25]}")
+                elif codeArray[i][25] == 552:
+                    bfOut.write(f"{codeArray[i][25]}")
+                elif codeArray[i][25] == 3333:
+                    bfOut.write("N/A")
+                elif codeArray[i][25] == -5555:
+                    bfOut.write("N/S")
+
+            bfOut.close()
+        except IOError:
+            raise IOError("Erro durante a escrita do arquivo: ",output)
+
+
+    def writeReportData(self, output, station, year, month, id, codeArray, latitude, longitude):
+        try:
+            bfOut = open(output, 'w')
+            for i in range(len(codeArray)):
+                self.num = self.data[i][3]
+                self.div = self.num / 60
+                self.dia_jul = int(self.data[i][2])
+
+                self.day_angle = (2 * np.pi) / (365.25 * self.dia_jul)
+                self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
+
+                self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(2 * self.day_angle)) * 229.18
+
+                self.tcorr = (self.eqtime + 4 * (longitude - 0)) / 60
+
+                self.horacorr = self.tcorr + self.div
+
+                self.hour_angle = (12.00 - self.horacorr) * 15
+
+                self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
+
+                self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
+
+                #------------------ Código em Java não trata caso zenith_angle == 90 ---------------
+                if self.zenith_angle < 90:
+
+                    # Global Radiation
+                    if codeArray[i][4] == 999:
+                        self.cont_glv += 1
+                    elif codeArray[i][4] == 599:
+                        self.cont_glv += 1
+                    elif codeArray[i][4] == 552:
+                        self.cont_gl1n += 1
+                    elif codeArray[i][4] == 529:
+                        self.cont_gl2n += 1
+                    elif codeArray[i][4] == 299:
+                        self.cont_gl3n += 1
+                    elif codeArray[i][4] == -5555:
+                        self.flag_gl = 1
+                    elif codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
+                        self.cont_glna += 1
+
+                    # Direct Radiation
+                    if codeArray[i][28] == 999:
+                        self.cont_div += 1
+                    elif codeArray[i][28] == 599:
+                        self.cont_div += 1
+                    elif codeArray[i][28] == 552:
+                        self.cont_di1n += 1
+                    elif codeArray[i][28] == 529:
+                        self.cont_di2n += 1
+                    elif codeArray[i][28] == 299:
+                        self.cont_di3n += 1
+                    elif codeArray[i][28] == -5555:
+                        self.flag_di = 1
+                    elif codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
+                        self.cont_dina += 1
+
+                    # Diffuse Radiation
+                    if codeArray[i][8] == 999:
+                        self.cont_dfv += 1
+                    elif codeArray[i][8] == 599:
+                        self.cont_dfv += 1
+                    elif codeArray[i][8] == 552:
+                        self.cont_df1n += 1
+                    elif codeArray[i][8] == 529:
+                        self.cont_df2n += 1
+                    elif codeArray[i][8] == 299:
+                        self.cont_df3n += 1
+                    elif codeArray[i][8] == -5555:
+                        self.flag_df = 1
+                    elif codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
+                        self.cont_dfna += 1
+
+                    # Long Wave
+                    if codeArray[i][32] == 999:
+                        self.cont_lwv += 1
+                    elif codeArray[i][32] == 599:
+                        self.cont_lwv += 1
+                    elif codeArray[i][32] == 552:
+                        self.cont_lw1n += 1
+                    elif codeArray[i][32] == 529:
+                        self.cont_lw2n += 1
+                    elif codeArray[i][32] == 299:
+                        self.cont_lw3n += 1
+                    elif codeArray[i][32] == -5555:
+                        self.flag_lw = 1
+                    elif codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
+                        self.cont_lwna += 1
+
+                    # Par
+                    if codeArray[i][12] == 999:
+                        self.cont_pav += 1
+                    elif codeArray[i][12] == 599:
+                        self.cont_pav += 1
+                    elif codeArray[i][12] == 552:
+                        self.cont_pa1n += 1
+                    elif codeArray[i][12] == 529:
+                        self.cont_pa2n += 1
+                    elif codeArray[i][12] == 299:
+                        self.cont_pa3n += 1
+                    elif codeArray[i][32] == -5555:
+                        self.flag_pa = 1
+                    elif codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
+                        self.cont_pana += 1
+
+                    # Lux
+                    if codeArray[i][16] == 999:
+                        self.cont_lxv += 1
+                    elif codeArray[i][16] == 599:
+                        self.cont_lxv += 1
+                    elif codeArray[i][16] == 552:
+                        self.cont_lx1n += 1
+                    elif codeArray[i][16] == 529:
+                        self.cont_lx2n += 1
+                    elif codeArray[i][16] == 299:
+                        self.cont_lx3n += 1
+                    elif codeArray[i][16] == -5555:
+                        self.flag_lx = 1
+                    elif codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
+                        self.cont_lxna += 1
+
+                if self.zenith_angle > 90:
+
+                    # Global Radiation
+                    if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][4] != 3333 and codeArray[i][4] != -6999:
+                        self.cont_vgl += 1
+
+                    # Direct Radiation
+                    if codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][28] != 3333 and codeArray[i][28] != -6999:
+                        self.cont_vgl += 1
+
+                    # Diffuse Radiation
+                    if codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][8] != 3333 and codeArray[i][8] != -6999:
+                        self.cont_vgl += 1
+
+                    # Long Wave
+                    if codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][32] != 3333 and codeArray[i][32] != -6999:
+                        self.cont_vgl += 1
+
+                    # Par
+                    if codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][12] != 3333 and codeArray[i][12] != -6999:
+                        self.cont_vgl += 1
+
+                    # Lux
+                    if codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
+                        self.cont_nagl += 1
+
+                    if codeArray[i][16] != 3333 and codeArray[i][16] != -6999:
+                        self.cont_vgl += 1
+
+
+                # Air Temperature
+                if codeArray[i][20] == 999:
+                    self.cont_tpv += 1
+                elif codeArray[i][20] == 559:
+                    self.cont_tpv += 1
+                elif codeArray[i][20] == 552:
+                    self.cont_tp1n += 1
+                elif codeArray[i][20] == 529:
+                    self.cont_tp2n += 1
+                elif codeArray[i][20] == 299:
+                    self.cont_tp3n += 1
+                elif codeArray[i][20] == -5555:
+                    self.flag_tp = 1
+                elif codeArray[i][20] == 3333:
+                    self.cont_tpna += 1
+
+                # Relative Humidity
+                if codeArray[i][21] == 9:
+                    self.cont_tpv += 1
+                elif codeArray[i][21] == 552:
+                    self.cont_tp1n += 1
+                elif codeArray[i][21] == -5555:
+                    self.flag_tp = 1
+                elif codeArray[i][21] == 3333:
+                    self.cont_tpna += 1
+
+                # Atmospheric Pressure
+                if codeArray[i][22] == 99:
+                    self.cont_psv += 1
+                elif codeArray[i][22] == 559:
+                    self.cont_psv += 1
+                elif codeArray[i][22] == 552:
+                    self.cont_ps1n += 1
+                elif codeArray[i][22] == 529:
+                    self.cont_ps2n += 1
+                elif codeArray[i][22] == -5555:
+                    self.flag_ps = 1
+                elif codeArray[i][22] == 3333:
+                    self.cont_psna += 1
 
 
 
+
+
+
+
+
+        except IOError:
+            raise IOError("Erro durante a escrita do arquivo: ", output)
