@@ -571,7 +571,8 @@ class Loader:
 
             bfOut.close()
         except IOError:
-            raise IOError("Erro durante a escrita do arquivo: ",output)
+            raise IOError("Erro durante a escrita do arquivo: ", output)
+
 
 
     def writeReportData(self, output, station, year, month, id, codeArray, latitude, longitude):
@@ -583,9 +584,13 @@ class Loader:
                 self.dia_jul = int(self.data[i][2])
 
                 self.day_angle = (2 * np.pi) / (365.25 * self.dia_jul)
-                self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
+                self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(
+                    self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(
+                    2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
 
-                self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(2 * self.day_angle)) * 229.18
+                self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(
+                    self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(
+                    2 * self.day_angle)) * 229.18
 
                 self.tcorr = (self.eqtime + 4 * (longitude - 0)) / 60
 
@@ -593,11 +598,12 @@ class Loader:
 
                 self.hour_angle = (12.00 - self.horacorr) * 15
 
-                self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
+                self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(
+                    latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
 
                 self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
 
-                #------------------ Código em Java não trata caso zenith_angle == 90 ---------------
+                # ------------------ Código em Java não trata caso zenith_angle == 90 ---------------
                 if self.zenith_angle < 90:
 
                     # Global Radiation
@@ -740,7 +746,6 @@ class Loader:
                     if codeArray[i][16] != 3333 and codeArray[i][16] != -6999:
                         self.cont_vgl += 1
 
-
                 # Air Temperature
                 if codeArray[i][20] == 999:
                     self.cont_tpv += 1
@@ -759,13 +764,13 @@ class Loader:
 
                 # Relative Humidity
                 if codeArray[i][21] == 9:
-                    self.cont_tpv += 1
+                    self.cont_huv += 1
                 elif codeArray[i][21] == 552:
-                    self.cont_tp1n += 1
+                    self.cont_hu1n += 1
                 elif codeArray[i][21] == -5555:
-                    self.flag_tp = 1
+                    self.flag_hu = 1
                 elif codeArray[i][21] == 3333:
-                    self.cont_tpna += 1
+                    self.cont_huna += 1
 
                 # Atmospheric Pressure
                 if codeArray[i][22] == 99:
@@ -781,8 +786,166 @@ class Loader:
                 elif codeArray[i][22] == 3333:
                     self.cont_psna += 1
 
+                # Accumulated Precipitation
+                if codeArray[i][23] == 999:
+                    self.cont_pcv += 1
+                elif codeArray[i][23] == 559:
+                    self.cont_pcv += 1
+                elif codeArray[i][23] == 552:
+                    self.cont_pc1n += 1
+                elif codeArray[i][23] == 529:
+                    self.cont_pc2n += 1
+                elif codeArray[i][23] == 299:
+                    self.cont_pc3n += 1
+                elif codeArray[i][23] == -5555:
+                    self.flag_pc = 1
+                elif codeArray[i][23] == 3333:
+                    self.cont_pcna += 1
 
+                # Wind Speed
+                if codeArray[i][24] == 999:
+                    self.cont_wsv += 1
+                elif codeArray[i][24] == 559:
+                    self.cont_wsv += 1
+                elif codeArray[i][24] == 552:
+                    self.cont_ws1n += 1
+                elif codeArray[i][24] == 529:
+                    self.cont_ws2n += 1
+                elif codeArray[i][24] == 299:
+                    self.cont_ws3n += 1
+                elif codeArray[i][24] == -5555:
+                    self.flag_ws = 1
+                elif codeArray[i][24] == 3333:
+                    self.cont_wsna += 1
 
+                # Wind Direction
+                if codeArray[i][24] == 999:
+                    self.cont_wdv += 1
+                elif codeArray[i][24] == 559:
+                    self.cont_wdv += 1
+                elif codeArray[i][24] == 552:
+                    self.cont_wd1n += 1
+                elif codeArray[i][24] == 529:
+                    self.cont_wd2n += 1
+                elif codeArray[i][24] == 299:
+                    self.cont_wd3n += 1
+                elif codeArray[i][24] == -5555:
+                    self.flag_wd = 1
+                elif codeArray[i][24] == 3333:
+                    self.cont_wdna += 1
+
+            # Global Radiation Percentages
+            self.med_gl1n = (self.cont_gl1n * 100) / self.numberOfRows
+            self.med_gl2n = (self.cont_gl2n * 100) / self.numberOfRows
+            self.med_gl3n = (self.cont_gl3n * 100) / self.numberOfRows
+            self.med_glna = ((self.cont_glna + self.cont_nagl) * 100) / self.numberOfRows
+            self.med_glv = ((self.cont_glv + self.cont_vgl) * 100) / self.numberOfRows
+
+            # Direct Radiation Percentages
+            self.med_di1n = (self.cont_di1n * 100) / self.numberOfRows
+            self.med_di2n = (self.cont_di2n * 100) / self.numberOfRows
+            self.med_di3n = (self.cont_di3n * 100) / self.numberOfRows
+            self.med_dina = ((self.cont_dina + self.cont_nadi) * 100) / self.numberOfRows
+            self.med_div = ((self.cont_div + self.cont_vdi) * 100) / self.numberOfRows
+
+            # Diffuse Radiation Percentages
+            self.med_df1n = (self.cont_df1n * 100) / self.numberOfRows
+            self.med_df2n = (self.cont_df2n * 100) / self.numberOfRows
+            self.med_df3n = (self.cont_df3n * 100) / self.numberOfRows
+            self.med_dfna = ((self.cont_dfna + self.cont_nadf) * 100) / self.numberOfRows
+            self.med_dfv = ((self.cont_dfv + self.cont_vdf) * 100) / self.numberOfRows
+
+            # Long Wave Radiation Percentages
+            self.med_lw1n = (self.cont_lw1n * 100) / self.numberOfRows
+            self.med_di2n = (self.cont_lw2n * 100) / self.numberOfRows
+            self.med_lw3n = (self.cont_lw3n * 100) / self.numberOfRows
+            self.med_lwna = ((self.cont_lwna + self.cont_nalw) * 100) / self.numberOfRows
+            self.med_lwv = ((self.cont_lwv + self.cont_vlw) * 100) / self.numberOfRows
+
+            # Par Radiation Percentages
+            self.med_pa1n = (self.cont_pa1n * 100) / self.numberOfRows
+            self.med_pa2n = (self.cont_pa2n * 100) / self.numberOfRows
+            self.med_pa3n = (self.cont_pa3n * 100) / self.numberOfRows
+            self.med_pana = ((self.cont_pana + self.cont_napa) * 100) / self.numberOfRows
+            self.med_pav = ((self.cont_pav + self.cont_vpa) * 100) / self.numberOfRows
+
+            # Lux Radiation Percentages
+            self.med_lx1n = (self.cont_lx1n * 100) / self.numberOfRows
+            self.med_lx2n = (self.cont_lx2n * 100) / self.numberOfRows
+            self.med_lx3n = (self.cont_lx3n * 100) / self.numberOfRows
+            self.med_lxna = ((self.cont_lxna + self.cont_nalx) * 100) / self.numberOfRows
+            self.med_lxv = ((self.cont_lxv + self.cont_vlx) * 100) / self.numberOfRows
+
+            # Air Temperature Percentages
+            self.med_tp1n = (self.cont_tp1n * 100) / self.numberOfRows
+            self.med_tp2n = (self.cont_tp2n * 100) / self.numberOfRows
+            self.med_tp3n = (self.cont_tp3n * 100) / self.numberOfRows
+            self.med_tpna = (self.cont_tpna * 100) / self.numberOfRows
+            self.med_tpv = (self.cont_tpv * 100) / self.numberOfRows
+
+            # Relative Humidity Percentages
+            self.med_hu1n = (self.cont_hu1n * 100) / self.numberOfRows
+            self.med_huna = (self.cont_huna * 100) / self.numberOfRows
+            self.med_huv = (self.cont_huv * 100) / self.numberOfRows
+
+            # Atmospheric Pressure Percentages
+            self.med_ps1n = (self.cont_ps1n * 100) / self.numberOfRows
+            self.med_ps2n = (self.cont_ps2n * 100) / self.numberOfRows
+            self.med_psna = (self.cont_psna * 100) / self.numberOfRows
+            self.med_psv = (self.cont_psv * 100) / self.numberOfRows
+
+            # Accumulated Precipitation Percentages
+            self.med_pc1n = (self.cont_pc1n * 100) / self.numberOfRows
+            self.med_pc2n = (self.cont_pc2n * 100) / self.numberOfRows
+            self.med_pc3n = (self.cont_pc3n * 100) / self.numberOfRows
+            self.med_pcna = (self.cont_pcna * 100) / self.numberOfRows
+            self.med_pcv = (self.cont_pcv * 100) / self.numberOfRows
+
+            # Wind Speed Percentages
+            self.med_ws1n = (self.cont_ws1n * 100) / self.numberOfRows
+            self.med_ws2n = (self.cont_ws2n * 100) / self.numberOfRows
+            self.med_ws3n = (self.cont_ws3n * 100) / self.numberOfRows
+            self.med_wsna = (self.cont_wsna * 100) / self.numberOfRows
+            self.med_wsv = (self.cont_wsv * 100) / self.numberOfRows
+
+            # Wind Direction Percentages
+            self.med_wd1n = (self.cont_wd1n * 100) / self.numberOfRows
+            self.med_wd2n = (self.cont_wd2n * 100) / self.numberOfRows
+            self.med_wd3n = (self.cont_wd3n * 100) / self.numberOfRows
+            self.med_wdna = (self.cont_wdna * 100) / self.numberOfRows
+            self.med_wdv = (self.cont_wdv * 100) / self.numberOfRows
+
+            bfOut.write("Valores em POrcentagem dos Dados Suspeitos\n")
+            bfOut.write("E ou Reprovados nos Níveis 1, 2 e 3, e Gaps N/A.\n\n\n")
+            bfOut.write("Estação: {} ({} {})\n".format(station, output[0:3], id))
+            bfOut.write("Data: {}-{}\n".format(month, year))
+            bfOut.write("Qtde total de dados: {}\n\n".format(self.numberOfRows))
+
+            if self.flag_gl == 0:
+                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}\n")
+                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}\n")
+                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}\n")
+                bfOut.write(f"Global Válido  = {self.med_glv:.1f}\n")
+                bfOut.write(f"Global N/A     = {self.med_glna:.1f}\n")
+            else:
+                bfOut.write(f"Global Nível 1 = N/S\n")
+                bfOut.write(f"Global Nível 2 = N/S\n")
+                bfOut.write(f"Global Nível 3 = N/S\n")
+                bfOut.write(f"Global Válido  = N/S\n")
+                bfOut.write(f"Global N/A     = N/S\n")
+
+            if self.flag_gl == 0:
+                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}\n")
+                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}\n")
+                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}\n")
+                bfOut.write(f"Global Válido  = {self.med_glv:.1f}\n")
+                bfOut.write(f"Global N/A     = {self.med_glna:.1f}\n")
+            else:
+                bfOut.write(f"Global Nível 1 = N/S\n")
+                bfOut.write(f"Global Nível 2 = N/S\n")
+                bfOut.write(f"Global Nível 3 = N/S\n")
+                bfOut.write(f"Global Válido  = N/S\n")
+                bfOut.write(f"Global N/A     = N/S\n")
 
 
 

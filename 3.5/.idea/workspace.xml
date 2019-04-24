@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ic.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InfoData/InfoData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InfoData/InfoData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="770" column="35" lean-forward="true" selection-start-line="770" selection-start-column="35" selection-end-line="770" selection-end-column="35" />
+            <state relative-caret-position="289">
+              <caret line="936" column="27" selection-start-line="936" selection-start-column="27" selection-end-line="936" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -31,7 +29,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
+            <state relative-caret-position="3300">
               <caret line="220" column="17" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
             </state>
           </provider>
@@ -71,9 +69,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="826" />
-    <option name="y" value="27" />
-    <option name="width" value="764" />
-    <option name="height" value="873" />
+    <option name="y" value="25" />
+    <option name="width" value="774" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -163,7 +161,8 @@
       <workItem from="1554894987968" duration="11338000" />
       <workItem from="1555066849765" duration="13735000" />
       <workItem from="1555500177994" duration="2662000" />
-      <workItem from="1555585665264" duration="11220000" />
+      <workItem from="1555585665264" duration="11293000" />
+      <workItem from="1556104835762" duration="5947000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -193,14 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555080786083</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Tradução da classe Loader até metade da função writeReportData para python">
+      <created>1555598773747</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555598773747</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39080000" />
+    <option name="totallyTimeSpent" value="45100000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="826" y="27" width="764" height="873" extended-state="4" />
+    <frame x="826" y="25" width="774" height="875" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16852368" />
@@ -246,20 +252,21 @@
     <MESSAGE value="Tradução da classe InfoData para python" />
     <MESSAGE value="Tradução da classe InfoData para python&#10;Tradução da classe Loader até função writeData para python" />
     <MESSAGE value="Tradução da classe Loader até função writeData para python" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Loader até função writeData para python" />
+    <MESSAGE value="Tradução da classe Loader até metade da função writeReportData para python" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Loader até metade da função writeReportData para python" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
+    <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="220" column="17" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
+        <state relative-caret-position="289">
+          <caret line="936" column="27" selection-start-line="936" selection-start-column="27" selection-end-line="936" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
+    <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="770" column="35" lean-forward="true" selection-start-line="770" selection-start-column="35" selection-end-line="770" selection-end-column="35" />
+        <state relative-caret-position="3300">
+          <caret line="220" column="17" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
         </state>
       </provider>
     </entry>
