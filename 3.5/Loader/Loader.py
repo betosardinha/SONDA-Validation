@@ -582,13 +582,9 @@ class Loader:
                 self.dia_jul = int(self.data[i][2])
 
                 self.day_angle = (2 * np.pi) / (365.25 * self.dia_jul)
-                self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(
-                    self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(
-                    2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
+                self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
 
-                self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(
-                    self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(
-                    2 * self.day_angle)) * 229.18
+                self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(2 * self.day_angle)) * 229.18
 
                 self.tcorr = (self.eqtime + 4 * (longitude - 0)) / 60
 
@@ -596,8 +592,7 @@ class Loader:
 
                 self.hour_angle = (12.00 - self.horacorr) * 15
 
-                self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(
-                    latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
+                self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
 
                 self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
 

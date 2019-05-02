@@ -6,7 +6,7 @@ from Loader import Loader
 
 
 class ScreeningController:
-    def __init__(self, input1=None, input2=None):
+    def __init__(self, input1=None):
         # Constant values used to get solar geometry data
         self.d0 = 0.006918
         self.dc1 = 0.399912
@@ -144,13 +144,60 @@ class ScreeningController:
 
         self.loader = None
 
-        if input1 is not None and input2 is not None:
+        if input1 is not None:
             self.loader = Loader.Loader()
             self.loader.buildsMatrixData(input1)
             self.loader.buildsMatrixCode(input1)
 
     def progressBar(self):
         self.pb = tqdm(total=self.rows, desc="Validação")
+
+    def validate(self, latitude, longitude, station, month):
+        self.rows = self.loader.getRows() - 1
+        self.progressBar()
+
+        for i in range(self.rows+1):
+            self.num = self.loader.data[i][3]
+            self.div = self.num / 60    # Measurement time in utc time
+            self.dia_jul = self.loader.data[i][2]
+
+            # Calculating astronomical data
+            self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
+            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
+            self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(2 * self.day_angle)) * 229.18
+            self.tcorr = (self.eqtime + 4 * (longitude - 0)) / 60
+            self.horacorr = self.tcorr + self.div   # Local time obtained from utc time
+            self.hour_angle = (12.00 - self.horacorr) * 15
+            self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2 * self.day_angle) + self.e5 * np.sin(2 * self.day_angle)
+            self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
+            self.zenith_angle = np.arccos(self.u0) * 180 / np.pi
+
+            # Start level 1
+
+            # Routine to check the misalignment of the tracker
+            if self.zenith_angle < 87:
+                if self.loader.data[i][4] != 3333 and self.loader.data[i][4] != -5555 and self.loader.data[i][4] != -6999:
+                    if self.loader.data[i][28] != 3333 and self.loader.data[i][28] != -5555 and self.loader.data[i][28] != -6999:
+                        if self.loader.data[i][4] > 50:
+                            self.rtoa = self.sa * self.u0
+                            self.kt = self.loader.data[i][4] / self.rtoa
+                            self.kn = self.loader.data[i][28] / self.loader.data[i][4]
+                            if self.kt >= 0.50:
+                                if self.kn > 0.30:
+                                    self.loader.code[i][8] = 9
+                                    self.loader.code[i][28] = 9
+                                else:
+                                    self.loader.code[i][8] = 552
+                                    self.loader.code[i][28] = 552
+                            elif self.kt >= 0.40 and self.kt < 0.50:
+                                if self.kn > 0.10:
+                                    self.loader.code[i][8] = 9
+                                    self.loader.code[i][28] = 9
+                                else:
+                                    self.loader.code[i][8] = 552
+                                    self.loader.code[i][28] = 552
+
+
 
 
 

@@ -1,10 +1,11 @@
 # Import module for Double to LongBit conversion
 import struct
+import numpy as np
 
 
 # Convert Double to LongBits
 def doubleToLongBits(double):
-    return int.from_bytes(struct.pack('d', double), 'little')
+    return struct.unpack('Q', struct.pack('d', double))[0]
 
 
 class InfoData:
