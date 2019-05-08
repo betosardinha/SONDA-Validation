@@ -17,13 +17,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="3.5" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="594" column="101" selection-start-line="594" selection-start-column="101" selection-end-line="594" selection-end-column="101" />
+            <state relative-caret-position="416">
+              <caret line="599" column="48" selection-start-line="599" selection-start-column="48" selection-end-line="599" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -31,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+            <state relative-caret-position="465">
+              <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
               <folding>
                 <element signature="e#49#62#0" expanded="true" />
               </folding>
@@ -43,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="199" column="12" lean-forward="true" selection-start-line="199" selection-start-column="12" selection-end-line="199" selection-end-column="12" />
+            <state relative-caret-position="590">
+              <caret line="414" column="12" selection-start-line="414" selection-start-column="12" selection-end-line="414" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -96,42 +99,14 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3.5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3.5" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3.5" type="462c0819:PsiDirectoryNode" />
-              <item name="InfoData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3.5" type="462c0819:PsiDirectoryNode" />
-              <item name="Loader" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -193,7 +168,8 @@
       <workItem from="1556104835762" duration="6012000" />
       <workItem from="1556623373603" duration="766000" />
       <workItem from="1556624160454" duration="9744000" />
-      <workItem from="1556799822401" duration="7611000" />
+      <workItem from="1556799822401" duration="8237000" />
+      <workItem from="1557314080590" duration="6996000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -244,11 +220,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556635889170</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Tradução da classe Controller até a função de check de desalinhamento">
+      <created>1556807553728</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556807553728</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63286000" />
+    <option name="totallyTimeSpent" value="70908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="826" y="25" width="774" height="875" extended-state="4" />
@@ -256,7 +239,7 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.29387188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -300,7 +283,8 @@
     <MESSAGE value="Tradução da classe Loader até metade da função writeReportData para python" />
     <MESSAGE value="Tradução da classe Loader até verificação de flags em função writeReportData para python" />
     <MESSAGE value="Tradução da classe Loader e inicio da classe Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Loader e inicio da classe Controller" />
+    <MESSAGE value="Tradução da classe Controller até a função de check de desalinhamento" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de check de desalinhamento" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
@@ -311,8 +295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        <state relative-caret-position="465">
+          <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
           <folding>
             <element signature="e#49#62#0" expanded="true" />
           </folding>
@@ -321,15 +305,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="594" column="101" selection-start-line="594" selection-start-column="101" selection-end-line="594" selection-end-column="101" />
+        <state relative-caret-position="416">
+          <caret line="599" column="48" selection-start-line="599" selection-start-column="48" selection-end-line="599" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="199" column="12" lean-forward="true" selection-start-line="199" selection-start-column="12" selection-end-line="199" selection-end-column="12" />
+        <state relative-caret-position="590">
+          <caret line="414" column="12" selection-start-line="414" selection-start-column="12" selection-end-line="414" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

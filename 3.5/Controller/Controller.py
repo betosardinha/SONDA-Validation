@@ -197,7 +197,218 @@ class ScreeningController:
                                     self.loader.code[i][8] = 552
                                     self.loader.code[i][28] = 552
 
+            # End of routine to check the misalignment of the tracker
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Global Radiation (W/m²) level 1
+
+            if self.loader.data[i][4] != 3333:
+                if self.loader.data[i][4] != -5555:
+                    if self.loader.data[i][4] != -6999:
+                        if self.loader.data[i][5] != 0:
+                            if self.u0 > 0:
+                                self.GLOBAL_MX = (self.sa * 1.5 * (self.u0**1.2) + 100)
+                            else:
+                                self.GLOBAL_MX = 100
+
+                            if self.loader.data[i][4] > self.GLOBAL_MI and self.loader.data[i][4] < self.GLOBAL_MX:
+                                self.loader.code[i][4] = 9
+                            else:
+                                self.loader.code[i][4] = 552
+                        else:
+                            if self.zenith_angle > 90:
+                                if self.u0 > 0:
+                                    self.GLOBAL_MX = (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                else:
+                                    self.GLOBAL_MX = 100
+
+                                if self.loader.data[i][4] > self.GLOBAL_MI and self.loader.data[i][4] < self.GLOBAL_MX:
+                                    self.loader.code[i][4] = 9
+                                else:
+                                    self.loader.code[i][4] = 552
+                            else:
+                                self.cont_std += 1
+                                if self.loader.data[i][4] != self.loader.data[i-1][4] and self.loader.data[i][4] != self.loader.data[i+1][4]:
+                                    if self.u0 > 0:
+                                        self.GLOBAL_MX = (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                    else:
+                                        self.GLOBAL_MX = 100
+
+                                    if self.loader.data[i][4] > self.GLOBAL_MI and self.loader.data[i][
+                                        4] < self.GLOBAL_MX:
+                                        self.loader.code[i][4] = 9
+                                    else:
+                                        self.loader.code[i][4] = 552
+                                else:
+                                    self.loader.code[i][4] = 552
+                    else:
+                        self.loader.code[i][4] = -6999
+                else:
+                    self.loader.code[i][4] = -5555
+            else:
+                self.loader.code[i][4] = 3333
+
+            # End of the routine validation: Global Radiation (W/m²) level 1
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Diffuse Radiation (W/m²) level 1
+
+            if self.loader.data[i][8] != 333:
+                if self.loader.data[i][8] != -5555:
+                    if self.loader.data[i][8] != -6999:
+                        if self.loader.data[i][8] != 552:
+                            if self.loader.data[i][9] != 0:
+                                if self.u0 > 0:
+                                    self.DIFUSE_MX = (self.sa * 0.95 * (self**1.2) + 50)
+                                else:
+                                    self.DIFUSE_MX = 50
+
+                                if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][8] < self.DIFUSE_MX:
+                                    self.loader.code[i][8] = 9
+                                else:
+                                    self.loader.code[i][8] = 552
+                            else:
+                                if self.zenith_angle > 90:
+                                    if self.u0 > 0:
+                                        self.DIFUSE_MX = (self.sa * 0.95 * (self ** 1.2) + 50)
+                                    else:
+                                        self.DIFUSE_MX = 50
+
+                                    if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][
+                                        8] < self.DIFUSE_MX:
+                                        self.loader.code[i][8] = 9
+                                    else:
+                                        self.loader.code[i][8] = 552
+                                else:
+                                    self.cont_std += 1
+                                    if self.loader.data[i][8] != self.loader.data[i-1][8] and  self.loader.data[i][8] != self.loader.data[i+1][8]:
+                                        if self.u0 > 0:
+                                            self.DIFUSE_MX = (self.sa * 0.95 * (self ** 1.2) + 50)
+                                        else:
+                                            self.DIFUSE_MX = 50
+
+                                        if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][
+                                            8] < self.DIFUSE_MX:
+                                            self.loader.code[i][8] = 9
+                                        else:
+                                            self.loader.code[i][8] = 552
+                                    else:
+                                        self.loader.code[i][8] = 552
+                    else:
+                        self.loader.code[i][8] = -6999
+                else:
+                    self.loader.code[i][8] = -5555
+            else:
+                self.loader.code[i][8] = 3333
+
+            # End of the routine validation: Diffuse Radiation (W/m²) level 1
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Par Radiation (�mols s� m�) level 1
+
+            if self.loader.data[i][12] != 3333:
+                if self.loader.data[i][12] != -5555:
+                    if self.loader.data[i][12] != -6999:
+                        if self.loader.data[i][13] != 0:
+                            if self.u0 > 0:
+                                self.PAR_MX = 2.07 * (self.sa * 1.5 * (self.u0**1.2) + 100)
+                            else:
+                                self.PAR_MX = 2.07 * 100
+
+                            if self.loader.data[i][12] > self.PAR_MI and self.loader.data[i][12] < self.PAR_MX:
+                                self.loader.code[i][12] = 9
+                            else:
+                                self.loader.code[i][12] = 552
+                        else:
+                            if self.zenith_angle > 90:
+                                if self.u0 > 0:
+                                    self.PAR_MX = 2.07 * (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                else:
+                                    self.PAR_MX = 2.07 * 100
+
+                                if self.loader.data[i][12] > self.PAR_MI and self.loader.data[i][12] < self.PAR_MX:
+                                    self.loader.code[i][12] = 9
+                                else:
+                                    self.loader.code[i][12] = 552
+                            else:
+                                self.cont_std += 1
+                                if self.loader.data[i][12] != self.loader.data[i-1][12] and self.loader.data[i][12] != self.loader.data[i+1][12]:
+                                    if self.u0 > 0:
+                                        self.PAR_MX = 2.07 * (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                    else:
+                                        self.PAR_MX = 2.07 * 100
+
+                                    if self.loader.data[i][12] > self.PAR_MI and self.loader.data[i][12] < self.PAR_MX:
+                                        self.loader.code[i][12] = 9
+                                    else:
+                                        self.loader.code[i][12] = 552
+                                else:
+                                    self.loader.code[i][12] = 552
+                    else:
+                        self.loader.code[i][12] = -6999
+                else:
+                    self.loader.code[i][12] = -5555
+            else:
+                self.loader.code[i][12] = 3333
 
 
+            # End of the routine validation: Par Radiation (�mols s� m�) level 1
 
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Lux Radiation (kLux) level 1
+
+            if self.loader.data[i][16] != 3333:
+                if self.loader.data[i][16] != -5555:
+                    if self.loader.data[i][16] != -6999:
+                        if self.loader.data[i][17] != 0:
+                            if self.u0 > 0:
+                                self.LUX_MX = 0.115 * (self.sa * 1.5 * (self.u0**1.2) + 100)
+                            else:
+                                self.LUX_MX = 0.115 * 100
+
+                            if self.loader.data[i][16] > self.LUX_MI and self.loader.data[i][16] < self.LUX_MX:
+                                self.loader.code[i][16] = 9
+                            else:
+                                self.loader.code[i][16] = 552
+                        else:
+                            if self.zenith_angle > 90:
+                                if self.u0 > 0:
+                                    self.LUX_MX = 0.115 * (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                else:
+                                    self.LUX_MX = 0.115 * 100
+
+                                if self.loader.data[i][16] > self.LUX_MI and self.loader.data[i][16] < self.LUX_MX:
+                                    self.loader.code[i][16] = 9
+                                else:
+                                    self.loader.code[i][16] = 552
+                            else:
+                                self.cont_std += 1
+                                if self.loader.data[i][16] != self.loader.data[i-1][16] and self.loader.data[i][16] != self.loader.data[i+1][16]:
+                                    if self.u0 > 0:
+                                        self.LUX_MX = 0.115 * (self.sa * 1.5 * (self.u0 ** 1.2) + 100)
+                                    else:
+                                        self.LUX_MX = 0.115 * 100
+
+                                    if self.loader.data[i][16] > self.LUX_MI and self.loader.data[i][16] < self.LUX_MX:
+                                        self.loader.code[i][16] = 9
+                                    else:
+                                        self.loader.code[i][16] = 552
+                                else:
+                                    self.loader.code[i][16] = 552
+                    else:
+                        self.loader.code[i][16] = -6999
+                else:
+                    self.loader.code[i][16] = -5555
+            else:
+                self.loader.code = 3333
+
+            # End of the routine validation: Lux Radiation (kLux) level 1
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Air Temperature (°C) level 1
 

@@ -101,6 +101,7 @@ class InfoData:
         self.year = year
 
     # Attribute based hash function
+    # hashCode diferente de Java
     def hashCode(self):
         PRIME = 31
         RESULT = 1

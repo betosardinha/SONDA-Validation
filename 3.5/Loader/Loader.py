@@ -597,6 +597,7 @@ class Loader:
                 self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
 
                 # ------------------ Código em Java não trata caso zenith_angle == 90 ---------------
+                # colocar <= 90, discutir depois
                 if self.zenith_angle < 90:
 
                     # Global Radiation
