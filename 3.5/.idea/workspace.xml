@@ -6,10 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InfoData/InfoData.py" beforeDir="false" afterPath="$PROJECT_DIR$/InfoData/InfoData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="599" column="48" selection-start-line="599" selection-start-column="48" selection-end-line="599" selection-end-column="48" />
+            <state relative-caret-position="221">
+              <caret line="1106" column="11" selection-start-line="1106" selection-start-column="8" selection-end-line="1106" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -34,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="1530">
               <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
               <folding>
                 <element signature="e#49#62#0" expanded="true" />
@@ -46,10 +45,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="414" column="12" selection-start-line="414" selection-start-column="12" selection-end-line="414" selection-end-column="12" />
+            <state relative-caret-position="545">
+              <caret line="811" column="81" selection-start-line="811" selection-start-column="81" selection-end-line="811" selection-end-column="81" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#6#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,6 +66,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>self.data</find>
+      <find>get</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -169,7 +169,9 @@
       <workItem from="1556623373603" duration="766000" />
       <workItem from="1556624160454" duration="9744000" />
       <workItem from="1556799822401" duration="8237000" />
-      <workItem from="1557314080590" duration="6996000" />
+      <workItem from="1557314080590" duration="7254000" />
+      <workItem from="1557326921362" duration="9000" />
+      <workItem from="1557486317961" duration="12110000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -227,11 +229,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556807553728</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Tradução da classe Controller até a função de level 1 Air Temperature">
+      <created>1557325054083</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1557325054083</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70908000" />
+    <option name="totallyTimeSpent" value="83285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="826" y="25" width="774" height="875" extended-state="4" />
@@ -257,7 +266,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32967034" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" x="0" y="0" width="143" height="675" id="Documentation" order="5" side_tool="true" weight="0.32911393" />
     </layout>
@@ -284,7 +293,8 @@
     <MESSAGE value="Tradução da classe Loader até verificação de flags em função writeReportData para python" />
     <MESSAGE value="Tradução da classe Loader e inicio da classe Controller" />
     <MESSAGE value="Tradução da classe Controller até a função de check de desalinhamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de check de desalinhamento" />
+    <MESSAGE value="Tradução da classe Controller até a função de level 1 Air Temperature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de level 1 Air Temperature" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
@@ -295,7 +305,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="1530">
           <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
           <folding>
             <element signature="e#49#62#0" expanded="true" />
@@ -305,17 +315,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="599" column="48" selection-start-line="599" selection-start-column="48" selection-end-line="599" selection-end-column="48" />
+        <state relative-caret-position="221">
+          <caret line="1106" column="11" selection-start-line="1106" selection-start-column="8" selection-end-line="1106" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="414" column="12" selection-start-line="414" selection-start-column="12" selection-end-line="414" selection-end-column="12" />
+        <state relative-caret-position="545">
+          <caret line="811" column="81" selection-start-line="811" selection-start-column="81" selection-end-line="811" selection-end-column="81" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#6#0" expanded="true" />
           </folding>
         </state>
       </provider>
