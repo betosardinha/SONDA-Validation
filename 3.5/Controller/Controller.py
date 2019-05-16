@@ -797,7 +797,7 @@ class ScreeningController:
                     else:
                         l = 0
                         while l <= self.pres3h:
-                            if self.loader.code[i+l][22] != 3333 and self.loader[i+l][22] != 552:
+                            if self.loader.code[i+l][22] != 3333 and self.loader.code[i+l][22] != 552:
                                 if i == 0:
                                     self.loader.code[i][22] = 59
                                 else:
@@ -811,7 +811,250 @@ class ScreeningController:
                 if i >= totalPres3h_2:
                     self.loader.code[i][22] = self.loader.code[totalPres3h_1][22]
 
+            # End of the routine validation: Atmospheric Pressure (mbar) level 2
 
+            # ----------------------------------------------------------------------------------------------------------------------
 
+            # Start of the routine validation: Accumulated Precipitation (mm) level 2
 
+            if self.loader.code[i][23] != 3333 and self.loader.code[i][23] != -5555 and self.loader.code[i][23] != 552:
+                if i <= totalPrec1h_1:
+                    j = 0
+                    while j <= self.prec1h:
+                        if self.loader.code[i+j][23] != 3333 and self.loader.code[i+j][23] != 552:
+                            self.contPrecValid += 1
 
+                            if self.loader.data[i+j][23] > self.prec_max:
+                                self.prec_max = self.loader.data[i+j][23]
+
+                            if self.loader.data[i+j][23] < self.prec_min:
+                                self.prec_min = self.loader.data[i+j][23]
+
+                            self.variation_prec1h = self.prec_max - self.prec_min
+                        j += 1
+
+                    if self.contPrecValid >= 40:
+                        if self.variation_prec1h < 25:
+                            self.loader.code[i][23] = 99
+                            self.lastPrecValid = self.loader.code[i][23]
+                        else:
+                            self.loader.code[i][23] = 529
+                    else:
+                        l = 0
+                        while l <= self.prec1h:
+                            if self.loader.code[i+l][23] != 3333 and self.loader.code[i+l][23] != 552:
+                                if i == 0:
+                                    self.loader.code[i][23] = 559
+                                else:
+                                    self.loader.code[i][23] = self.lastPrecValid
+                            l += 1
+
+                    self.contPrecValid = 0
+                    self.prec_max = 0
+                    self.prec_min = 999
+
+                if i >= totalPrec1h_2:
+                    self.loader.code[i][23] = self.loader.code[totalPrec1h_1][23]
+
+            # End of the routine validation: Accumulated Precipitation (mm) level 2
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Wind Speed 10m (m/s) level 2
+
+            if self.loader.code[i][24] != 3333 and self.loader.code[i][24] != -5555 and self.loader.code[i][24] != 552:
+                if i <= totalWs103h_1:
+                    j = 0
+                    while j <= self.ws103h:
+                        if self.loader.code[i+j][24] != 3333 and self.loader.code[i+j][24] != 552:
+                            self.contWspdValid += 1
+                            if self.loader.data[i+j][24] > self.ws10_max:
+                                self.ws10_max = self.loader.data[i+j][24]
+
+                            if self.loader.data[i+j][24] < self.ws10_min:
+                                self.ws10_min = self.loader.data[i+j][24]
+
+                            self.variation_ws103h = self.ws10_max - self.ws10_min
+                        j += 1
+
+                    if self.contWspdValid >= 40:
+                        if self.variation_ws103h > 0.1:
+                            self.loader.code[i][24] = 99
+                            self.lastWs10Valid = self.loader.code[i][24]
+                        else:
+                            self.loader.code[i][24] = 529
+                    else:
+                        l = 0
+                        while l <= self.ws103h:
+                            if self.loader.code[i+l][24] != 3333 and self.loader.code[i+l][24] != 552:
+                                if i == 0:
+                                    self.loader.code[i][24] = 559
+                                else:
+                                    self.loader.code[i][24] = self.lastWs10Valid
+                            l += 1
+
+                    self.contWspdValid = 0
+                    self.ws10_max = 0
+                    self.ws10_min = 999
+
+                if i >= totalWs103h_2:
+                    self.loader.code[i][24] = self.loader.code[totalWs103h_1][24]
+
+            # End of the routine validation: Wind Speed 10m (m/s) level 2
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Wind Direction 10m (°) level 2
+
+            if self.loader.code[i][25] != 3333 and self.loader.code[i][25] != -5555 and self.loader.code[i][25] != 552:
+                if i <= totalWd103h_1:
+                    j = 0
+                    while j <= self.wd103h:
+                        if self.loader.code[i+j][25] != 3333 and self.loader.code[i+j][25] != 552:
+                            self.contWdirValid += 1
+                            if self.loader.data[i+j][25] > self.wd10_max:
+                                self.wd10_max = self.loader.data[i+j][25]
+
+                            if self.loader.data[i+j][25] < self.wd10_min:
+                                self.wd10_min = self.loader.data[i+j][25]
+
+                            self.variation_wd103h = self.wd10_max = self.wd10_min
+                        j += 1
+
+                    if self.contWdirValid >= 40:
+                        if self.variation_wd103h > 1:
+                            self.loader.code[i][25] = 99
+                            self.lastWs10Valid = self.loader.code[i][25]
+                        else:
+                            self.loader.code[i][25] = 529
+                    else:
+                        l = 0
+                        while l <= self.wd103h:
+                            if self.loader.code[i+l][25] != 3333 and self.loader.code[i+l][25] != 552:
+                                if i == 0:
+                                    self.loader.code[i][25] = 559
+                                else:
+                                    self.loader.code[i][25] = self.lastWd10Valid
+                            l += 1
+
+                    self.contWdirValid = 0
+                    self.wd10_max = 0
+                    self.wd10_min = 999
+
+                if i >= totalWd103h_2:
+                    self.loader.code[i][25] = self.loader.code[totalWd103h_1][25]
+
+            # End of the routine validation: Wind Direction 10m (°) level 2
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Direct Radiation (W/m²) level 2
+
+            if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552:
+                if self.u0 > 0:
+                    self.DIRECT_MX = (self.sa * 0.95 * (self.u0 ** .02) + 10)
+                else:
+                    self.DIRECT_MX = 10
+
+                if self.loader.data[i][28] > self.DIFUSE_MI and self.loader.data[i][28] < self.DIRECT_MX:
+                    self.loader.code[i][28] = 99
+                else:
+                    self.loader.code[i][28] = 29
+
+            # End of the routine validation: Direct Radiation (W/m²) level 2
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # Start of the routine validation: Long Wave Radiation (W/m²) level 2
+
+            if self.loader.code[i][32] != 3333 and self.loader.code[i][32] != -5555 and self.loader.code[i][32] != -6999 and self.loader.code[i][32] != 552:
+                if self.loader.data[i][32] > self.LWDN_MI and self.loader.data[i][32] < self.LWDN_MX:
+                    self.loader.code[i][32] = 99
+                else:
+                    self.loader.code[i][32] = 29
+
+            # End of the routine validation: Long Wave Radiation (W/m²) level 2
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # End of loop level 2
+
+    	# Start level 3
+
+        for i in range(self.rows + 1):
+            self.num = self.loader.data[i][3]
+            self.div = self.num / 60
+            self.dia_jul = int(self.loader.data[i][2])
+
+            # Calculating astronomical geometry data
+            self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
+            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2*self.day_angle) + self.ds2 * np.sin(2*self.day_angle) - self.dc3 * np.cos(3*self.day_angle))
+            self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2*self.day_angle) - self.ts2 * np.sin(2*self.day_angle)) * 229.18
+            self.tcorr = (self.eqtime + 4*(longitude-0)) / 60
+            self.horacorr = self.tcorr + self.div
+            self.hour_angle = (12.00 - self.horacorr) * 15
+            self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2*self.day_angle) + self.e5 * np.sin(2*self.day_angle)
+            self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude*self.CDR) * np.cos(self.hour_angle * self.CDR)
+            self.zenith_angle = (np.arccos(self.u0)) * 180/np.pi
+            self.sa = 1368 * self.e0
+
+            # Variables used to validate radiation Global and Diffuse - level 3
+            difSw = 0
+            sumSw = 0
+            divSw = 0
+
+            # Variables used to validate radiation Direct - level 3
+            direct_h = None
+            direct_n = None
+            direct_p = None
+
+            # Variables used to validate radiation long wave - level 3
+            sigma = 5.76E-8
+            temp = None
+            temp_a = None
+            temp_b = None
+
+            # Variables used in the comparison of global radiation with par and lux - level 3
+            lux_global = None
+            par_global = None
+            lux_par = None
+            par_lux = None
+
+            mat_desvio = np.zeros(4)
+            mat_limite = np.zeros(4)
+            mat_lppl = None
+
+            # Variables used to validate meteorological data - level 3
+            totalTemp12h_1 = self.rows - self.temp12h
+            totalTemp12h_2 = self.rows - self.temp12h + 1
+
+            totalPrec24h_1 = self.rows - self.prec24h
+            totalPrec24h_2 = self.rows - self.prec24h + 1
+
+            totalWs1012h_1 = self.rows - self.ws1012h
+            totalWs1012h_2 = self.rows - self.ws1012h + 1
+
+            totalWd1018h_1 = self.rows - self.wd1018h
+            totalWd1018h_2 = self.rows - self.wd1018h + 1
+
+            # Start of the routine validation: Comparison of global radiation with par and lux level 3
+            if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 29:
+                if self.loader.code[i][12] != 3333 and self.loader.code[i][12] != -5555 and self.loader.code[i][12] != -6999 and self.loader.code[i][12] != 552 and self.loader.code[i][12] != 29:
+                    if self.loader.code[i][16] != 3333 and self.loader.code[i][16] != -5555 and self.loader.code[i][16] != -6999 and self.loader.code[i][16] != 552 and self.loader.code[i][16] != 29:
+                        if self.zenith_angle < 90:
+                            lux_global = 0.115 * self.loader.day_angle[i][4]
+                            par_global = 2.07 * self.loader.data[i]
+
+                            # There are some dependency with photosynthetic photon flux and sometimes 18 is not a better number.
+                         	# This version (3.5) these terms were recalculated by Prof. Enio.
+                            lux_par = self.loader.data[i][12] / 20.83
+                            par_lux = 20.83 * self.loader.data[i][16]
+
+                            if self.loader.data[i][12] == 0:
+                                self.loader.data[i][12] = 0.001
+
+                            if self.loader.data[i][16] == 0:
+                                self.loader.data[i][16] = 0.001
+
+                            # LUX - LUX < -GLO
+                            mat_desvio[0] = (np.abs(self.loader.data[i][16] - lux_global) / self.loader.data[i][16]) * 100
