@@ -3,9 +3,10 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/InfoData/InfoData.py" line="12" />
     <bookmark url="file://$PROJECT_DIR$/Loader/Loader.py" line="584" />
+    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1425" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="Tradução da classe Controller até a função de level 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Controller.py" afterDir="false" />
     </list>
@@ -44,8 +45,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="1058" column="46" lean-forward="true" selection-start-line="1058" selection-start-column="46" selection-end-line="1058" selection-end-column="46" />
+            <state relative-caret-position="573">
+              <caret line="1498" column="13" selection-start-line="1498" selection-start-column="13" selection-end-line="1498" selection-end-column="13" />
+              <caret line="1500" column="13" selection-start-line="1500" selection-start-column="13" selection-end-line="1500" selection-end-column="13" />
+              <caret line="1502" column="13" selection-start-line="1502" selection-start-column="13" selection-end-line="1502" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -63,7 +66,14 @@
     <findStrings>
       <find>self.data</find>
       <find>get</find>
+      <find>mat_desvio</find>
+      <find>&amp;&amp;</find>
+      <find>loader</find>
     </findStrings>
+    <replaceStrings>
+      <replace>and</replace>
+      <replace>self.loader</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -86,9 +96,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="826" />
-    <option name="y" value="25" />
-    <option name="width" value="774" />
-    <option name="height" value="875" />
+    <option name="y" value="27" />
+    <option name="width" value="764" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -168,7 +178,10 @@
       <workItem from="1557314080590" duration="7254000" />
       <workItem from="1557326921362" duration="9000" />
       <workItem from="1557486317961" duration="12603000" />
-      <workItem from="1558004987770" duration="10805000" />
+      <workItem from="1558004987770" duration="11437000" />
+      <workItem from="1558091644586" duration="2901000" />
+      <workItem from="1558096958445" duration="5771000" />
+      <workItem from="1558103224315" duration="650000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -240,14 +253,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557499102196</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Tradução da classe Controller até a função de level 3">
+      <created>1558016972543</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1558016972543</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94583000" />
+    <option name="totallyTimeSpent" value="104537000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="826" y="25" width="774" height="875" extended-state="4" />
+    <frame x="826" y="27" width="764" height="873" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.29387188" />
@@ -299,7 +319,8 @@
     <MESSAGE value="Tradução da classe Controller até a função de check de desalinhamento" />
     <MESSAGE value="Tradução da classe Controller até a função de level 1 Air Temperature" />
     <MESSAGE value="Tradução da classe Controller até a função de level 2 Atmospheric Pressure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de level 2 Atmospheric Pressure" />
+    <MESSAGE value="Tradução da classe Controller até a função de level 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de level 3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
@@ -327,8 +348,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="1058" column="46" lean-forward="true" selection-start-line="1058" selection-start-column="46" selection-end-line="1058" selection-end-column="46" />
+        <state relative-caret-position="573">
+          <caret line="1498" column="13" selection-start-line="1498" selection-start-column="13" selection-end-line="1498" selection-end-column="13" />
+          <caret line="1500" column="13" selection-start-line="1500" selection-start-column="13" selection-end-line="1500" selection-end-column="13" />
+          <caret line="1502" column="13" selection-start-line="1502" selection-start-column="13" selection-end-line="1502" selection-end-column="13" />
         </state>
       </provider>
     </entry>

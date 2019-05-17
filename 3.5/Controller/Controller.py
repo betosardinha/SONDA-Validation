@@ -1058,3 +1058,446 @@ class ScreeningController:
 
                             # LUX - LUX < -GLO
                             mat_desvio[0] = (np.abs(self.loader.data[i][16] - lux_global) / self.loader.data[i][16]) * 100
+                            # LUX - LUX<-PAR
+                            mat_desvio[2] = (np.abs(self.loader.data[i][16] - lux_par) / self.loader.data[i][16]) * 100
+                            # PAR - PAR < -GLO
+                            mat_desvio[1] = (np.abs(self.loader.data[i][12] - par_global) / self.loader.data[i][12]) * 100
+                            # PAR - PAR < -LUX
+                            mat_desvio[3] = (np.abs(self.loader.data[i][12] - par_lux) / self.loader.data[i][12]) * 100
+
+                            if self.zenith_angle < 80:
+                                # LUX<-GLO
+                                if mat_desvio[0] < 9.5:         # Padrao 0
+                                    mat_limite[0] = 0
+                                elif mat_desvio[0] < 33.5:      # Padrao 1
+                                    mat_limite[0] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[0] = 2
+
+                                # PAR<-GLO
+                                if mat_desvio[1] < 12:          # Padrao 0
+                                    mat_limite[1] = 0
+                                elif mat_desvio[1] < 34:        # Padrao 1
+                                    mat_limite[1] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[1] = 2
+
+                                # LUX<-PAR
+                                if mat_desvio[2] < 7.25:        # Padrao 0
+                                    mat_limite[2] = 0
+                                elif mat_desvio[2] < 15.5:      # Padrao 1
+                                    mat_limite[2] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[2] = 2
+
+                                # PAR<-LUX
+                                if mat_desvio[3] < 6.75:        # Padrao 0
+                                    mat_limite[3] = 0
+                                elif mat_desvio[3] < 13.5:      # Padrao 1
+                                    mat_limite[3] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[3] = 2
+
+                            elif self.zenith_angle <= 88:
+                                # LUX<-GLO
+                                if mat_desvio[0] < 16.5:        # Padrao 0
+                                    mat_limite[0] = 0
+                                elif mat_desvio[1] < 65:        # Padrao 1
+                                    mat_limite[0] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[0] = 2
+
+                                # PAR<-GLO
+                                if mat_desvio[1] < 17:          # Padrao 0
+                                    mat_limite[1] = 0
+                                elif mat_desvio[1] < 66.5:      # Padrao 1
+                                    mat_limite[1] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[1] = 2
+
+                                # LUX<-PAR
+                                if mat_desvio[2] < 11.75:       # Padrao 0
+                                    mat_limite[2] = 0
+                                elif mat_desvio[2] < 23.5:      # Padrao 1
+                                    mat_limite[2] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[2] = 2
+
+                                # PAR<-LUX
+                                if mat_desvio[3] < 10.5:        # Padrao 0
+                                    mat_limite[3] = 0
+                                elif mat_desvio[3] < 19:        # Padrao 1
+                                    mat_limite[3] = 1
+                                else: 						    # Padrao 2
+                                    mat_limite[3] = 2
+
+                            elif self.zenith_angle > 80 and self.zenith_angle <= 90:
+                                # LUX<-GLO
+                                if mat_desvio[0] < 45.5:        # Padrao 0
+                                    mat_limite[0] = 0
+                                elif mat_desvio[0] < 100:       # Padrao 1
+                                    mat_limite[0] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[0] = 2
+
+                                # PAR<-GLO
+                                if mat_desvio[1] < 51.25:       # Padrao 0
+                                    mat_limite[1] = 0
+                                elif mat_desvio[1] < 99.25:     # Padrao 1
+                                    mat_limite[1] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[1] = 2
+
+                                # LUX<-PAR
+                                if mat_desvio[2] < 17.75:       # Padrao 0
+                                    mat_limite[2] = 0
+                                elif mat_desvio[2] < 43.5:      # Padrao 1
+                                    mat_limite[2] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[2] = 2
+
+                                # PAR<-LUX
+                                if mat_desvio[3] < 15.5:        # Padrao 0
+                                    mat_limite[3] = 0
+                                elif mat_desvio[3] < 30.5:      # Padrao 1
+                                    mat_limite[3] = 1
+                                else:                           # Padrao 2
+                                    mat_limite[3] = 2
+
+                            if mat_limite[2] >= mat_limite[3]:
+                                mat_lppl = mat_limite[2]
+                            else:
+                                mat_lppl = mat_limite[3]
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 0) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 0) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 0) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 1) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 1) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 1) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 2) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 2) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 0) and (mat_lppl == 2) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 0) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 0) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 0) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 1) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 1) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 1) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 2) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 2) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 1) and (mat_lppl == 2) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 0) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 0) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 0) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 999
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 1) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 1) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 1) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 2) and (mat_limite[0] == 0)):
+                                self.loader.code[i][16] = 999
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 2) and (mat_limite[0] == 1)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+
+                            if ((mat_limite[1] == 2) and (mat_lppl == 2) and (mat_limite[0] == 2)):
+                                self.loader.code[i][16] = 299
+                                self.loader.code[i][12] = 299
+
+                        else:
+                            if self.loader.code[i][16] == 99:
+                                self.loader.code[i][16] = 599
+
+                            if self.loader.code[i][12] == 99:
+                                self.loader.code[i][12] = 599
+
+                    else:
+                        if self.loader.code[i][16] == 99:
+                            self.loader.code[i][16] = 599
+
+                        if self.loader.code[i][16] == 29:
+                            self.loader.code[i][16] = 529
+
+                        if self.loader.code[i][12] == 99:
+                            self.loader.code[i][12] = 599
+
+                else:
+                    if self.loader.code[i][12] == 99:
+                        self.loader.code[i][12] = 599
+
+                    if self.loader.code[i][12] == 29:
+                        self.loader.code[i][12] = 529
+
+                    if self.loader.code[i][16] == 99:
+                        self.loader.code[i][16] = 599
+
+            else:
+                if self.loader.code[i][16] == 99:
+                    self.loader.code[i][16] = 599
+
+                if self.loader.code[i][16] == 29:
+                    self.loader.code[i][16] = 529
+
+                if self.loader.code[i][12] == 99:
+                    self.loader.code[i][12] = 599
+
+                if self.loader.code[i][12] == 29:
+                    self.loader.code[i][12] = 529
+
+            # End of the routine validation: Comparison of global radiation with par and lux level 3
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+         	# Start of the routine validation: Global Radiation (W/m²) level 3
+
+            if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 29:
+                if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29 and self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
+                    sumSw = self.loader.data[i][8] + (self.loader.data[i][28] * self.u0)
+                    divSw = self.loader.data[i][4] / sumSw
+
+                    # //////////////////////  TEST BSRN LEVEL 3 ////////////////////////
+                    if sumSw > 50:
+                        if self.zenith_angle < 75:
+                            if divSw > 0.90 and divSw < 1.10:
+                                self.loader.code[i][4] = 999
+                            else:
+                                self.loader.code[i][4] = 229
+
+                        if self.zenith_angle > 75 and self.zenith_angle < 93:
+                            if divSw > 0.85 and divSw < 1.15:
+                                self.loader.code[i][4] = 999
+                            else:
+                                self.loader.code[i][4] = 299
+                    else:
+                        self.loader.code[i][4] = 599
+
+                    # //////////////////////  TEST BSRN LEVEL 3 ////////////////////////
+
+                # ////////////////////// Se a DIFUSA e DIRETA for RUIM - VERIFICA PAR E LUX
+                else:
+                    if self.loader.code[i][12] != 529 and self.loader.code[i][12] != 299 and self.loader.code[i][12] != 552 and self.loader.code[i][12] != 29 and self.loader.code[i][16] != 529 and self.loader.code[i][16] != 299 and self.loader.code[i][16] != 552 and self.loader.code[i][16] != 29:
+                        self.loader.code[i][4] = 999
+                    else:
+                        self.loader.code[i][4] = 599
+            else:
+                if self.loader.code[i][4] == 29:
+                    self.loader.code[i][4] = 529
+            
+            # End of the routine validation: Global Radiation (W/m²) level 3
+            
+            # ----------------------------------------------------------------------------------------------------------------------
+         	
+         	# Start of the routine validation: Diffuse Radiation (W/m²) level 3
+
+            if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29:
+                if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529:
+                    if self.loader.data[i][4] > 50:
+                        difSw = self.loader.data[i][8] / self.loader.data[i][4]
+                        if self.zenith_angle < 75:
+                            if difSw < 1.05:
+                                self.loader.code[i][8] = 999
+                            else:
+                                self.loader.code[i][8] = 299
+
+                        if self.zenith_angle > 75 and self.zenith_angle < 93:
+                            if difSw < 1.10:
+                                self.loader.code[i][8] = 999
+                            else:
+                                self.loader.code[i][8] = 299
+
+                    else:
+                        self.loader.code[i][8] = 599
+                else:
+                    if self.loader.code[i][8] == 99:
+                        self.loader.code[i][8] = 599
+            else:
+                if self.loader.code[i][8] == 29:
+                    self.loader.code[i][8] = 529
+
+            # End of the routine validation: Diffuse Radiation (W/m²) level 3
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+         	# Start of the routine validation: Air Temperature (°C) level 3
+
+            if self.loader.code[i][20] != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552 and self.loader.code[i][20] != 529:
+                if i <= totalTemp12h_1:
+                    j = 0
+                    while j <= self.temp12h:
+                        if self.loader.code[i+j][20] != 3333 and self.loader.code[i+j][20] != 552 and self.loader.code[i+j][20] != 529:
+                            self.contTempValid += 1
+                            if self.loader.data[i+j][20] > self.temp_max:
+                                self.temp_max = self.loader.data[i+j][20]
+                            if self.loader.data[i+j][20] < self.temp_min:
+                                self.temp_min = self.loader.data[i+j][20]
+                            self.variation_temp12h = self.temp_max - self.temp_min
+                        j += 1
+
+                    if self.contTempValid >= 40:
+                        if self.variation_temp12h > 0.5:
+                            self.loader.code[i][20] = 999
+                            self.lastTempValid = self.loader.code[i][20]
+                        else:
+                            self.loader.code[i][20] = 299
+                    else:
+                        l = 0
+                        while l <= self.temp12h:
+                            if self.loader.code[i+l][20] != 3333 and self.loader.code[i+l][20] != 552 and self.loader.code[i+l][20] != 529:
+                                if i == 0:
+                                    self.loader.code[i][20] = 559
+                                else:
+                                    self.loader.code[i][20] = self.lastTempValid
+                            l += 1
+
+                        self.contTempValid = 0
+                        self.temp_max = 0
+                        self.temp_min = 999
+                if i >= totalTemp12h_2:
+                    self.loader.code[i][20] = self.loader.code[totalTemp12h_1][20]
+
+            # End of the routine validation: Air Temperature (°C) level 3
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+         	# Start of the routine validation: Accumulated Precipitation (mm) level 3
+
+            if self.loader.code[i][23] != 3333 and self.loader.code[i][23] != -5555 and self.loader.code[i][23] != 552 and self.loader.code[i][23] != 529:
+                if i <= totalPrec24h_1:
+                    j = 0
+                    while j <= self.prec24h:
+                        if self.loader.code[i+j][23] != 3333 and self.loader.code[i+j][23] != 552 and self.loader.code[i+j][23] != 529:
+                            self.contPrecValid += 1
+                            if self.loader.data[i+j][23] > self.prec_max:
+                                self.prec_max = self.loader.data[i+j][23]
+                            if self.loader.data[i+j][23] < self.prec_min:
+                                self.prec_min = self.loader.data[i+j][23]
+                            self.variation_prec24h = self.temp_max = self.prec_min
+                        j += 1
+
+                    if self.contPrecValid >= 40:
+                        if self.variation_prec24h < 100:
+                            self.loader.code[i][23] = 999
+                            self.lastPrecValid = self.loader.code[i][23]
+                        else:
+                            self.loader.code[i][23] = 299
+                    else:
+                        l = 0
+                        while l <= self.prec24h:
+                            if self.loader.code[i+l][23] != 3333 and self.loader.code[i+l][23] != 552 and self.loader.code[i+l][23] != 529:
+                                if i == 0:
+                                    self.loader.code[i][23] = 559
+                                else:
+                                    self.loader.code[i][23] = self.lastPrecValid
+                            l += 1
+
+                        self.contPrecValid = 0
+                        self.prec_max = 0
+                        self.prec_min = 999
+
+                if i >= totalPrec24h_2:
+                    self.loader.code[i][23] = self.loader.code[totalPrec24h_1][23]
+
+            # End of the routine validation: Accumulated Precipitation (mm) level 3
+                     
+            # ----------------------------------------------------------------------------------------------------------------------
+         	
+         	# Start of the routine validation: Wind Speed 10m (m/s) level 3
