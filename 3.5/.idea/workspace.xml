@@ -3,10 +3,11 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/InfoData/InfoData.py" line="12" />
     <bookmark url="file://$PROJECT_DIR$/Loader/Loader.py" line="584" />
-    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1425" />
+    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1429" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="Tradução da classe Controller até a função de level 3">
+    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Validation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Controller.py" afterDir="false" />
     </list>
@@ -24,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16590">
+            <state relative-caret-position="13125">
               <caret line="1106" column="11" selection-start-line="1106" selection-start-column="8" selection-end-line="1106" selection-end-column="11" />
             </state>
           </provider>
@@ -33,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
+            <state relative-caret-position="-1211">
               <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
               <folding>
                 <element signature="e#49#62#0" expanded="true" />
@@ -42,13 +43,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="1498" column="13" selection-start-line="1498" selection-start-column="13" selection-end-line="1498" selection-end-column="13" />
-              <caret line="1500" column="13" selection-start-line="1500" selection-start-column="13" selection-end-line="1500" selection-end-column="13" />
-              <caret line="1502" column="13" selection-start-line="1502" selection-start-column="13" selection-end-line="1502" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="590">
+              <caret line="290" column="12" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,6 +83,8 @@
       <find>mat_desvio</find>
       <find>&amp;&amp;</find>
       <find>loader</find>
+      <find>input1</find>
+      <find>dialog</find>
     </findStrings>
     <replaceStrings>
       <replace>and</replace>
@@ -91,21 +107,35 @@
         <option value="$PROJECT_DIR$/InfoData/InfoData.py" />
         <option value="$PROJECT_DIR$/Loader/Loader.py" />
         <option value="$PROJECT_DIR$/Controller/Controller.py" />
+        <option value="$PROJECT_DIR$/Validation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="826" />
-    <option name="y" value="27" />
-    <option name="width" value="764" />
-    <option name="height" value="873" />
+    <option name="y" value="25" />
+    <option name="width" value="774" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3.5" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -181,7 +211,8 @@
       <workItem from="1558004987770" duration="11437000" />
       <workItem from="1558091644586" duration="2901000" />
       <workItem from="1558096958445" duration="5771000" />
-      <workItem from="1558103224315" duration="650000" />
+      <workItem from="1558103224315" duration="686000" />
+      <workItem from="1558524064612" duration="11550000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -260,17 +291,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558016972543</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Tradução da classe Controller até a função Accumjlated Precipitation  level 3">
+      <created>1558103904032</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1558103904032</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104537000" />
+    <option name="totallyTimeSpent" value="116123000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="826" y="27" width="764" height="873" extended-state="4" />
+    <frame x="826" y="25" width="774" height="875" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.29387188" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.29258242" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -320,7 +358,8 @@
     <MESSAGE value="Tradução da classe Controller até a função de level 1 Air Temperature" />
     <MESSAGE value="Tradução da classe Controller até a função de level 2 Atmospheric Pressure" />
     <MESSAGE value="Tradução da classe Controller até a função de level 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função de level 3" />
+    <MESSAGE value="Tradução da classe Controller até a função Accumjlated Precipitation  level 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução da classe Controller até a função Accumjlated Precipitation  level 3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
@@ -331,14 +370,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16590">
+        <state relative-caret-position="13125">
           <caret line="1106" column="11" selection-start-line="1106" selection-start-column="8" selection-end-line="1106" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
+        <state relative-caret-position="-1211">
           <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
           <folding>
             <element signature="e#49#62#0" expanded="true" />
@@ -348,10 +387,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="1498" column="13" selection-start-line="1498" selection-start-column="13" selection-end-line="1498" selection-end-column="13" />
-          <caret line="1500" column="13" selection-start-line="1500" selection-start-column="13" selection-end-line="1500" selection-end-column="13" />
-          <caret line="1502" column="13" selection-start-line="1502" selection-start-column="13" selection-end-line="1502" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="290" column="12" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

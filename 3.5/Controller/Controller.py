@@ -6,8 +6,8 @@ from tqdm import *
 from Loader import Loader
 
 
-class ScreeningController:
-    def __init__(self, input1=None):
+class Controller:
+    def __init__(self, input1=None, input2=None):
         # Constant values used to get solar geometry data
         self.d0 = 0.006918
         self.dc1 = 0.399912
@@ -125,6 +125,7 @@ class ScreeningController:
 
         self.pb = None
         self.dialog = None
+        self.title = None
 
         # Variables used to count meteorological data valid - level 2 and 3
         self.contTempValid = 0
@@ -150,8 +151,11 @@ class ScreeningController:
             self.loader.buildsMatrixData(input1)
             self.loader.buildsMatrixCode(input1)
 
+        if input2 is not None:
+            self.title = input2
+
     def progressBar(self):
-        self.pb = tqdm(total=self.rows, desc="Validação")
+        self.pb = tqdm(total=self.rows, desc="Validação - "+self.title)
 
     def validate(self, latitude, longitude, station, month):
         self.rows = self.loader.getRows() - 1
@@ -1501,3 +1505,143 @@ class ScreeningController:
             # ----------------------------------------------------------------------------------------------------------------------
          	
          	# Start of the routine validation: Wind Speed 10m (m/s) level 3
+
+            if self.loader.code[i][24] != 3333 and self.loader.code[i][24] != -5555 and self.loader.code[i][24] != 552 and self.loader.code[i][24] != 529:
+                if i <= totalWs1012h_1:
+                    j = 0
+                    while j <= self.ws1012h:
+                        if self.loader.code[i+j][24] != 3333 and self.loader.code[i+j][24] != 552 and self.loader.code[i+j][24] != 529:
+                            self.contWspdValid += 1
+                            if self.loader.data[i+j][24] > self.ws10_max:
+                                self.ws10_max = self.loader.data[i+j][24]
+                            if self.loader.data[i+j][24] < self.ws10_min:
+                                self.ws10_min = self.loader.data[i+j][24]
+                            self.variation_ws1012h = self.ws10_max = self.ws10_min
+                        j += 1
+
+                    if self.contWspdValid >= 40:
+                        if self.variation_ws1012h > 0.5:
+                            self.loader.code[i][24] = 999
+                            self.lastWs10Valid = self.loader.code[i][24]
+                        else:
+                            self.loader.code[i][24] = 299
+                    else:
+                        l = 0
+                        while l <= self.ws1012h:
+                            if self.loader.code[i+l][24] != 3333 and self.loader.code[i+l][24] != 552 and self.loader.code[i+l][24] != 529:
+                                if i == 0:
+                                    self.loader.code[i][24] = 559
+                                else:
+                                    self.loader.code[i][24] = self.lastWs10Valid
+                            l += 1
+                        self.contWspdValid = 0
+                        self.ws10_max = 0
+                        self.ws10_min = 999
+
+                if i >= totalWs1012h_2:
+                    self.loader.code[i][24] = self.loader.code[totalWs1012h_1][24]
+
+            # End of the routine validation: Wind Speed 10m (m/s) level 3
+                     
+         	# ----------------------------------------------------------------------------------------------------------------------
+         
+         	# Start of the routine validation: Wind Direction 10m (°) level 3
+
+            if self.loader.code[i][25] != 3333 and self.loader.code[i][25] != -5555 and self.loader.code[i][25] != 552 and self.loader.code[i][25] != 529:
+                if i <= totalWd1018h_1:
+                    j = 0
+                    while j <= self.wd1018h:
+                        if self.loader.code[i+j][25] != 3333 and self.loader.code[i+j][25] != 552 and self.loader.code[i+j][25] != 529:
+                            self.contWdirValid += 1
+                            if self.loader.data[i+j][25] > self.wd10_max:
+                                self.wd10_max = self.loader.data[i+j][25]
+                            if self.loader.data[i+j][25] < self.wd10_min:
+                                self.wd10_min = self.loader.data[i+j][25]
+                            self.variation_wd1018h = self.wd10_max = self.wd10_min
+                        j += 1
+
+                    if self.contWdirValid >= 40:
+                        if self.variation_wd1018h > 10:
+                            self.loader.code[i][24] = 999
+                            self.lastWs10Valid = self.loader.code[i][25]
+                        else:
+                            self.loader.code[i][25] = 299
+                    else:
+                        l = 0
+                        while l <= self.wd1018h:
+                            if self.loader.code[i+l][25] != 3333 and self.loader.code[i+l][25] != 552 and self.loader.code[i+l][25] != 529:
+                                if i == 0:
+                                    self.loader.code[i][25] = 559
+                                else:
+                                    self.loader.code[i][25] = self.lastWd10Valid
+                            l += 1
+                        self.contWdirValid = 0
+                        self.wd10_max = 0
+                        self.wd10_min = 999
+
+                if i >= totalWd1018h_2:
+                    self.loader.code[i][25] = self.loader.code[totalWd1018h_1][25]
+
+            # End of the routine validation: Wind Direction 10m (°) level 3
+         	
+         	# ----------------------------------------------------------------------------------------------------------------------
+         	
+         	# Start of the routine validation: Direct Radiation (W/m²) level 3
+
+            if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
+                if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 529:
+                    if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529:
+                        direct_h = self.loader.data[i][4] = self.loader.data[i][8]
+                        direct_n = (self.loader.data[i][28] * self.u0) - 50
+                        direct_p = (self.loader.data[i][28] * self.u0) + 50
+
+                        if direct_n <= direct_h and direct_h <= direct_p:
+                            self.loader.code[i][28] = 999
+                        else:
+                            self.loader.code[i][28] = 299
+
+                    else:
+                        if self.loader.code[i][28] == 99:
+                            self.loader.code[i][28] = 599
+
+                else:
+                    if self.loader.code[i][28] == 99:
+                        self.loader.code[i][28] = 599
+
+            else:
+                if self.loader.code[i][28] == 29:
+                    self.loader.code[i][28] = 529
+
+            # End of the routine validation: Direct Radiation (W/m²) level 3
+
+            # ----------------------------------------------------------------------------------------------------------------------
+         	
+         	# Start of the routine validation: Long Wave Radiation (W/m²) level 3
+
+            if self.loader.code[i][32] != 3333 and self.loader.code[i][32] != -5555 and self.loader.code[i][32] != -6999 and self.loader.code[i][32] != 552 and self.loader.code[i][32] != 29:
+                if self.loader.code[i][20] != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552 and self.loader.code[i][20] != 529:
+                    temp =  self.loader.data[i][20] + 273.15
+                    temp_a = 0.4 * sigma * (temp ** 4)
+                    temp_b = sigma * (temp ** 4) + 25
+
+                    if temp_a < self.loader.data[i][32] and self.loader.data[i][32] < temp_b:
+                        self.loader.code[i][32] = 999
+                    else:
+                        self.loader.code[i][32] = 299
+
+                else:
+                    if self.loader.code[i][32] == 99:
+                        self.loader.code[i][32] = 599
+
+            else:
+                if self.loader.code[i][32] == 29:
+                    self.loader.code[i][32] = 529
+
+            # End of the routine validation: Long Wave Radiation (W/m²) level 3
+            # Sum count
+
+            self.pb.update(1)
+            self.cont += 1
+
+        return self.loader.code
+
