@@ -176,6 +176,7 @@ class Controller:
             self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2 * self.day_angle) + self.e5 * np.sin(2 * self.day_angle)
             self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
             self.zenith_angle = np.arccos(self.u0) * 180 / np.pi
+            self.sa = 1368 * self.e0
 
             # Start level 1
 
@@ -419,8 +420,8 @@ class Controller:
 
             if self.loader.data[i][20] != 3333:
                 if self.loader.data[i][20] != -5555:
-                    self.TEMP_MX = self.loader.getTempMax("." + os.path.sep + "limits" + os.path.sep + "temp.max", station, month)
-                    self.TEMP_MI = self.loader.getTempMax("." + os.path.sep + "limits" + os.path.sep + "temp.min", station, month)
+                    self.TEMP_MX = self.loader.getTempMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.max", station, month)
+                    self.TEMP_MI = self.loader.getTempMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.min", station, month)
                     if self.loader.data[i][20] > self.TEMP_MI and self.loader.data[i][20] < self.TEMP_MX:
                         self.loader.code[i][20] = 9
                     else:
@@ -455,8 +456,8 @@ class Controller:
 
             if self.loader.data[i][22] != 3333:
                 if self.loader.data[i][22] != -5555:
-                    self.PRES_MX = self.loader.getPresMax("." + os.path.sep + "limits" + os.path.sep + "pres.max", station)
-                    self.PRES_MI = self.loader.getPresMin("." + os.path.sep + "limits" + os.path.sep + "pres.min", station)
+                    self.PRES_MX = self.loader.getPresMax(os.path.abspath(".")+ os.path.sep + "." +"limits" + os.path.sep + "pres.max", station)
+                    self.PRES_MI = self.loader.getPresMin(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "pres.min", station)
                     if self.loader.data[i][22] > self.PRES_MI and self.loader.data[i][22] < self.PRES_MX:
                         self.loader.code[i][22] = 9
                     else:
@@ -474,7 +475,7 @@ class Controller:
 
             if self.loader.data[i][23] != 3333:
                 if self.loader.data[i][23] != -5555:
-                    self.PREC_MX = self.loader.getPrecMax("." + os.path.sep + "limits" + os.path.sep + "prec.max", station, month)
+                    self.PREC_MX = self.loader.getPrecMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "prec.max", station, month)
                     if self.loader.data[i][23] >= self.PREC_MI and self.loader.data[i][23] < self.PREC_MX:
                         self.loader.code[i][23] = 9
                     else:

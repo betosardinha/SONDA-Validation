@@ -227,14 +227,16 @@ class Loader:
     def read(self, input):
         try:
             bfIn = open(input, 'r')
+            newArray = []
             for line in bfIn:
                 token = line.split(',')
                 if self.numberOfColumns is None or self.numberOfColumns == 0:
                     self.numberOfColumns = len(token)
                 lines = np.array(token, dtype=float)
-                np.append(self.rawData, lines, axis=self.rawData.shape[1])
-            self.numberOfRows = self.rawData.shape[1]
-
+                newArray.append(lines)
+            self.rawData = np.array(newArray)
+            if self.rawData is not None:
+                self.numberOfRows = self.rawData.shape[0]
             bfIn.close()
         except IOError:
             raise IOError("Erro durante a leitura do arquivo: ", input)
@@ -1078,9 +1080,7 @@ class Loader:
         self.read(input)
         self.data = np.array([])
         try:
-            for i in range(self.numberOfRows):
-                self.temp = self.rawData[i]
-                self.data[i] = self.temp
+            self.data = self.rawData
         except IndexError:
             raise IndexError("Erro ao Acessar Índice da Matriz")
         self.rawData = np.array([])
@@ -1089,7 +1089,7 @@ class Loader:
         self.numberOfColumns = 0
         self.numberOfRows = 0
         self.read(input)
-        self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns), buffer=np.array([[]]))
+        self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns))
 
     def buildsMatrixLimits(self, input):
         self.numberOfColumns = 0
@@ -1097,9 +1097,7 @@ class Loader:
         self.read(input)
         self.limits = np.array([])
         try:
-            for i in range(self.numberOfRows):
-                self.temp = self.rawData[i]
-                self.limits[i] = self.temp
+            self.limits = self.rawData
         except IndexError:
             raise IndexError("Erro ao Acessar Índice da Matriz")
         self.rawData = np.array([])

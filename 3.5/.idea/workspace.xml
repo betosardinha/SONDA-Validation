@@ -2,12 +2,14 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/InfoData/InfoData.py" line="12" />
-    <bookmark url="file://$PROJECT_DIR$/Loader/Loader.py" line="584" />
-    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1429" />
+    <bookmark url="file://$PROJECT_DIR$/Loader/Loader.py" line="586" />
+    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1430" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="1084" column="64" lean-forward="true" selection-start-line="1084" selection-start-column="12" selection-end-line="1084" selection-end-column="64" />
+            <state relative-caret-position="139">
+              <caret line="1099" column="38" selection-start-line="1099" selection-start-column="38" selection-end-line="1099" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -33,7 +35,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
+            <state relative-caret-position="240">
               <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
               <folding>
                 <element signature="e#49#62#0" expanded="true" />
@@ -42,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5355">
-              <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+            <state relative-caret-position="124">
+              <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -54,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="312" column="21" selection-start-line="312" selection-start-column="21" selection-end-line="312" selection-end-column="21" />
+            <state relative-caret-position="133">
+              <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -84,6 +86,12 @@
       <find>loader</find>
       <find>input1</find>
       <find>dialog</find>
+      <find>build</find>
+      <find>rawData</find>
+      <find>read</find>
+      <find>print</find>
+      <find>limits</find>
+      <find>self.sa</find>
     </findStrings>
     <replaceStrings>
       <replace>and</replace>
@@ -104,13 +112,13 @@
         <option value="$PROJECT_DIR$/InfoData.py" />
         <option value="$PROJECT_DIR$/Loader.py" />
         <option value="$PROJECT_DIR$/InfoData/InfoData.py" />
+        <option value="$PROJECT_DIR$/Validation.py" />
         <option value="$PROJECT_DIR$/Loader/Loader.py" />
         <option value="$PROJECT_DIR$/Controller/Controller.py" />
-        <option value="$PROJECT_DIR$/Validation.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="826" />
     <option name="y" value="25" />
     <option name="width" value="774" />
@@ -126,6 +134,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Validation.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
@@ -149,6 +158,25 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="Validation" type="PythonConfigurationType" factoryName="Python">
+      <module name="3.5" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Validation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="3.5" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,7 +227,7 @@
       <workItem from="1558096958445" duration="5771000" />
       <workItem from="1558103224315" duration="686000" />
       <workItem from="1558524064612" duration="11771000" />
-      <workItem from="1559128154409" duration="2610000" />
+      <workItem from="1559128154409" duration="10956000" />
     </task>
     <task id="LOCAL-00001" summary="Tradução da classe InfoData para python">
       <created>1554908393105</created>
@@ -292,14 +320,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558536643194</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Tradução classe TesteValidation">
+      <created>1559130868980</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1559130868980</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118954000" />
+    <option name="totallyTimeSpent" value="127300000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="826" y="25" width="774" height="875" extended-state="4" />
+    <frame x="53" y="25" width="1547" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.29258242" />
@@ -317,7 +352,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50137365" side_tool="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3297587" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49862638" weight="0.3297587" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49862638" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -354,7 +389,8 @@
     <MESSAGE value="Tradução da classe Controller até a função de level 3" />
     <MESSAGE value="Tradução da classe Controller até a função Accumjlated Precipitation  level 3" />
     <MESSAGE value="Tradução classe TesteValidation até criação de controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tradução classe TesteValidation até criação de controller" />
+    <MESSAGE value="Tradução classe TesteValidation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tradução classe TesteValidation" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
@@ -363,19 +399,9 @@
     <entry file="file://$PROJECT_DIR$/Loader/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5355">
-          <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
+        <state relative-caret-position="240">
           <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
           <folding>
             <element signature="e#49#62#0" expanded="true" />
@@ -383,17 +409,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
+    <entry file="file://$PROJECT_DIR$/Validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="1084" column="64" lean-forward="true" selection-start-line="1084" selection-start-column="12" selection-end-line="1084" selection-end-column="64" />
+        <state relative-caret-position="133">
+          <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Validation.py">
+    <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="312" column="21" selection-start-line="312" selection-start-column="21" selection-end-line="312" selection-end-column="21" />
+        <state relative-caret-position="139">
+          <caret line="1099" column="38" selection-start-line="1099" selection-start-column="38" selection-end-line="1099" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
