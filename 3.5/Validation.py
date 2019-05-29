@@ -1,6 +1,8 @@
 import os
+import sys
 from InfoData import InfoData
 from Controller import Controller
+from Loader import Loader
 
 class Validation:
     def __init__(self, args):
@@ -9,6 +11,7 @@ class Validation:
         self.ext = ".dat"
         self.infodata = InfoData.InfoData()
         self.pathNames = args[0]
+        self.cont_std = 0
 
     def accept(self, name):
         lowercaseName = name.lower()
@@ -288,6 +291,24 @@ class Validation:
                 self.infodata.setYear("20" + fileName[3:5])
 
             controller = Controller.Controller(os.path.abspath(file), fileName)
+            try:
+                loader = Loader.Loader()
+                loader.buildsMatrixData(os.path.abspath(file))
+                loader.code = controller.validate(self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation(), int(self.infodata.getId()), int(self.infodata.getMonth()))
+                loader.writeData(self.infodata.getOutputData(), loader.data, self.infodata.getId())
+                loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId())
+                loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
+                self.cont_std = controller.cont_std
+            except Exception:
+                raise Exception
+            if self.cont_std > 0:
+                print("Validação Concluída com Sucesso!!!\nObs: Existem dadis com desvio padrão 0\n" )
+            else:
+                print("Validação Concluida com Sucesso!!!\n")
 
 
+# ----------------------------------------------------------------------
+# Main
+validation = Validation(sys.argv[1])
+validation.validate()
 
