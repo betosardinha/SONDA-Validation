@@ -731,8 +731,7 @@ class Controller:
             # ----------------------------------------------------------------------------------------------------------------------
 
             # Start of the routine validation: Air Temperature (°C) level 2
-
-            if self.loader.code != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552:
+            if self.loader.code[i][20] != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552:
                 if i <= totalTemp1h_1:
                     j = 0
                     while j <= self.temp1h:
@@ -1047,7 +1046,7 @@ class Controller:
                 if self.loader.code[i][12] != 3333 and self.loader.code[i][12] != -5555 and self.loader.code[i][12] != -6999 and self.loader.code[i][12] != 552 and self.loader.code[i][12] != 29:
                     if self.loader.code[i][16] != 3333 and self.loader.code[i][16] != -5555 and self.loader.code[i][16] != -6999 and self.loader.code[i][16] != 552 and self.loader.code[i][16] != 29:
                         if self.zenith_angle < 90:
-                            lux_global = 0.115 * self.loader.day_angle[i][4]
+                            lux_global = 0.115 * self.loader.data[i][4]
                             par_global = 2.07 * self.loader.data[i]
 
                             # There are some dependency with photosynthetic photon flux and sometimes 18 is not a better number.
