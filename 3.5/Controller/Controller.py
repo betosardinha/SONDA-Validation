@@ -1047,7 +1047,7 @@ class Controller:
                     if self.loader.code[i][16] != 3333 and self.loader.code[i][16] != -5555 and self.loader.code[i][16] != -6999 and self.loader.code[i][16] != 552 and self.loader.code[i][16] != 29:
                         if self.zenith_angle < 90:
                             lux_global = 0.115 * self.loader.data[i][4]
-                            par_global = 2.07 * self.loader.data[i]
+                            par_global = 2.07 * self.loader.data[i][4]
 
                             # There are some dependency with photosynthetic photon flux and sometimes 18 is not a better number.
                          	# This version (3.5) these terms were recalculated by Prof. Enio.
@@ -1059,6 +1059,7 @@ class Controller:
 
                             if self.loader.data[i][16] == 0:
                                 self.loader.data[i][16] = 0.001
+
 
                             # LUX - LUX < -GLO
                             mat_desvio[0] = (np.abs(self.loader.data[i][16] - lux_global) / self.loader.data[i][16]) * 100

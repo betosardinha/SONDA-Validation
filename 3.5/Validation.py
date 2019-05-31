@@ -301,7 +301,7 @@ class Validation:
                 loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
                 self.cont_std = controller.cont_std
                 if self.cont_std > 0:
-                    print("Validação Concluída com Sucesso!!!\nObs: Existem dados com desvio padrão 0\n" )
+                    print("\nValidação Concluída com Sucesso!!!\nObs: Existem dados com desvio padrão 0\n")
                 else:
                     print("Validação Concluida com Sucesso!!!\n")
 
