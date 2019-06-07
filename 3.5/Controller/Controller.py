@@ -260,7 +260,7 @@ class Controller:
 
             # Start of the routine validation: Diffuse Radiation (W/m²) level 1
 
-            if self.loader.data[i][8] != 333:
+            if self.loader.data[i][8] != 3333:
                 if self.loader.data[i][8] != -5555:
                     if self.loader.data[i][8] != -6999:
                         if self.loader.data[i][8] != 552:
@@ -990,14 +990,14 @@ class Controller:
 
             # Calculating astronomical geometry data
             self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
-            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2*self.day_angle) + self.ds2 * np.sin(2*self.day_angle) - self.dc3 * np.cos(3*self.day_angle))
+            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2*self.day_angle) + self.ds2 * np.sin(2*self.day_angle) - self.dc3 * np.cos(3*self.day_angle) + self.ds3 * np.sin(3*self.day_angle))
             self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2*self.day_angle) - self.ts2 * np.sin(2*self.day_angle)) * 229.18
             self.tcorr = (self.eqtime + 4*(longitude-0)) / 60
             self.horacorr = self.tcorr + self.div
             self.hour_angle = (12.00 - self.horacorr) * 15
             self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2*self.day_angle) + self.e5 * np.sin(2*self.day_angle)
             self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude*self.CDR) * np.cos(self.hour_angle * self.CDR)
-            self.zenith_angle = (np.arccos(self.u0)) * 180/np.pi
+            self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
             self.sa = 1368 * self.e0
 
             # Variables used to validate radiation Global and Diffuse - level 3
@@ -1590,7 +1590,7 @@ class Controller:
             if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
                 if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 529:
                     if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529:
-                        direct_h = self.loader.data[i][4] = self.loader.data[i][8]
+                        direct_h = self.loader.data[i][4] - self.loader.data[i][8]
                         direct_n = (self.loader.data[i][28] * self.u0) - 50
                         direct_p = (self.loader.data[i][28] * self.u0) + 50
 
