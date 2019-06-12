@@ -490,6 +490,8 @@ class Loader:
                     bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 559:
                     bfOut.write(f"{codeArray[i][20]:.0f};")
+                elif codeArray[i][20] == 529:
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 299:
                     bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 552:
@@ -713,38 +715,38 @@ class Loader:
 
                     # Direct Radiation
                     if codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nadi += 1
 
                     if codeArray[i][28] != 3333 and codeArray[i][28] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vdi += 1
 
                     # Diffuse Radiation
                     if codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nadf += 1
 
                     if codeArray[i][8] != 3333 and codeArray[i][8] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vdf += 1
 
                     # Long Wave
                     if codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nalw += 1
 
                     if codeArray[i][32] != 3333 and codeArray[i][32] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vlw += 1
 
                     # Par
                     if codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_napa += 1
 
                     if codeArray[i][12] != 3333 and codeArray[i][12] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vpa += 1
 
                     # Lux
                     if codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nalx += 1
 
                     if codeArray[i][16] != 3333 and codeArray[i][16] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vlx += 1
 
                 # Air Temperature
                 if codeArray[i][20] == 999:
@@ -819,19 +821,19 @@ class Loader:
                     self.cont_wsna += 1
 
                 # Wind Direction
-                if codeArray[i][24] == 999:
+                if codeArray[i][25] == 999:
                     self.cont_wdv += 1
-                elif codeArray[i][24] == 559:
+                elif codeArray[i][25] == 559:
                     self.cont_wdv += 1
-                elif codeArray[i][24] == 552:
+                elif codeArray[i][25] == 552:
                     self.cont_wd1n += 1
-                elif codeArray[i][24] == 529:
+                elif codeArray[i][25] == 529:
                     self.cont_wd2n += 1
-                elif codeArray[i][24] == 299:
+                elif codeArray[i][25] == 299:
                     self.cont_wd3n += 1
-                elif codeArray[i][24] == -5555:
+                elif codeArray[i][25] == -5555:
                     self.flag_wd = 1
-                elif codeArray[i][24] == 3333:
+                elif codeArray[i][25] == 3333:
                     self.cont_wdna += 1
 
             # Global Radiation Percentages

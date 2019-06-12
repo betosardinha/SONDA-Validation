@@ -263,10 +263,10 @@ class Controller:
             if self.loader.data[i][8] != 3333:
                 if self.loader.data[i][8] != -5555:
                     if self.loader.data[i][8] != -6999:
-                        if self.loader.data[i][8] != 552:
+                        if self.loader.code[i][8] != 552:
                             if self.loader.data[i][9] != 0:
                                 if self.u0 > 0:
-                                    self.DIFUSE_MX = (self.sa * 0.95 * (self.u0 **1.2) + 50)
+                                    self.DIFUSE_MX = (self.sa * 0.95 * (self.u0**1.2) + 50)
                                 else:
                                     self.DIFUSE_MX = 50
 
@@ -277,7 +277,7 @@ class Controller:
                             else:
                                 if self.zenith_angle > 90:
                                     if self.u0 > 0:
-                                        self.DIFUSE_MX = (self.sa * 0.95 * (self.u0 ** 1.2) + 50)
+                                        self.DIFUSE_MX = (self.sa * 0.95 * (self.u0**1.2) + 50)
                                     else:
                                         self.DIFUSE_MX = 50
 
@@ -293,8 +293,7 @@ class Controller:
                                         else:
                                             self.DIFUSE_MX = 50
 
-                                        if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][
-                                            8] < self.DIFUSE_MX:
+                                        if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][8] < self.DIFUSE_MX:
                                             self.loader.code[i][8] = 9
                                         else:
                                             self.loader.code[i][8] = 552
