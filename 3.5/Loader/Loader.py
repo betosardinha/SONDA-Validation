@@ -207,6 +207,7 @@ class Loader:
         self.med_wdna = None
         self.med_wdv = None
 
+    # Função criada mas não utilizada
     def extractLines(self, input, output, id):
         try:
             bfIn = open(input, 'r')
@@ -227,20 +228,24 @@ class Loader:
     def read(self, input):
         try:
             bfIn = open(input, 'r')
+            newArray = []
             for line in bfIn:
                 token = line.split(',')
                 if self.numberOfColumns is None or self.numberOfColumns == 0:
                     self.numberOfColumns = len(token)
                 lines = np.array(token, dtype=float)
-                np.append(self.rawData, lines, axis=self.rawData.shape[1])
-            self.numberOfRows = self.rawData.shape[1]
-
+                newArray.append(lines)
+            self.rawData = np.array(newArray)
+            if self.rawData is not None:
+                self.numberOfRows = self.rawData.shape[0]
             bfIn.close()
         except IOError:
             raise IOError("Erro durante a leitura do arquivo: ", input)
         except ValueError:
             raise ValueError("Arquivo com problema de formatação: ", input)
 
+    # Método de arredondamento diferente do Java
+    # Diminuir função
     def writeData(self, output, dataArray, id):
         try:
             bfOut = open(output, 'w')
@@ -363,18 +368,21 @@ class Loader:
 
                 # Print Wind Direction AVG 60s
                 if data[25] == 3333 or data[25] == -6999:
-                    bfOut.write("N/A;")
+                    bfOut.write("N/A")
                 elif data[25] == -5555:
-                    bfOut.write("N/S;")
+                    bfOut.write("N/S")
                 elif data[25] == 0:
-                    bfOut.write(f"{data[25]:.0f};")
+                    bfOut.write(f"{data[25]:.0f}")
                 else:
-                    bfOut.write(f"{data[25]:.1f};")
+                    bfOut.write(f"{data[25]:.1f}")
+
+                bfOut.write("\n")
 
             bfOut.close()
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
+    # Diminuir função
     def writeCode(self, output, dataArray, codeArray, id):
         try:
             bfOut = open(output, 'w')
@@ -386,197 +394,203 @@ class Loader:
                 bfOut.write(f"{dataArray[i][3]:.0f};")
 
                 # Global Radiation
-                if codeArray[i][4] == 9999:
-                    bfOut.write(f"{codeArray[i][4]}")
+                if codeArray[i][4] == 999:
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
                 elif codeArray[i][4] == 599:
-                    bfOut.write(f"{codeArray[i][4]}")
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
                 elif codeArray[i][4] == 529:
-                    bfOut.write(f"{codeArray[i][4]}")
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
                 elif codeArray[i][4] == 299:
-                    bfOut.write(f"{codeArray[i][4]}")
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
                 elif codeArray[i][4] == 552:
-                    bfOut.write(f"{codeArray[i][4]}")
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
                 elif codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][4] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Direct Radiation
-                if codeArray[i][28] == 9999:
-                    bfOut.write(f"{codeArray[i][28]}")
+                if codeArray[i][28] == 999:
+                    bfOut.write(f"{codeArray[i][28]:.0f};")
                 elif codeArray[i][28] == 599:
-                    bfOut.write(f"{codeArray[i][28]}")
+                    bfOut.write(f"{codeArray[i][28]:.0f};")
                 elif codeArray[i][28] == 529:
-                    bfOut.write(f"{codeArray[i][28]}")
+                    bfOut.write(f"{codeArray[i][28]:.0f};")
                 elif codeArray[i][28] == 299:
-                    bfOut.write(f"{codeArray[i][28]}")
+                    bfOut.write(f"{codeArray[i][28]:.0f};")
                 elif codeArray[i][28] == 552:
-                    bfOut.write(f"{codeArray[i][28]}")
+                    bfOut.write(f"{codeArray[i][28]:.0f};")
                 elif codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][28] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Diffuse Radiation
-                if codeArray[i][8] == 9999:
-                    bfOut.write(f"{codeArray[i][8]}")
+                if codeArray[i][8] == 999:
+                    bfOut.write(f"{codeArray[i][8]:.0f};")
                 elif codeArray[i][8] == 599:
-                    bfOut.write(f"{codeArray[i][8]}")
+                    bfOut.write(f"{codeArray[i][8]:.0f};")
                 elif codeArray[i][8] == 529:
-                    bfOut.write(f"{codeArray[i][8]}")
+                    bfOut.write(f"{codeArray[i][8]:.0f};")
                 elif codeArray[i][8] == 299:
-                    bfOut.write(f"{codeArray[i][8]}")
+                    bfOut.write(f"{codeArray[i][8]:.0f};")
                 elif codeArray[i][8] == 552:
-                    bfOut.write(f"{codeArray[i][8]}")
+                    bfOut.write(f"{codeArray[i][8]:.0f};")
                 elif codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][8] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Long-Wave
-                if codeArray[i][32] == 9999:
-                    bfOut.write(f"{codeArray[i][32]}")
+                if codeArray[i][32] == 999:
+                    bfOut.write(f"{codeArray[i][32]:.0f};")
                 elif codeArray[i][32] == 599:
-                    bfOut.write(f"{codeArray[i][32]}")
+                    bfOut.write(f"{codeArray[i][32]:.0f};")
                 elif codeArray[i][32] == 529:
-                    bfOut.write(f"{codeArray[i][32]}")
+                    bfOut.write(f"{codeArray[i][32]:.0f};")
                 elif codeArray[i][32] == 299:
-                    bfOut.write(f"{codeArray[i][32]}")
+                    bfOut.write(f"{codeArray[i][32]:.0f};")
                 elif codeArray[i][32] == 552:
-                    bfOut.write(f"{codeArray[i][32]}")
+                    bfOut.write(f"{codeArray[i][32]:.0f};")
                 elif codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][32] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Par
-                if codeArray[i][12] == 9999:
-                    bfOut.write(f"{codeArray[i][12]}")
+                if codeArray[i][12] == 999:
+                    bfOut.write(f"{codeArray[i][12]:.0f};")
                 elif codeArray[i][12] == 599:
-                    bfOut.write(f"{codeArray[i][12]}")
+                    bfOut.write(f"{codeArray[i][12]:.0f};")
                 elif codeArray[i][12] == 529:
-                    bfOut.write(f"{codeArray[i][12]}")
+                    bfOut.write(f"{codeArray[i][12]:.0f};")
                 elif codeArray[i][12] == 299:
-                    bfOut.write(f"{codeArray[i][12]}")
+                    bfOut.write(f"{codeArray[i][12]:.0f};")
                 elif codeArray[i][12] == 552:
-                    bfOut.write(f"{codeArray[i][12]}")
+                    bfOut.write(f"{codeArray[i][12]:.0f};")
                 elif codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][12] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Lux
-                if codeArray[i][16] == 9999:
-                    bfOut.write(f"{codeArray[i][16]}")
+                if codeArray[i][16] == 999:
+                    bfOut.write(f"{codeArray[i][16]:.0f};")
                 elif codeArray[i][16] == 599:
-                    bfOut.write(f"{codeArray[i][16]}")
+                    bfOut.write(f"{codeArray[i][16]:.0f};")
                 elif codeArray[i][16] == 529:
-                    bfOut.write(f"{codeArray[i][16]}")
+                    bfOut.write(f"{codeArray[i][16]:.0f};")
                 elif codeArray[i][16] == 299:
-                    bfOut.write(f"{codeArray[i][16]}")
+                    bfOut.write(f"{codeArray[i][16]:.0f};")
                 elif codeArray[i][16] == 552:
-                    bfOut.write(f"{codeArray[i][16]}")
+                    bfOut.write(f"{codeArray[i][16]:.0f};")
                 elif codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][16] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Temperature
-                if codeArray[i][20] == 9999:
-                    bfOut.write(f"{codeArray[i][20]}")
+                if codeArray[i][20] == 999:
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 559:
-                    bfOut.write(f"{codeArray[i][20]}")
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                elif codeArray[i][20] == 529:
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 299:
-                    bfOut.write(f"{codeArray[i][20]}")
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 552:
-                    bfOut.write(f"{codeArray[i][20]}")
+                    bfOut.write(f"{codeArray[i][20]:.0f};")
                 elif codeArray[i][20] == 3333:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][20] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Humidity
                 if codeArray[i][21] == 9:
-                    bfOut.write(f"00{codeArray[i][21]}")
+                    bfOut.write(f"00{codeArray[i][21]:.0f};")
                 elif codeArray[i][21] == 552:
-                    bfOut.write(f"{codeArray[i][21]}")
+                    bfOut.write(f"{codeArray[i][21]:.0f};")
                 elif codeArray[i][21] == 3333:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][21] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Pressure
                 if codeArray[i][22] == 99:
-                    bfOut.write(f"0{codeArray[i][22]}")
+                    bfOut.write(f"0{codeArray[i][22]:.0f};")
                 elif codeArray[i][22] == 559:
-                    bfOut.write(f"{codeArray[i][22]}")
+                    bfOut.write(f"{codeArray[i][22]:.0f};")
                 elif codeArray[i][22] == 529:
-                    bfOut.write(f"{codeArray[i][22]}")
+                    bfOut.write(f"{codeArray[i][22]:.0f};")
                 elif codeArray[i][22] == 299:
-                    bfOut.write(f"{codeArray[i][22]}")
+                    bfOut.write(f"{codeArray[i][22]:.0f};")
                 elif codeArray[i][22] == 552:
-                    bfOut.write(f"{codeArray[i][22]}")
+                    bfOut.write(f"{codeArray[i][22]:.0f};")
                 elif codeArray[i][22] == 3333:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][22] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Precipitation
                 if codeArray[i][23] == 999:
-                    bfOut.write(f"{codeArray[i][23]}")
+                    bfOut.write(f"{codeArray[i][23]:.0f};")
                 elif codeArray[i][23] == 559:
-                    bfOut.write(f"{codeArray[i][23]}")
+                    bfOut.write(f"{codeArray[i][23]:.0f};")
                 elif codeArray[i][23] == 529:
-                    bfOut.write(f"{codeArray[i][23]}")
+                    bfOut.write(f"{codeArray[i][23]:.0f};")
                 elif codeArray[i][23] == 299:
-                    bfOut.write(f"{codeArray[i][23]}")
+                    bfOut.write(f"{codeArray[i][23]:.0f};")
                 elif codeArray[i][23] == 552:
-                    bfOut.write(f"{codeArray[i][23]}")
+                    bfOut.write(f"{codeArray[i][23]:.0f};")
                 elif codeArray[i][23] == 3333:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][23] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Speed
                 if codeArray[i][24] == 999:
-                    bfOut.write(f"{codeArray[i][24]}")
+                    bfOut.write(f"{codeArray[i][24]:.0f};")
                 elif codeArray[i][24] == 559:
-                    bfOut.write(f"{codeArray[i][24]}")
+                    bfOut.write(f"{codeArray[i][24]:.0f};")
                 elif codeArray[i][24] == 529:
-                    bfOut.write(f"{codeArray[i][24]}")
+                    bfOut.write(f"{codeArray[i][24]:.0f};")
                 elif codeArray[i][24] == 299:
-                    bfOut.write(f"{codeArray[i][24]}")
+                    bfOut.write(f"{codeArray[i][24]:.0f};")
                 elif codeArray[i][24] == 552:
-                    bfOut.write(f"{codeArray[i][24]}")
+                    bfOut.write(f"{codeArray[i][24]:.0f};")
                 elif codeArray[i][24] == 3333:
-                    bfOut.write("N/A")
+                    bfOut.write("N/A;")
                 elif codeArray[i][24] == -5555:
-                    bfOut.write("N/S")
+                    bfOut.write("N/S;")
 
                 # Direction
                 if codeArray[i][25] == 999:
-                    bfOut.write(f"{codeArray[i][25]}")
+                    bfOut.write(f"{codeArray[i][25]:.0f}")
                 elif codeArray[i][25] == 559:
-                    bfOut.write(f"{codeArray[i][25]}")
+                    bfOut.write(f"{codeArray[i][25]:.0f}")
                 elif codeArray[i][25] == 529:
-                    bfOut.write(f"{codeArray[i][25]}")
+                    bfOut.write(f"{codeArray[i][25]:.0f}")
                 elif codeArray[i][25] == 299:
-                    bfOut.write(f"{codeArray[i][25]}")
+                    bfOut.write(f"{codeArray[i][25]:.0f}")
                 elif codeArray[i][25] == 552:
-                    bfOut.write(f"{codeArray[i][25]}")
+                    bfOut.write(f"{codeArray[i][25]:.0f}")
                 elif codeArray[i][25] == 3333:
                     bfOut.write("N/A")
                 elif codeArray[i][25] == -5555:
                     bfOut.write("N/S")
 
+                bfOut.write("\n")
+
             bfOut.close()
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
+    # Diminuir função
     def writeReportData(self, output, station, year, month, id, codeArray, latitude, longitude):
         try:
             bfOut = open(output, 'w')
             for i in range(len(codeArray)):
+                # Tirar cálculos repetidos em FOR
                 self.num = self.data[i][3]
                 self.div = self.num / 60
                 self.dia_jul = int(self.data[i][2])
@@ -707,38 +721,38 @@ class Loader:
 
                     # Direct Radiation
                     if codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nadi += 1
 
                     if codeArray[i][28] != 3333 and codeArray[i][28] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vdi += 1
 
                     # Diffuse Radiation
                     if codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nadf += 1
 
                     if codeArray[i][8] != 3333 and codeArray[i][8] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vdf += 1
 
                     # Long Wave
                     if codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nalw += 1
 
                     if codeArray[i][32] != 3333 and codeArray[i][32] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vlw += 1
 
                     # Par
                     if codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_napa += 1
 
                     if codeArray[i][12] != 3333 and codeArray[i][12] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vpa += 1
 
                     # Lux
                     if codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
-                        self.cont_nagl += 1
+                        self.cont_nalx += 1
 
                     if codeArray[i][16] != 3333 and codeArray[i][16] != -6999:
-                        self.cont_vgl += 1
+                        self.cont_vlx += 1
 
                 # Air Temperature
                 if codeArray[i][20] == 999:
@@ -813,19 +827,19 @@ class Loader:
                     self.cont_wsna += 1
 
                 # Wind Direction
-                if codeArray[i][24] == 999:
+                if codeArray[i][25] == 999:
                     self.cont_wdv += 1
-                elif codeArray[i][24] == 559:
+                elif codeArray[i][25] == 559:
                     self.cont_wdv += 1
-                elif codeArray[i][24] == 552:
+                elif codeArray[i][25] == 552:
                     self.cont_wd1n += 1
-                elif codeArray[i][24] == 529:
+                elif codeArray[i][25] == 529:
                     self.cont_wd2n += 1
-                elif codeArray[i][24] == 299:
+                elif codeArray[i][25] == 299:
                     self.cont_wd3n += 1
-                elif codeArray[i][24] == -5555:
+                elif codeArray[i][25] == -5555:
                     self.flag_wd = 1
-                elif codeArray[i][24] == 3333:
+                elif codeArray[i][25] == 3333:
                     self.cont_wdna += 1
 
             # Global Radiation Percentages
@@ -851,7 +865,7 @@ class Loader:
 
             # Long Wave Radiation Percentages
             self.med_lw1n = (self.cont_lw1n * 100) / self.numberOfRows
-            self.med_di2n = (self.cont_lw2n * 100) / self.numberOfRows
+            self.med_lw2n = (self.cont_lw2n * 100) / self.numberOfRows
             self.med_lw3n = (self.cont_lw3n * 100) / self.numberOfRows
             self.med_lwna = ((self.cont_lwna + self.cont_nalw) * 100) / self.numberOfRows
             self.med_lwv = ((self.cont_lwv + self.cont_vlw) * 100) / self.numberOfRows
@@ -917,148 +931,148 @@ class Loader:
 
             # Printing levels of each percentage variable
             if self.flag_gl == 0:
-                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}\n")
-                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}\n")
-                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}\n")
-                bfOut.write(f"Global Válido  = {self.med_glv:.1f}\n")
-                bfOut.write(f"Global N/A     = {self.med_glna:.1f}\n")
+                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}%\n")
+                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}%\n")
+                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}%\n")
+                bfOut.write(f"Global Válido  = {self.med_glv:.1f}%\n")
+                bfOut.write(f"Global N/A     = {self.med_glna:.1f}%\n\n")
             else:
                 bfOut.write(f"Global Nível 1 = N/S\n")
                 bfOut.write(f"Global Nível 2 = N/S\n")
                 bfOut.write(f"Global Nível 3 = N/S\n")
                 bfOut.write(f"Global Válido  = N/S\n")
-                bfOut.write(f"Global N/A     = N/S\n")
+                bfOut.write(f"Global N/A     = N/S\n\n")
 
             if self.flag_di == 0:
-                bfOut.write(f"Direta Nível 1 = {self.med_di1n:.1f}\n")
-                bfOut.write(f"Direta Nível 2 = {self.med_di2n:.1f}\n")
-                bfOut.write(f"Direta Nível 3 = {self.med_di3n:.1f}\n")
-                bfOut.write(f"Direta Válido  = {self.med_div:.1f}\n")
-                bfOut.write(f"Direta N/A     = {self.med_dina:.1f}\n")
+                bfOut.write(f"Direta Nível 1 = {self.med_di1n:.1f}%\n")
+                bfOut.write(f"Direta Nível 2 = {self.med_di2n:.1f}%\n")
+                bfOut.write(f"Direta Nível 3 = {self.med_di3n:.1f}%\n")
+                bfOut.write(f"Direta Válido  = {self.med_div:.1f}%\n")
+                bfOut.write(f"Direta N/A     = {self.med_dina:.1f}%\n\n")
             else:
                 bfOut.write(f"Direta Nível 1 = N/S\n")
                 bfOut.write(f"Direta Nível 2 = N/S\n")
                 bfOut.write(f"Direta Nível 3 = N/S\n")
                 bfOut.write(f"Direta Válido  = N/S\n")
-                bfOut.write(f"Direta N/A     = N/S\n")
+                bfOut.write(f"Direta N/A     = N/S\n\n")
 
             if self.flag_df == 0:
-                bfOut.write(f"Difusa Nível 1 = {self.med_df1n:.1f}\n")
-                bfOut.write(f"Difusa Nível 2 = {self.med_df2n:.1f}\n")
-                bfOut.write(f"Difusa Nível 3 = {self.med_df3n:.1f}\n")
-                bfOut.write(f"Difusa Válido  = {self.med_dfv:.1f}\n")
-                bfOut.write(f"Difusa N/A     = {self.med_dfna:.1f}\n")
+                bfOut.write(f"Difusa Nível 1 = {self.med_df1n:.1f}%\n")
+                bfOut.write(f"Difusa Nível 2 = {self.med_df2n:.1f}%\n")
+                bfOut.write(f"Difusa Nível 3 = {self.med_df3n:.1f}%\n")
+                bfOut.write(f"Difusa Válido  = {self.med_dfv:.1f}%\n")
+                bfOut.write(f"Difusa N/A     = {self.med_dfna:.1f}%\n\n")
             else:
                 bfOut.write(f"Difusa Nível 1 = N/S\n")
                 bfOut.write(f"Difusa Nível 2 = N/S\n")
                 bfOut.write(f"Difusa Nível 3 = N/S\n")
                 bfOut.write(f"Difusa Válido  = N/S\n")
-                bfOut.write(f"Difusa N/A     = N/S\n")
+                bfOut.write(f"Difusa N/A     = N/S\n\n")
 
             if self.flag_lw == 0:
-                bfOut.write(f"Onda Longa Nível 1 = {self.med_lw1n:.1f}\n")
-                bfOut.write(f"Onda Longa Nível 2 = {self.med_lw2n:.1f}\n")
-                bfOut.write(f"Onda Longa Nível 3 = {self.med_lw3n:.1f}\n")
-                bfOut.write(f"Onda Longa Válido  = {self.med_lwv:.1f}\n")
-                bfOut.write(f"Onda Longa N/A     = {self.med_lwna:.1f}\n")
+                bfOut.write(f"Onda Longa Nível 1 = {self.med_lw1n:.1f}%\n")
+                bfOut.write(f"Onda Longa Nível 2 = {self.med_lw2n:.1f}%\n")
+                bfOut.write(f"Onda Longa Nível 3 = {self.med_lw3n:.1f}%\n")
+                bfOut.write(f"Onda Longa Válido  = {self.med_lwv:.1f}%\n")
+                bfOut.write(f"Onda Longa N/A     = {self.med_lwna:.1f}%\n\n")
             else:
                 bfOut.write(f"Onda Longa Nível 1 = N/S\n")
                 bfOut.write(f"Onda Longa Nível 2 = N/S\n")
                 bfOut.write(f"Onda Longa Nível 3 = N/S\n")
                 bfOut.write(f"Onda Longa Válido  = N/S\n")
-                bfOut.write(f"Onda Longa N/A     = N/S\n")
+                bfOut.write(f"Onda Longa N/A     = N/S\n\n")
 
             if self.flag_pa == 0:
-                bfOut.write(f"Par Nível 1 = {self.med_pa1n:.1f}\n")
-                bfOut.write(f"Par Nível 2 = {self.med_pa2n:.1f}\n")
-                bfOut.write(f"Par Nível 3 = {self.med_pa3n:.1f}\n")
-                bfOut.write(f"Par Válido  = {self.med_pav:.1f}\n")
-                bfOut.write(f"Par N/A     = {self.med_pana:.1f}\n")
+                bfOut.write(f"Par Nível 1 = {self.med_pa1n:.1f}%\n")
+                bfOut.write(f"Par Nível 2 = {self.med_pa2n:.1f}%\n")
+                bfOut.write(f"Par Nível 3 = {self.med_pa3n:.1f}%\n")
+                bfOut.write(f"Par Válido  = {self.med_pav:.1f}%\n")
+                bfOut.write(f"Par N/A     = {self.med_pana:.1f}%\n\n")
             else:
                 bfOut.write(f"Par Nível 1 = N/S\n")
                 bfOut.write(f"Par Nível 2 = N/S\n")
                 bfOut.write(f"Par Nível 3 = N/S\n")
                 bfOut.write(f"Par Válido  = N/S\n")
-                bfOut.write(f"Par N/A     = N/S\n")
+                bfOut.write(f"Par N/A     = N/S\n\n")
 
             if self.flag_lx == 0:
-                bfOut.write(f"Lux Nível 1 = {self.med_lx1n:.1f}\n")
-                bfOut.write(f"Lux Nível 2 = {self.med_lx2n:.1f}\n")
-                bfOut.write(f"Lux Nível 3 = {self.med_lx3n:.1f}\n")
-                bfOut.write(f"Lux Válido  = {self.med_lxv:.1f}\n")
-                bfOut.write(f"Lux N/A     = {self.med_lxna:.1f}\n")
+                bfOut.write(f"Lux Nível 1 = {self.med_lx1n:.1f}%\n")
+                bfOut.write(f"Lux Nível 2 = {self.med_lx2n:.1f}%\n")
+                bfOut.write(f"Lux Nível 3 = {self.med_lx3n:.1f}%\n")
+                bfOut.write(f"Lux Válido  = {self.med_lxv:.1f}%\n")
+                bfOut.write(f"Lux N/A     = {self.med_lxna:.1f}%\n\n")
             else:
                 bfOut.write(f"Lux Nível 1 = N/S\n")
                 bfOut.write(f"Lux Nível 2 = N/S\n")
                 bfOut.write(f"Lux Nível 3 = N/S\n")
                 bfOut.write(f"Lux Válido  = N/S\n")
-                bfOut.write(f"Lux N/A     = N/S\n")
+                bfOut.write(f"Lux N/A     = N/S\n\n")
 
             if self.flag_tp == 0:
-                bfOut.write(f"Temperatura Nível 1 = {self.med_tp1n:.1f}\n")
-                bfOut.write(f"Temperatura Nível 2 = {self.med_tp2n:.1f}\n")
-                bfOut.write(f"Temperatura Nível 3 = {self.med_tp3n:.1f}\n")
-                bfOut.write(f"Temperatura Válido  = {self.med_tpv:.1f}\n")
-                bfOut.write(f"Temperatura N/A     = {self.med_tpna:.1f}\n")
+                bfOut.write(f"Temperatura Nível 1 = {self.med_tp1n:.1f}%\n")
+                bfOut.write(f"Temperatura Nível 2 = {self.med_tp2n:.1f}%\n")
+                bfOut.write(f"Temperatura Nível 3 = {self.med_tp3n:.1f}%\n")
+                bfOut.write(f"Temperatura Válido  = {self.med_tpv:.1f}%\n")
+                bfOut.write(f"Temperatura N/A     = {self.med_tpna:.1f}%\n\n")
             else:
                 bfOut.write(f"Temperatura Nível 1 = N/S\n")
                 bfOut.write(f"Temperatura Nível 2 = N/S\n")
                 bfOut.write(f"Temperatura Nível 3 = N/S\n")
                 bfOut.write(f"Temperatura Válido  = N/S\n")
-                bfOut.write(f"Temperatura N/A     = N/S\n")
+                bfOut.write(f"Temperatura N/A     = N/S\n\n")
 
             if self.flag_hu == 0:
-                bfOut.write(f"Umidade Nível 1 = {self.med_hu1n:.1f}\n")
-                bfOut.write(f"Umidade Válido  = {self.med_huv:.1f}\n")
-                bfOut.write(f"Umidade N/A     = {self.med_huna:.1f}\n")
+                bfOut.write(f"Umidade Nível 1 = {self.med_hu1n:.1f}%\n")
+                bfOut.write(f"Umidade Válido  = {self.med_huv:.1f}%\n")
+                bfOut.write(f"Umidade N/A     = {self.med_huna:.1f}%\n\n")
             else:
                 bfOut.write(f"Umidade Nível 1 = N/S\n")
                 bfOut.write(f"Umidade Válido  = N/S\n")
-                bfOut.write(f"Umidade N/A     = N/S\n")
+                bfOut.write(f"Umidade N/A     = N/S\n\n")
 
             if self.flag_ps == 0:
-                bfOut.write(f"Pressão Nível 1 = {self.med_ps1n:.1f}\n")
-                bfOut.write(f"Pressão Nível 2 = {self.med_ps2n:.1f}\n")
-                bfOut.write(f"Pressão Válido  = {self.med_psv:.1f}\n")
-                bfOut.write(f"Pressão N/A     = {self.med_psna:.1f}\n")
+                bfOut.write(f"Pressão Nível 1 = {self.med_ps1n:.1f}%\n")
+                bfOut.write(f"Pressão Nível 2 = {self.med_ps2n:.1f}%\n")
+                bfOut.write(f"Pressão Válido  = {self.med_psv:.1f}%\n")
+                bfOut.write(f"Pressão N/A     = {self.med_psna:.1f}%\n\n")
             else:
                 bfOut.write(f"Pressão Nível 1 = N/S\n")
                 bfOut.write(f"Pressão Nível 2 = N/S\n")
                 bfOut.write(f"Pressão Válido  = N/S\n")
-                bfOut.write(f"Pressão N/A     = N/S\n")
+                bfOut.write(f"Pressão N/A     = N/S\n\n")
 
             if self.flag_pc == 0:
-                bfOut.write(f"Precipitação Nível 1 = {self.med_pc1n:.1f}\n")
-                bfOut.write(f"Precipitação Nível 2 = {self.med_pc2n:.1f}\n")
-                bfOut.write(f"Precipitação Nível 3 = {self.med_pc3n:.1f}\n")
-                bfOut.write(f"Precipitação Válido  = {self.med_pcv:.1f}\n")
-                bfOut.write(f"Precipitação N/A     = {self.med_pcna:.1f}\n")
+                bfOut.write(f"Precipitação Nível 1 = {self.med_pc1n:.1f}%\n")
+                bfOut.write(f"Precipitação Nível 2 = {self.med_pc2n:.1f}%\n")
+                bfOut.write(f"Precipitação Nível 3 = {self.med_pc3n:.1f}%\n")
+                bfOut.write(f"Precipitação Válido  = {self.med_pcv:.1f}%\n")
+                bfOut.write(f"Precipitação N/A     = {self.med_pcna:.1f}%\n\n")
             else:
                 bfOut.write(f"Precipitação Nível 1 = N/S\n")
                 bfOut.write(f"Precipitação Nível 2 = N/S\n")
                 bfOut.write(f"Precipitação Nível 3 = N/S\n")
                 bfOut.write(f"Precipitação Válido  = N/S\n")
-                bfOut.write(f"Precipitação N/A     = N/S\n")
+                bfOut.write(f"Precipitação N/A     = N/S\n\n")
 
             if self.flag_ws == 0:
-                bfOut.write(f"Vel. Vento Nível 1 = {self.med_ws1n:.1f}\n")
-                bfOut.write(f"Vel. Vento Nível 2 = {self.med_ws2n:.1f}\n")
-                bfOut.write(f"Vel. Vento Nível 3 = {self.med_ws3n:.1f}\n")
-                bfOut.write(f"Vel. Vento Válido  = {self.med_wsv:.1f}\n")
-                bfOut.write(f"Vel. Vento N/A     = {self.med_wsna:.1f}\n")
+                bfOut.write(f"Vel. Vento Nível 1 = {self.med_ws1n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Nível 2 = {self.med_ws2n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Nível 3 = {self.med_ws3n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Válido  = {self.med_wsv:.1f}%\n")
+                bfOut.write(f"Vel. Vento N/A     = {self.med_wsna:.1f}%\n\n")
             else:
                 bfOut.write(f"Vel. Vento Nível 1 = N/S\n")
                 bfOut.write(f"Vel. Vento Nível 2 = N/S\n")
                 bfOut.write(f"Vel. Vento Nível 3 = N/S\n")
                 bfOut.write(f"Vel. Vento Válido  = N/S\n")
-                bfOut.write(f"Vel. Vento N/A     = N/S\n")
+                bfOut.write(f"Vel. Vento N/A     = N/S\n\n")
 
             if self.flag_wd == 0:
-                bfOut.write(f"Dir. Vento Nível 1 = {self.med_wd1n:.1f}\n")
-                bfOut.write(f"Dir.Dir Vento Nível 2 = {self.med_wd2n:.1f}\n")
-                bfOut.write(f"Dir. Vento Nível 3 = {self.med_wd3n:.1f}\n")
-                bfOut.write(f"Dir. Vento Válido  = {self.med_wdv:.1f}\n")
-                bfOut.write(f"Dir. Vento N/A     = {self.med_wdna:.1f}\n")
+                bfOut.write(f"Dir. Vento Nível 1 = {self.med_wd1n:.1f}%\n")
+                bfOut.write(f"Dir.Dir Vento Nível 2 = {self.med_wd2n:.1f}%\n")
+                bfOut.write(f"Dir. Vento Nível 3 = {self.med_wd3n:.1f}%\n")
+                bfOut.write(f"Dir. Vento Válido  = {self.med_wdv:.1f}%\n")
+                bfOut.write(f"Dir. Vento N/A     = {self.med_wdna:.1f}%\n")
             else:
                 bfOut.write(f"Dir. Vento Nível 1 = N/S\n")
                 bfOut.write(f"Dir. Vento Nível 2 = N/S\n")
@@ -1078,9 +1092,7 @@ class Loader:
         self.read(input)
         self.data = np.array([])
         try:
-            for i in range(self.numberOfRows):
-                self.temp = self.rawData[i]
-                self.data[i] = self.temp
+            self.data = self.rawData
         except IndexError:
             raise IndexError("Erro ao Acessar Índice da Matriz")
         self.rawData = np.array([])
@@ -1088,8 +1100,9 @@ class Loader:
     def buildsMatrixCode(self, input):
         self.numberOfColumns = 0
         self.numberOfRows = 0
+        # Verificar se é necessário read()
         self.read(input)
-        self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns), buffer=np.array([[]]))
+        self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns))
 
     def buildsMatrixLimits(self, input):
         self.numberOfColumns = 0
@@ -1097,13 +1110,14 @@ class Loader:
         self.read(input)
         self.limits = np.array([])
         try:
-            for i in range(self.numberOfRows):
-                self.temp = self.rawData[i]
-                self.limits[i] = self.temp
+            self.limits = self.rawData
         except IndexError:
             raise IndexError("Erro ao Acessar Índice da Matriz")
         self.rawData = np.array([])
 
+    # Funções get iguais, diminuir para uma função
+    # Diminuir tempo de execução de chamada (cada uma executa um read via MatrixLimits)
+    # Usar variáveis estáticas em Controller.py para não executar a cada rodada
     def getTempMax(self, input, station, month):
         self.buildsMatrixLimits(input)
         temp_max = 0

@@ -162,9 +162,11 @@ class Controller:
         self.progressBar()
 
         for i in range(self.rows+1):
+
+            # Funções de atribuição repetidas a cada nível de validação - talvez não necessário
             self.num = self.loader.data[i][3]
             self.div = self.num / 60    # Measurement time in utc time
-            self.dia_jul = self.loader.data[i][2]
+            self.dia_jul = int(self.loader.data[i][2])
 
             # Calculating astronomical data
             self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
@@ -176,6 +178,7 @@ class Controller:
             self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2 * self.day_angle) + self.e5 * np.sin(2 * self.day_angle)
             self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
             self.zenith_angle = np.arccos(self.u0) * 180 / np.pi
+            self.sa = 1368 * self.e0
 
             # Start level 1
 
@@ -240,8 +243,7 @@ class Controller:
                                     else:
                                         self.GLOBAL_MX = 100
 
-                                    if self.loader.data[i][4] > self.GLOBAL_MI and self.loader.data[i][
-                                        4] < self.GLOBAL_MX:
+                                    if self.loader.data[i][4] > self.GLOBAL_MI and self.loader.data[i][4] < self.GLOBAL_MX:
                                         self.loader.code[i][4] = 9
                                     else:
                                         self.loader.code[i][4] = 552
@@ -260,13 +262,13 @@ class Controller:
 
             # Start of the routine validation: Diffuse Radiation (W/m²) level 1
 
-            if self.loader.data[i][8] != 333:
+            if self.loader.data[i][8] != 3333:
                 if self.loader.data[i][8] != -5555:
                     if self.loader.data[i][8] != -6999:
-                        if self.loader.data[i][8] != 552:
+                        if self.loader.code[i][8] != 552:
                             if self.loader.data[i][9] != 0:
                                 if self.u0 > 0:
-                                    self.DIFUSE_MX = (self.sa * 0.95 * (self.u0 **1.2) + 50)
+                                    self.DIFUSE_MX = (self.sa * 0.95 * (self.u0**1.2) + 50)
                                 else:
                                     self.DIFUSE_MX = 50
 
@@ -277,25 +279,23 @@ class Controller:
                             else:
                                 if self.zenith_angle > 90:
                                     if self.u0 > 0:
-                                        self.DIFUSE_MX = (self.sa * 0.95 * (self.u0 ** 1.2) + 50)
+                                        self.DIFUSE_MX = (self.sa * 0.95 * (self.u0**1.2) + 50)
                                     else:
                                         self.DIFUSE_MX = 50
 
-                                    if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][
-                                        8] < self.DIFUSE_MX:
+                                    if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][8] < self.DIFUSE_MX:
                                         self.loader.code[i][8] = 9
                                     else:
                                         self.loader.code[i][8] = 552
                                 else:
                                     self.cont_std += 1
-                                    if self.loader.data[i][8] != self.loader.data[i-1][8] and  self.loader.data[i][8] != self.loader.data[i+1][8]:
+                                    if self.loader.data[i][8] != self.loader.data[i-1][8] and self.loader.data[i][8] != self.loader.data[i+1][8]:
                                         if self.u0 > 0:
                                             self.DIFUSE_MX = (self.sa * 0.95 * (self.u0 ** 1.2) + 50)
                                         else:
                                             self.DIFUSE_MX = 50
 
-                                        if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][
-                                            8] < self.DIFUSE_MX:
+                                        if self.loader.data[i][8] > self.DIFUSE_MI and self.loader.data[i][8] < self.DIFUSE_MX:
                                             self.loader.code[i][8] = 9
                                         else:
                                             self.loader.code[i][8] = 552
@@ -419,8 +419,8 @@ class Controller:
 
             if self.loader.data[i][20] != 3333:
                 if self.loader.data[i][20] != -5555:
-                    self.TEMP_MX = self.loader.getTempMax("." + os.path.sep + "limits" + os.path.sep + "temp.max", station, month)
-                    self.TEMP_MI = self.loader.getTempMax("." + os.path.sep + "limits" + os.path.sep + "temp.min", station, month)
+                    self.TEMP_MX = self.loader.getTempMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.max", station, month)
+                    self.TEMP_MI = self.loader.getTempMin(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.min", station, month)
                     if self.loader.data[i][20] > self.TEMP_MI and self.loader.data[i][20] < self.TEMP_MX:
                         self.loader.code[i][20] = 9
                     else:
@@ -455,8 +455,8 @@ class Controller:
 
             if self.loader.data[i][22] != 3333:
                 if self.loader.data[i][22] != -5555:
-                    self.PRES_MX = self.loader.getPresMax("." + os.path.sep + "limits" + os.path.sep + "pres.max", station)
-                    self.PRES_MI = self.loader.getPresMin("." + os.path.sep + "limits" + os.path.sep + "pres.min", station)
+                    self.PRES_MX = self.loader.getPresMax(os.path.abspath(".")+ os.path.sep + "." +"limits" + os.path.sep + "pres.max", station)
+                    self.PRES_MI = self.loader.getPresMin(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "pres.min", station)
                     if self.loader.data[i][22] > self.PRES_MI and self.loader.data[i][22] < self.PRES_MX:
                         self.loader.code[i][22] = 9
                     else:
@@ -474,7 +474,7 @@ class Controller:
 
             if self.loader.data[i][23] != 3333:
                 if self.loader.data[i][23] != -5555:
-                    self.PREC_MX = self.loader.getPrecMax("." + os.path.sep + "limits" + os.path.sep + "prec.max", station, month)
+                    self.PREC_MX = self.loader.getPrecMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "prec.max", station, month)
                     if self.loader.data[i][23] >= self.PREC_MI and self.loader.data[i][23] < self.PREC_MX:
                         self.loader.code[i][23] = 9
                     else:
@@ -537,7 +537,7 @@ class Controller:
                                 else:
                                     self.DIRECT_MX = 50
 
-                                if self.loader.data[i][28] > self.DIFUSE_MI and self.loader.data[i][28] < self.DIRECT_MX:
+                                if self.loader.data[i][28] > self.DIRECT_MI and self.loader.data[i][28] < self.DIRECT_MX:
                                     self.loader.code[i][28] = 9
                                 else:
                                     self.loader.code[i][28] = 552
@@ -548,7 +548,7 @@ class Controller:
                                     else:
                                         self.DIRECT_MX = 50
 
-                                    if self.loader.data[i][28] > self.DIFUSE_MI and self.loader.data[i][28] < self.DIRECT_MX:
+                                    if self.loader.data[i][28] > self.DIRECT_MI and self.loader.data[i][28] < self.DIRECT_MX:
                                         self.loader.code[i][28] = 9
                                     else:
                                         self.loader.code[i][28] = 552
@@ -584,7 +584,7 @@ class Controller:
                 if self.loader.data[i][32] != -5555:
                     if self.loader.data[i][32] != -6999:
                         if self.loader.data[i][33] != 0:
-                            if self.loader.data[i][32] > self.LWDN_MI and self.loader.data[i][32] < self.LUX_MX:
+                            if self.loader.data[i][32] > self.LWDN_MI and self.loader.data[i][32] < self.LWDN_MX:
                                 self.loader.code[i][32] = 9
                             else:
                                 self.loader.code[i][32] = 552
@@ -730,8 +730,7 @@ class Controller:
             # ----------------------------------------------------------------------------------------------------------------------
 
             # Start of the routine validation: Air Temperature (°C) level 2
-
-            if self.loader.code != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552:
+            if self.loader.code[i][20] != 3333 and self.loader.code[i][20] != -5555 and self.loader.code[i][20] != 552:
                 if i <= totalTemp1h_1:
                     j = 0
                     while j <= self.temp1h:
@@ -922,13 +921,13 @@ class Controller:
                             if self.loader.data[i+j][25] < self.wd10_min:
                                 self.wd10_min = self.loader.data[i+j][25]
 
-                            self.variation_wd103h = self.wd10_max = self.wd10_min
+                            self.variation_wd103h = self.wd10_max - self.wd10_min
                         j += 1
 
                     if self.contWdirValid >= 40:
                         if self.variation_wd103h > 1:
                             self.loader.code[i][25] = 99
-                            self.lastWs10Valid = self.loader.code[i][25]
+                            self.lastWd10Valid = self.loader.code[i][25]
                         else:
                             self.loader.code[i][25] = 529
                     else:
@@ -956,11 +955,11 @@ class Controller:
 
             if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552:
                 if self.u0 > 0:
-                    self.DIRECT_MX = (self.sa * 0.95 * (self.u0 ** .02) + 10)
+                    self.DIRECT_MX = (self.sa * 0.95 * (self.u0 ** 0.2) + 10)
                 else:
                     self.DIRECT_MX = 10
 
-                if self.loader.data[i][28] > self.DIFUSE_MI and self.loader.data[i][28] < self.DIRECT_MX:
+                if self.loader.data[i][28] > self.DIRECT_MI and self.loader.data[i][28] < self.DIRECT_MX:
                     self.loader.code[i][28] = 99
                 else:
                     self.loader.code[i][28] = 29
@@ -992,14 +991,14 @@ class Controller:
 
             # Calculating astronomical geometry data
             self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
-            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2*self.day_angle) + self.ds2 * np.sin(2*self.day_angle) - self.dc3 * np.cos(3*self.day_angle))
+            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(self.day_angle) - self.dc2 * np.cos(2*self.day_angle) + self.ds2 * np.sin(2*self.day_angle) - self.dc3 * np.cos(3*self.day_angle) + self.ds3 * np.sin(3*self.day_angle))
             self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(self.day_angle) - self.tc2 * np.cos(2*self.day_angle) - self.ts2 * np.sin(2*self.day_angle)) * 229.18
             self.tcorr = (self.eqtime + 4*(longitude-0)) / 60
             self.horacorr = self.tcorr + self.div
             self.hour_angle = (12.00 - self.horacorr) * 15
             self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(self.day_angle) + self.e4 * np.cos(2*self.day_angle) + self.e5 * np.sin(2*self.day_angle)
             self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(latitude*self.CDR) * np.cos(self.hour_angle * self.CDR)
-            self.zenith_angle = (np.arccos(self.u0)) * 180/np.pi
+            self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
             self.sa = 1368 * self.e0
 
             # Variables used to validate radiation Global and Diffuse - level 3
@@ -1046,8 +1045,8 @@ class Controller:
                 if self.loader.code[i][12] != 3333 and self.loader.code[i][12] != -5555 and self.loader.code[i][12] != -6999 and self.loader.code[i][12] != 552 and self.loader.code[i][12] != 29:
                     if self.loader.code[i][16] != 3333 and self.loader.code[i][16] != -5555 and self.loader.code[i][16] != -6999 and self.loader.code[i][16] != 552 and self.loader.code[i][16] != 29:
                         if self.zenith_angle < 90:
-                            lux_global = 0.115 * self.loader.day_angle[i][4]
-                            par_global = 2.07 * self.loader.data[i]
+                            lux_global = 0.115 * self.loader.data[i][4]
+                            par_global = 2.07 * self.loader.data[i][4]
 
                             # There are some dependency with photosynthetic photon flux and sometimes 18 is not a better number.
                          	# This version (3.5) these terms were recalculated by Prof. Enio.
@@ -1059,6 +1058,7 @@ class Controller:
 
                             if self.loader.data[i][16] == 0:
                                 self.loader.data[i][16] = 0.001
+
 
                             # LUX - LUX < -GLO
                             mat_desvio[0] = (np.abs(self.loader.data[i][16] - lux_global) / self.loader.data[i][16]) * 100
@@ -1106,7 +1106,7 @@ class Controller:
                                 # LUX<-GLO
                                 if mat_desvio[0] < 16.5:        # Padrao 0
                                     mat_limite[0] = 0
-                                elif mat_desvio[1] < 65:        # Padrao 1
+                                elif mat_desvio[1] < 65:        # Padrao 1 # Deveria ser 0?
                                     mat_limite[0] = 1
                                 else:                           # Padrao 2
                                     mat_limite[0] = 2
@@ -1172,6 +1172,8 @@ class Controller:
                                 mat_lppl = mat_limite[2]
                             else:
                                 mat_lppl = mat_limite[3]
+
+                            # Diminuir comparações a seguir
 
                             if ((mat_limite[1] == 0) and (mat_lppl == 0) and (mat_limite[0] == 0)):
                                 self.loader.code[i][16] = 999
@@ -1364,7 +1366,7 @@ class Controller:
                             if divSw > 0.90 and divSw < 1.10:
                                 self.loader.code[i][4] = 999
                             else:
-                                self.loader.code[i][4] = 229
+                                self.loader.code[i][4] = 299
 
                         if self.zenith_angle > 75 and self.zenith_angle < 93:
                             if divSw > 0.85 and divSw < 1.15:
@@ -1474,7 +1476,7 @@ class Controller:
                                 self.prec_max = self.loader.data[i+j][23]
                             if self.loader.data[i+j][23] < self.prec_min:
                                 self.prec_min = self.loader.data[i+j][23]
-                            self.variation_prec24h = self.temp_max = self.prec_min
+                            self.variation_prec24h = self.temp_max - self.prec_min #prec_max
                         j += 1
 
                     if self.contPrecValid >= 40:
@@ -1516,7 +1518,7 @@ class Controller:
                                 self.ws10_max = self.loader.data[i+j][24]
                             if self.loader.data[i+j][24] < self.ws10_min:
                                 self.ws10_min = self.loader.data[i+j][24]
-                            self.variation_ws1012h = self.ws10_max = self.ws10_min
+                            self.variation_ws1012h = self.ws10_max - self.ws10_min
                         j += 1
 
                     if self.contWspdValid >= 40:
@@ -1557,13 +1559,13 @@ class Controller:
                                 self.wd10_max = self.loader.data[i+j][25]
                             if self.loader.data[i+j][25] < self.wd10_min:
                                 self.wd10_min = self.loader.data[i+j][25]
-                            self.variation_wd1018h = self.wd10_max = self.wd10_min
+                            self.variation_wd1018h = self.wd10_max - self.wd10_min
                         j += 1
 
                     if self.contWdirValid >= 40:
                         if self.variation_wd1018h > 10:
-                            self.loader.code[i][24] = 999
-                            self.lastWs10Valid = self.loader.code[i][25]
+                            self.loader.code[i][25] = 999
+                            self.lastWd10Valid = self.loader.code[i][25]
                         else:
                             self.loader.code[i][25] = 299
                     else:
@@ -1591,7 +1593,7 @@ class Controller:
             if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
                 if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 529:
                     if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529:
-                        direct_h = self.loader.data[i][4] = self.loader.data[i][8]
+                        direct_h = self.loader.data[i][4] - self.loader.data[i][8]
                         direct_n = (self.loader.data[i][28] * self.u0) - 50
                         direct_p = (self.loader.data[i][28] * self.u0) + 50
 
