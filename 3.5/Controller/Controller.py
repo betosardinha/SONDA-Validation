@@ -162,6 +162,8 @@ class Controller:
         self.progressBar()
 
         for i in range(self.rows+1):
+
+            # Funções de atribuição repetidas a cada nível de validação - talvez não necessário
             self.num = self.loader.data[i][3]
             self.div = self.num / 60    # Measurement time in utc time
             self.dia_jul = int(self.loader.data[i][2])
@@ -418,7 +420,7 @@ class Controller:
             if self.loader.data[i][20] != 3333:
                 if self.loader.data[i][20] != -5555:
                     self.TEMP_MX = self.loader.getTempMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.max", station, month)
-                    self.TEMP_MI = self.loader.getTempMax(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.min", station, month)
+                    self.TEMP_MI = self.loader.getTempMin(os.path.abspath(".")+ os.path.sep + "." + "limits" + os.path.sep + "temp.min", station, month)
                     if self.loader.data[i][20] > self.TEMP_MI and self.loader.data[i][20] < self.TEMP_MX:
                         self.loader.code[i][20] = 9
                     else:
@@ -1170,6 +1172,8 @@ class Controller:
                                 mat_lppl = mat_limite[2]
                             else:
                                 mat_lppl = mat_limite[3]
+
+                            # Diminuir comparações a seguir
 
                             if ((mat_limite[1] == 0) and (mat_lppl == 0) and (mat_limite[0] == 0)):
                                 self.loader.code[i][16] = 999

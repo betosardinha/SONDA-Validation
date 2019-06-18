@@ -207,6 +207,7 @@ class Loader:
         self.med_wdna = None
         self.med_wdv = None
 
+    # Função criada mas não utilizada
     def extractLines(self, input, output, id):
         try:
             bfIn = open(input, 'r')
@@ -243,6 +244,8 @@ class Loader:
         except ValueError:
             raise ValueError("Arquivo com problema de formatação: ", input)
 
+    # Método de arredondamento diferente do Java
+    # Diminuir função
     def writeData(self, output, dataArray, id):
         try:
             bfOut = open(output, 'w')
@@ -379,6 +382,7 @@ class Loader:
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
+    # Diminuir função
     def writeCode(self, output, dataArray, codeArray, id):
         try:
             bfOut = open(output, 'w')
@@ -581,10 +585,12 @@ class Loader:
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
+    # Diminuir função
     def writeReportData(self, output, station, year, month, id, codeArray, latitude, longitude):
         try:
             bfOut = open(output, 'w')
             for i in range(len(codeArray)):
+                # Tirar cálculos repetidos em FOR
                 self.num = self.data[i][3]
                 self.div = self.num / 60
                 self.dia_jul = int(self.data[i][2])
@@ -925,148 +931,148 @@ class Loader:
 
             # Printing levels of each percentage variable
             if self.flag_gl == 0:
-                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}\n")
-                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}\n")
-                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}\n")
-                bfOut.write(f"Global Válido  = {self.med_glv:.1f}\n")
-                bfOut.write(f"Global N/A     = {self.med_glna:.1f}\n")
+                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}%\n")
+                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}%\n")
+                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}%\n")
+                bfOut.write(f"Global Válido  = {self.med_glv:.1f}%\n")
+                bfOut.write(f"Global N/A     = {self.med_glna:.1f}%\n\n")
             else:
                 bfOut.write(f"Global Nível 1 = N/S\n")
                 bfOut.write(f"Global Nível 2 = N/S\n")
                 bfOut.write(f"Global Nível 3 = N/S\n")
                 bfOut.write(f"Global Válido  = N/S\n")
-                bfOut.write(f"Global N/A     = N/S\n")
+                bfOut.write(f"Global N/A     = N/S\n\n")
 
             if self.flag_di == 0:
-                bfOut.write(f"Direta Nível 1 = {self.med_di1n:.1f}\n")
-                bfOut.write(f"Direta Nível 2 = {self.med_di2n:.1f}\n")
-                bfOut.write(f"Direta Nível 3 = {self.med_di3n:.1f}\n")
-                bfOut.write(f"Direta Válido  = {self.med_div:.1f}\n")
-                bfOut.write(f"Direta N/A     = {self.med_dina:.1f}\n")
+                bfOut.write(f"Direta Nível 1 = {self.med_di1n:.1f}%\n")
+                bfOut.write(f"Direta Nível 2 = {self.med_di2n:.1f}%\n")
+                bfOut.write(f"Direta Nível 3 = {self.med_di3n:.1f}%\n")
+                bfOut.write(f"Direta Válido  = {self.med_div:.1f}%\n")
+                bfOut.write(f"Direta N/A     = {self.med_dina:.1f}%\n\n")
             else:
                 bfOut.write(f"Direta Nível 1 = N/S\n")
                 bfOut.write(f"Direta Nível 2 = N/S\n")
                 bfOut.write(f"Direta Nível 3 = N/S\n")
                 bfOut.write(f"Direta Válido  = N/S\n")
-                bfOut.write(f"Direta N/A     = N/S\n")
+                bfOut.write(f"Direta N/A     = N/S\n\n")
 
             if self.flag_df == 0:
-                bfOut.write(f"Difusa Nível 1 = {self.med_df1n:.1f}\n")
-                bfOut.write(f"Difusa Nível 2 = {self.med_df2n:.1f}\n")
-                bfOut.write(f"Difusa Nível 3 = {self.med_df3n:.1f}\n")
-                bfOut.write(f"Difusa Válido  = {self.med_dfv:.1f}\n")
-                bfOut.write(f"Difusa N/A     = {self.med_dfna:.1f}\n")
+                bfOut.write(f"Difusa Nível 1 = {self.med_df1n:.1f}%\n")
+                bfOut.write(f"Difusa Nível 2 = {self.med_df2n:.1f}%\n")
+                bfOut.write(f"Difusa Nível 3 = {self.med_df3n:.1f}%\n")
+                bfOut.write(f"Difusa Válido  = {self.med_dfv:.1f}%\n")
+                bfOut.write(f"Difusa N/A     = {self.med_dfna:.1f}%\n\n")
             else:
                 bfOut.write(f"Difusa Nível 1 = N/S\n")
                 bfOut.write(f"Difusa Nível 2 = N/S\n")
                 bfOut.write(f"Difusa Nível 3 = N/S\n")
                 bfOut.write(f"Difusa Válido  = N/S\n")
-                bfOut.write(f"Difusa N/A     = N/S\n")
+                bfOut.write(f"Difusa N/A     = N/S\n\n")
 
             if self.flag_lw == 0:
-                bfOut.write(f"Onda Longa Nível 1 = {self.med_lw1n:.1f}\n")
-                bfOut.write(f"Onda Longa Nível 2 = {self.med_lw2n:.1f}\n")
-                bfOut.write(f"Onda Longa Nível 3 = {self.med_lw3n:.1f}\n")
-                bfOut.write(f"Onda Longa Válido  = {self.med_lwv:.1f}\n")
-                bfOut.write(f"Onda Longa N/A     = {self.med_lwna:.1f}\n")
+                bfOut.write(f"Onda Longa Nível 1 = {self.med_lw1n:.1f}%\n")
+                bfOut.write(f"Onda Longa Nível 2 = {self.med_lw2n:.1f}%\n")
+                bfOut.write(f"Onda Longa Nível 3 = {self.med_lw3n:.1f}%\n")
+                bfOut.write(f"Onda Longa Válido  = {self.med_lwv:.1f}%\n")
+                bfOut.write(f"Onda Longa N/A     = {self.med_lwna:.1f}%\n\n")
             else:
                 bfOut.write(f"Onda Longa Nível 1 = N/S\n")
                 bfOut.write(f"Onda Longa Nível 2 = N/S\n")
                 bfOut.write(f"Onda Longa Nível 3 = N/S\n")
                 bfOut.write(f"Onda Longa Válido  = N/S\n")
-                bfOut.write(f"Onda Longa N/A     = N/S\n")
+                bfOut.write(f"Onda Longa N/A     = N/S\n\n")
 
             if self.flag_pa == 0:
-                bfOut.write(f"Par Nível 1 = {self.med_pa1n:.1f}\n")
-                bfOut.write(f"Par Nível 2 = {self.med_pa2n:.1f}\n")
-                bfOut.write(f"Par Nível 3 = {self.med_pa3n:.1f}\n")
-                bfOut.write(f"Par Válido  = {self.med_pav:.1f}\n")
-                bfOut.write(f"Par N/A     = {self.med_pana:.1f}\n")
+                bfOut.write(f"Par Nível 1 = {self.med_pa1n:.1f}%\n")
+                bfOut.write(f"Par Nível 2 = {self.med_pa2n:.1f}%\n")
+                bfOut.write(f"Par Nível 3 = {self.med_pa3n:.1f}%\n")
+                bfOut.write(f"Par Válido  = {self.med_pav:.1f}%\n")
+                bfOut.write(f"Par N/A     = {self.med_pana:.1f}%\n\n")
             else:
                 bfOut.write(f"Par Nível 1 = N/S\n")
                 bfOut.write(f"Par Nível 2 = N/S\n")
                 bfOut.write(f"Par Nível 3 = N/S\n")
                 bfOut.write(f"Par Válido  = N/S\n")
-                bfOut.write(f"Par N/A     = N/S\n")
+                bfOut.write(f"Par N/A     = N/S\n\n")
 
             if self.flag_lx == 0:
-                bfOut.write(f"Lux Nível 1 = {self.med_lx1n:.1f}\n")
-                bfOut.write(f"Lux Nível 2 = {self.med_lx2n:.1f}\n")
-                bfOut.write(f"Lux Nível 3 = {self.med_lx3n:.1f}\n")
-                bfOut.write(f"Lux Válido  = {self.med_lxv:.1f}\n")
-                bfOut.write(f"Lux N/A     = {self.med_lxna:.1f}\n")
+                bfOut.write(f"Lux Nível 1 = {self.med_lx1n:.1f}%\n")
+                bfOut.write(f"Lux Nível 2 = {self.med_lx2n:.1f}%\n")
+                bfOut.write(f"Lux Nível 3 = {self.med_lx3n:.1f}%\n")
+                bfOut.write(f"Lux Válido  = {self.med_lxv:.1f}%\n")
+                bfOut.write(f"Lux N/A     = {self.med_lxna:.1f}%\n\n")
             else:
                 bfOut.write(f"Lux Nível 1 = N/S\n")
                 bfOut.write(f"Lux Nível 2 = N/S\n")
                 bfOut.write(f"Lux Nível 3 = N/S\n")
                 bfOut.write(f"Lux Válido  = N/S\n")
-                bfOut.write(f"Lux N/A     = N/S\n")
+                bfOut.write(f"Lux N/A     = N/S\n\n")
 
             if self.flag_tp == 0:
-                bfOut.write(f"Temperatura Nível 1 = {self.med_tp1n:.1f}\n")
-                bfOut.write(f"Temperatura Nível 2 = {self.med_tp2n:.1f}\n")
-                bfOut.write(f"Temperatura Nível 3 = {self.med_tp3n:.1f}\n")
-                bfOut.write(f"Temperatura Válido  = {self.med_tpv:.1f}\n")
-                bfOut.write(f"Temperatura N/A     = {self.med_tpna:.1f}\n")
+                bfOut.write(f"Temperatura Nível 1 = {self.med_tp1n:.1f}%\n")
+                bfOut.write(f"Temperatura Nível 2 = {self.med_tp2n:.1f}%\n")
+                bfOut.write(f"Temperatura Nível 3 = {self.med_tp3n:.1f}%\n")
+                bfOut.write(f"Temperatura Válido  = {self.med_tpv:.1f}%\n")
+                bfOut.write(f"Temperatura N/A     = {self.med_tpna:.1f}%\n\n")
             else:
                 bfOut.write(f"Temperatura Nível 1 = N/S\n")
                 bfOut.write(f"Temperatura Nível 2 = N/S\n")
                 bfOut.write(f"Temperatura Nível 3 = N/S\n")
                 bfOut.write(f"Temperatura Válido  = N/S\n")
-                bfOut.write(f"Temperatura N/A     = N/S\n")
+                bfOut.write(f"Temperatura N/A     = N/S\n\n")
 
             if self.flag_hu == 0:
-                bfOut.write(f"Umidade Nível 1 = {self.med_hu1n:.1f}\n")
-                bfOut.write(f"Umidade Válido  = {self.med_huv:.1f}\n")
-                bfOut.write(f"Umidade N/A     = {self.med_huna:.1f}\n")
+                bfOut.write(f"Umidade Nível 1 = {self.med_hu1n:.1f}%\n")
+                bfOut.write(f"Umidade Válido  = {self.med_huv:.1f}%\n")
+                bfOut.write(f"Umidade N/A     = {self.med_huna:.1f}%\n\n")
             else:
                 bfOut.write(f"Umidade Nível 1 = N/S\n")
                 bfOut.write(f"Umidade Válido  = N/S\n")
-                bfOut.write(f"Umidade N/A     = N/S\n")
+                bfOut.write(f"Umidade N/A     = N/S\n\n")
 
             if self.flag_ps == 0:
-                bfOut.write(f"Pressão Nível 1 = {self.med_ps1n:.1f}\n")
-                bfOut.write(f"Pressão Nível 2 = {self.med_ps2n:.1f}\n")
-                bfOut.write(f"Pressão Válido  = {self.med_psv:.1f}\n")
-                bfOut.write(f"Pressão N/A     = {self.med_psna:.1f}\n")
+                bfOut.write(f"Pressão Nível 1 = {self.med_ps1n:.1f}%\n")
+                bfOut.write(f"Pressão Nível 2 = {self.med_ps2n:.1f}%\n")
+                bfOut.write(f"Pressão Válido  = {self.med_psv:.1f}%\n")
+                bfOut.write(f"Pressão N/A     = {self.med_psna:.1f}%\n\n")
             else:
                 bfOut.write(f"Pressão Nível 1 = N/S\n")
                 bfOut.write(f"Pressão Nível 2 = N/S\n")
                 bfOut.write(f"Pressão Válido  = N/S\n")
-                bfOut.write(f"Pressão N/A     = N/S\n")
+                bfOut.write(f"Pressão N/A     = N/S\n\n")
 
             if self.flag_pc == 0:
-                bfOut.write(f"Precipitação Nível 1 = {self.med_pc1n:.1f}\n")
-                bfOut.write(f"Precipitação Nível 2 = {self.med_pc2n:.1f}\n")
-                bfOut.write(f"Precipitação Nível 3 = {self.med_pc3n:.1f}\n")
-                bfOut.write(f"Precipitação Válido  = {self.med_pcv:.1f}\n")
-                bfOut.write(f"Precipitação N/A     = {self.med_pcna:.1f}\n")
+                bfOut.write(f"Precipitação Nível 1 = {self.med_pc1n:.1f}%\n")
+                bfOut.write(f"Precipitação Nível 2 = {self.med_pc2n:.1f}%\n")
+                bfOut.write(f"Precipitação Nível 3 = {self.med_pc3n:.1f}%\n")
+                bfOut.write(f"Precipitação Válido  = {self.med_pcv:.1f}%\n")
+                bfOut.write(f"Precipitação N/A     = {self.med_pcna:.1f}%\n\n")
             else:
                 bfOut.write(f"Precipitação Nível 1 = N/S\n")
                 bfOut.write(f"Precipitação Nível 2 = N/S\n")
                 bfOut.write(f"Precipitação Nível 3 = N/S\n")
                 bfOut.write(f"Precipitação Válido  = N/S\n")
-                bfOut.write(f"Precipitação N/A     = N/S\n")
+                bfOut.write(f"Precipitação N/A     = N/S\n\n")
 
             if self.flag_ws == 0:
-                bfOut.write(f"Vel. Vento Nível 1 = {self.med_ws1n:.1f}\n")
-                bfOut.write(f"Vel. Vento Nível 2 = {self.med_ws2n:.1f}\n")
-                bfOut.write(f"Vel. Vento Nível 3 = {self.med_ws3n:.1f}\n")
-                bfOut.write(f"Vel. Vento Válido  = {self.med_wsv:.1f}\n")
-                bfOut.write(f"Vel. Vento N/A     = {self.med_wsna:.1f}\n")
+                bfOut.write(f"Vel. Vento Nível 1 = {self.med_ws1n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Nível 2 = {self.med_ws2n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Nível 3 = {self.med_ws3n:.1f}%\n")
+                bfOut.write(f"Vel. Vento Válido  = {self.med_wsv:.1f}%\n")
+                bfOut.write(f"Vel. Vento N/A     = {self.med_wsna:.1f}%\n\n")
             else:
                 bfOut.write(f"Vel. Vento Nível 1 = N/S\n")
                 bfOut.write(f"Vel. Vento Nível 2 = N/S\n")
                 bfOut.write(f"Vel. Vento Nível 3 = N/S\n")
                 bfOut.write(f"Vel. Vento Válido  = N/S\n")
-                bfOut.write(f"Vel. Vento N/A     = N/S\n")
+                bfOut.write(f"Vel. Vento N/A     = N/S\n\n")
 
             if self.flag_wd == 0:
-                bfOut.write(f"Dir. Vento Nível 1 = {self.med_wd1n:.1f}\n")
-                bfOut.write(f"Dir.Dir Vento Nível 2 = {self.med_wd2n:.1f}\n")
-                bfOut.write(f"Dir. Vento Nível 3 = {self.med_wd3n:.1f}\n")
-                bfOut.write(f"Dir. Vento Válido  = {self.med_wdv:.1f}\n")
-                bfOut.write(f"Dir. Vento N/A     = {self.med_wdna:.1f}\n")
+                bfOut.write(f"Dir. Vento Nível 1 = {self.med_wd1n:.1f}%\n")
+                bfOut.write(f"Dir.Dir Vento Nível 2 = {self.med_wd2n:.1f}%\n")
+                bfOut.write(f"Dir. Vento Nível 3 = {self.med_wd3n:.1f}%\n")
+                bfOut.write(f"Dir. Vento Válido  = {self.med_wdv:.1f}%\n")
+                bfOut.write(f"Dir. Vento N/A     = {self.med_wdna:.1f}%\n")
             else:
                 bfOut.write(f"Dir. Vento Nível 1 = N/S\n")
                 bfOut.write(f"Dir. Vento Nível 2 = N/S\n")
@@ -1094,6 +1100,7 @@ class Loader:
     def buildsMatrixCode(self, input):
         self.numberOfColumns = 0
         self.numberOfRows = 0
+        # Verificar se é necessário read()
         self.read(input)
         self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns))
 
@@ -1108,6 +1115,9 @@ class Loader:
             raise IndexError("Erro ao Acessar Índice da Matriz")
         self.rawData = np.array([])
 
+    # Funções get iguais, diminuir para uma função
+    # Diminuir tempo de execução de chamada (cada uma executa um read via MatrixLimits)
+    # Usar variáveis estáticas em Controller.py para não executar a cada rodada
     def getTempMax(self, input, station, month):
         self.buildsMatrixLimits(input)
         temp_max = 0

@@ -102,6 +102,7 @@ class InfoData:
 
     # Attribute based hash function
     # hashCode diferente de Java
+    # Função criada mas não utilizada - com utilidade
     def hashCode(self):
         PRIME = 31
         RESULT = 1
@@ -128,6 +129,9 @@ class InfoData:
         return RESULT
 
     # Compare two instances returning True or False
+    # Diminuir comparação utilizando funções __eq__ e __ne__
+    # Talvez utilizar hashCode - necessários testes
+    # Função criada mas não utilizada
     def equals(self, obj):
         try:
             obj
@@ -212,6 +216,7 @@ class InfoData:
         return True
 
     # Attribute based string create function
+    # Função criada mas não utilizada
     def toString(self):
         builder = "InfoData [Id= " + str(self.id) \
             + ", Arquivo de Entrada= " + str(self.inputData) \
