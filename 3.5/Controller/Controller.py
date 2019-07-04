@@ -409,7 +409,7 @@ class Controller:
                 else:
                     self.loader.code[i][16] = -5555
             else:
-                self.loader.code = 3333
+                self.loader.code[i][16] = 3333
 
             # End of the routine validation: Lux Radiation (kLux) level 1
 
@@ -1358,7 +1358,6 @@ class Controller:
             if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 29:
                 if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29 and self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
                     sumSw = self.loader.data[i][8] + (self.loader.data[i][28] * self.u0)
-                    divSw = self.loader.data[i][4] / sumSw
 
                     # //////////////////////  TEST BSRN LEVEL 3 ////////////////////////
                     if sumSw > 50:
@@ -1645,5 +1644,6 @@ class Controller:
             self.pb.update(1)
             self.cont += 1
 
+        self.pb.close()
         return self.loader.code
 

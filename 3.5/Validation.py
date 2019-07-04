@@ -24,12 +24,10 @@ class Validation:
         fileNames = os.listdir(self.pathNames)
         for fileName in fileNames:
             if fileName[-4:] == self.ext:
-                file = open(os.path.join(os.path.abspath(self.pathNames), fileName))
-
                 # Tirar atribuições iguais fora dos IFs
                 if fileName[:3] == "BAB":
                     self.infodata.setId("03")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7]+"ED.csv")
                     self.infodata.setOutputCode(fileName[:7]+"ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7]+".csv")
@@ -40,7 +38,7 @@ class Validation:
                     self.infodata.setYear("20"+fileName[3:5])
                 elif fileName[:3] == "BJL":
                     self.infodata.setId("47")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -62,7 +60,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CPA":
                     self.infodata.setId("30")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -73,7 +71,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CAI":
                     self.infodata.setId("20")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -84,7 +82,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CGR":
                     self.infodata.setId("12")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -95,7 +93,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CHP":
                     self.infodata.setId("06")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -106,7 +104,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CBA":
                     self.infodata.setId("21")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -117,7 +115,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "CTB":
                     self.infodata.setId("60")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -128,7 +126,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "FLN":
                     self.infodata.setId("01")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -139,7 +137,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "JOI":
                     self.infodata.setId("04")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -150,7 +148,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "LEB":
                     self.infodata.setId("02")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -161,7 +159,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "MCL":
                     self.infodata.setId("45")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -172,7 +170,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "NAT":
                     self.infodata.setId("17")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -183,7 +181,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "ORN":
                     self.infodata.setId("28")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -194,7 +192,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "PMA":
                     self.infodata.setId("19")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -205,7 +203,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "PTR":
                     self.infodata.setId("11")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -216,7 +214,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "RLM":
                     self.infodata.setId("27")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -227,7 +225,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "SLZ":
                     self.infodata.setId("16")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -238,7 +236,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "SMS":
                     self.infodata.setId("08")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -249,7 +247,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "SBR":
                     self.infodata.setId("05")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -260,7 +258,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "TMA":
                     self.infodata.setId("44")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -271,7 +269,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "TLG":
                     self.infodata.setId("48")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
@@ -282,7 +280,7 @@ class Validation:
                     self.infodata.setYear("20" + fileName[3:5])
                 elif fileName[:3] == "UBE":
                     self.infodata.setId("46")
-                    self.infodata.setInputData(os.path.abspath(file))
+                    self.infodata.setInputData(os.path.abspath(fileName))
                     self.infodata.setOutputData(fileName[:7] + "ED.csv")
                     self.infodata.setOutputCode(fileName[:7] + "ED_DQC.csv")
                     self.infodata.setOutputReport(fileName[:7] + ".csv")
