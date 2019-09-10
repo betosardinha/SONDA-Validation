@@ -394,20 +394,12 @@ class Loader:
                 bfOut.write(f"{dataArray[i][3]:.0f};")
 
                 # Global Radiation
-                if codeArray[i][4] == 999:
-                    bfOut.write(f"{codeArray[i][4]:.0f};")
-                elif codeArray[i][4] == 599:
-                    bfOut.write(f"{codeArray[i][4]:.0f};")
-                elif codeArray[i][4] == 529:
-                    bfOut.write(f"{codeArray[i][4]:.0f};")
-                elif codeArray[i][4] == 299:
-                    bfOut.write(f"{codeArray[i][4]:.0f};")
-                elif codeArray[i][4] == 552:
-                    bfOut.write(f"{codeArray[i][4]:.0f};")
-                elif codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
+                if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][4] == -5555:
                     bfOut.write("N/S;")
+                else:
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
 
                 # Direct Radiation
                 if codeArray[i][28] == 999:
@@ -615,15 +607,15 @@ class Loader:
                 if self.zenith_angle < 90:
 
                     # Global Radiation
-                    if codeArray[i][4] == 999:
+                    if codeArray[i][4] == 9999:
                         self.cont_glv += 1
-                    elif codeArray[i][4] == 599:
+                    elif codeArray[i][4] == 5599:
                         self.cont_glv += 1
-                    elif codeArray[i][4] == 552:
+                    elif codeArray[i][4] == 5552:
                         self.cont_gl1n += 1
-                    elif codeArray[i][4] == 529:
+                    elif codeArray[i][4] == 5529:
                         self.cont_gl2n += 1
-                    elif codeArray[i][4] == 299:
+                    elif codeArray[i][4] == 5299:
                         self.cont_gl3n += 1
                     elif codeArray[i][4] == -5555:
                         self.flag_gl = 1

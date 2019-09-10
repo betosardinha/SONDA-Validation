@@ -5,7 +5,6 @@ from tqdm import *
 
 from Loader import Loader
 
-
 class Controller:
     def __init__(self, input1=None, input2=None):
         # Constant values used to get solar geometry data
@@ -141,6 +140,12 @@ class Controller:
         self.lastWs10Valid = None
         self.lastWd10Valid = None
 
+        # Variables for clear sky model
+        self.Isc = 1367.0
+        self.Wo = 0.95
+        self.Fc = 0.84
+
+
         self.kt = None
         self.kn = None
 
@@ -151,11 +156,13 @@ class Controller:
             self.loader.buildsMatrixData(input1)
             self.loader.buildsMatrixCode(input1)
 
+
+
         if input2 is not None:
             self.title = input2
 
     def progressBar(self):
-        self.pb = tqdm(total=self.rows, desc="Validação - "+self.title)
+        self.pb = tqdm(total=self.rows*4, desc="Validação - "+self.title)
 
     def validate(self, latitude, longitude, station, month):
         self.rows = self.loader.getRows() - 1
@@ -611,6 +618,8 @@ class Controller:
             else:
                 self.loader.code[i][32] = 3333
 
+            self.pb.update(1)
+
             # End of the routine validation: Long Wave Radiation (W/m²) level 1
 
             # ----------------------------------------------------------------------------------------------------------------------
@@ -975,6 +984,8 @@ class Controller:
                     self.loader.code[i][32] = 99
                 else:
                     self.loader.code[i][32] = 29
+
+            self.pb.update(1)
 
             # End of the routine validation: Long Wave Radiation (W/m²) level 2
 
@@ -1359,7 +1370,7 @@ class Controller:
                 if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29 and self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
                     sumSw = self.loader.data[i][8] + (self.loader.data[i][28] * self.u0)
 
-                    # //////////////////////  TEST BSRN LEVEL 3 ////////////////////////
+                    # ////////////////////// TEST BSRN LEVEL 3 ////////////////////////
                     if sumSw > 50:
                         if self.zenith_angle < 75:
                             if divSw > 0.90 and divSw < 1.10:
@@ -1375,7 +1386,7 @@ class Controller:
                     else:
                         self.loader.code[i][4] = 599
 
-                    # //////////////////////  TEST BSRN LEVEL 3 ////////////////////////
+                    # ////////////////////// TEST BSRN LEVEL 3 ////////////////////////
 
                 # ////////////////////// Se a DIFUSA e DIRETA for RUIM - VERIFICA PAR E LUX
                 else:
@@ -1386,11 +1397,11 @@ class Controller:
             else:
                 if self.loader.code[i][4] == 29:
                     self.loader.code[i][4] = 529
-            
+
             # End of the routine validation: Global Radiation (W/m²) level 3
-            
+
             # ----------------------------------------------------------------------------------------------------------------------
-         	
+
          	# Start of the routine validation: Diffuse Radiation (W/m²) level 3
 
             if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29:
@@ -1502,9 +1513,9 @@ class Controller:
                     self.loader.code[i][23] = self.loader.code[totalPrec24h_1][23]
 
             # End of the routine validation: Accumulated Precipitation (mm) level 3
-                     
+
             # ----------------------------------------------------------------------------------------------------------------------
-         	
+
          	# Start of the routine validation: Wind Speed 10m (m/s) level 3
 
             if self.loader.code[i][24] != 3333 and self.loader.code[i][24] != -5555 and self.loader.code[i][24] != 552 and self.loader.code[i][24] != 529:
@@ -1543,9 +1554,9 @@ class Controller:
                     self.loader.code[i][24] = self.loader.code[totalWs1012h_1][24]
 
             # End of the routine validation: Wind Speed 10m (m/s) level 3
-                     
+
          	# ----------------------------------------------------------------------------------------------------------------------
-         
+
          	# Start of the routine validation: Wind Direction 10m (°) level 3
 
             if self.loader.code[i][25] != 3333 and self.loader.code[i][25] != -5555 and self.loader.code[i][25] != 552 and self.loader.code[i][25] != 529:
@@ -1584,9 +1595,9 @@ class Controller:
                     self.loader.code[i][25] = self.loader.code[totalWd1018h_1][25]
 
             # End of the routine validation: Wind Direction 10m (°) level 3
-         	
+
          	# ----------------------------------------------------------------------------------------------------------------------
-         	
+
          	# Start of the routine validation: Direct Radiation (W/m²) level 3
 
             if self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
@@ -1616,7 +1627,7 @@ class Controller:
             # End of the routine validation: Direct Radiation (W/m²) level 3
 
             # ----------------------------------------------------------------------------------------------------------------------
-         	
+
          	# Start of the routine validation: Long Wave Radiation (W/m²) level 3
 
             if self.loader.code[i][32] != 3333 and self.loader.code[i][32] != -5555 and self.loader.code[i][32] != -6999 and self.loader.code[i][32] != 552 and self.loader.code[i][32] != 29:
@@ -1638,7 +1649,143 @@ class Controller:
                 if self.loader.code[i][32] == 29:
                     self.loader.code[i][32] = 529
 
+            self.pb.update(1)
+
             # End of the routine validation: Long Wave Radiation (W/m²) level 3
+
+            # ----------------------------------------------------------------------------------------------------------------------
+
+            # End of loop level 3
+
+        # Define vertical ozone layer thickness value (cm)
+        # Iqbal average table (5.3.2)
+        if latitude >= -10:
+            L = 0.24
+        elif latitude < -10 and latitude >= -20:
+            L = 0.25
+        elif latitude < -20 and latitude >= -30:
+            L = 0.28
+        elif latitude < -30 and latitude >= -40:
+            L = 0.30
+
+        # Start level 4
+
+        np.seterr(all='ignore')
+
+        for i in range(self.rows + 1):
+            self.num = self.loader.data[i][3]
+            self.div = self.num / 60
+            self.dia_jul = int(self.loader.data[i][2])
+
+            # Calculating astronomical geometry data
+            self.day_angle = (2 * np.pi / 365.25 * self.dia_jul)
+            self.dec = (self.d0 - self.dc1 * np.cos(self.day_angle) + self.ds1 * np.sin(
+                self.day_angle) - self.dc2 * np.cos(2 * self.day_angle) + self.ds2 * np.sin(
+                2 * self.day_angle) - self.dc3 * np.cos(3 * self.day_angle) + self.ds3 * np.sin(3 * self.day_angle))
+            self.eqtime = (self.et0 + self.tc1 * np.cos(self.day_angle) - self.ts1 * np.sin(
+                self.day_angle) - self.tc2 * np.cos(2 * self.day_angle) - self.ts2 * np.sin(
+                2 * self.day_angle)) * 229.18
+            self.tcorr = (self.eqtime + 4 * (longitude - 0)) / 60
+            self.horacorr = self.tcorr + self.div
+            self.hour_angle = (12.00 - self.horacorr) * 15
+            self.e0 = self.e1 + self.e2 * np.cos(self.day_angle) + self.e3 * np.sin(
+                self.day_angle) + self.e4 * np.cos(2 * self.day_angle) + self.e5 * np.sin(2 * self.day_angle)
+            self.u0 = np.sin(self.dec) * np.sin(latitude * self.CDR) + np.cos(self.dec) * np.cos(
+                latitude * self.CDR) * np.cos(self.hour_angle * self.CDR)
+            self.zenith_angle = (np.arccos(self.u0)) * 180 / np.pi
+            self.sa = 1368 * self.e0
+
+            if self.loader.code[i][22] == 99 and self.loader.code[i][20] == 999 and self.loader.code[i][21] == 9:
+
+                # Relative optical mass applied
+                Mr = 1 / (np.cos(self.zenith_angle))
+
+                # Relative optical mass
+                Ma = Mr * (self.loader.data[i][22] / 1013.25)
+
+                # Ozone relative optical path length
+                U3 = L * Mr
+
+                # Water vapor
+                Ps = np.exp(26.23 - (5416 / self.loader.data[i][20] + 273.15))
+
+                # Precipitable water in terms of relative humidity
+                Pw = 0.493 * (self.loader.data[i][21] / 100) * (Ps / (self.loader.data[i][20] + 273.15))
+
+                # Pressure-corrected relative optical path length of precipitable water
+                U1 = Pw * Mr
+
+                # Transmittance by Rayleigh scattering
+
+                Tr = np.exp(-0.0903*(Ma**0.84)*(1.0 + Ma - (Ma**1.01)))
+
+                # Transmittance by ozone
+                To = 1-(0.1611*U3*((1.0+139.48*U3)**(-0.3035))-0.002715*U3*((1.0+0.44*U3+0.0003*(U3**2))**(-1)))
+
+                # Transmittance by uniformely mixed gases
+                Tg = np.exp(-0.0127*Ma**0.26)
+
+                # Transmittance by water vapor
+                Tw = 1-2.4959*U1*((((1.0+79.034*U1)**0.6828)+(6.385*U1))**(-1))
+
+                # Aerosol optical thickness - Kah(0.38)=0.087 and Kah(0.5)=0.069
+                Ka = (0.2758*0.087) + (0.35*0.069)
+
+                # Aerosol transmittance
+                Ta = np.exp(-Ka**0.0873*(1.0+Ka-(Ka**0.07088))*(Ma**0.9108))
+
+                # Ecentricy correction factor of the earth's orbit
+                Eo = 1+(0.033*np.cos(((2*np.pi*self.dia_jul)/365)))
+
+                # Direct normal irradiance
+                Irn = Eo*0.9751*self.Isc*Tr*To*Tg*Tw*Ta
+
+                # Extraterrestrial irradiance on a horizontal surface
+                Io = Eo*self.Isc*np.cos(self.zenith_angle)
+
+                # Total beam irradiance on a horizontal surface
+                Ib = Irn*np.cos(self.zenith_angle)
+
+                # Transmittance of direct radiation due to aerosol absortance
+                Taa = 1-(1-self.Wo)*(1-Ma+(Ma**1.06)*(1-Ta))
+
+                # Ration between Ta/Taa
+                Tas = Ta/Taa
+
+                # Reyleigh-scattered diffuse irradiance
+                Idr = Eo*0.79*self.Isc*(np.cos(self.zenith_angle))*To*Tg*Tw*Taa*0.5*((1-Tr)/(1-Ma+(Ma**1.02)))
+
+                # Aerosol-scattered diffuse irradiance
+                Ida = Eo*0.79*self.Isc*(np.cos(self.zenith_angle))*To*Tg*Tw*Taa*(self.Fc*(1-Tas))/(1-Ma+(Ma**1.02))
+
+                # Albedo for cloudless sky
+                Pa = 0.0685+(1-self.Fc)*(1-Tas)
+
+                # Ground albedo
+                Pg = 0.2
+
+                # Diffuse irradiance produced by multiple reflections between ground and atmosphere
+                Idm = (Irn*(np.cos(self.zenith_angle))+Idr+Ida)*Pg*Pa/(1-Pg*Pa)
+
+                # Total diffuse irradiance on a horizontal surface
+                Idiff = Idr+Ida+Idm
+
+                # Total global irradiance on a horizontal surface
+                Iglob = Ib + Idiff
+
+                # Validation for global irradiance
+                if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529 and self.loader.code[i][4] != 299:
+                    if Iglob > 1367 or Idiff <= 0:
+                        self.loader.code[i][4] = 2999
+                    else:
+                        if self.loader.data[i][4] <= Iglob:
+                            self.loader.code[i][4] = 9999
+                        else:
+                            self.loader.code[i][4] = 2999
+                elif self.loader.code[i][4] == 552 or self.loader.code[i][4] == 529 or self.loader.code[i][4] == 299:
+                    self.loader.code[i][4] += 5000
+
+
             # Sum count
 
             self.pb.update(1)
