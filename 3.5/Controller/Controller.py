@@ -1782,8 +1782,10 @@ class Controller:
                             self.loader.code[i][4] = 9999
                         else:
                             self.loader.code[i][4] = 2999
-                elif self.loader.code[i][4] == 552 or self.loader.code[i][4] == 529 or self.loader.code[i][4] == 299:
+                elif self.loader.code[i][4] == 552 or self.loader.code[i][4] == 529 or self.loader.code[i][4] == 299 or self.loader.code[i][4] == 599:
                     self.loader.code[i][4] += 5000
+            elif self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999:
+                self.loader.code[i][4] += 5000
 
 
             # Sum count

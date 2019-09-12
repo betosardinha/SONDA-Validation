@@ -46,6 +46,7 @@ class Loader:
         self.cont_gl1n = 0
         self.cont_gl2n = 0
         self.cont_gl3n = 0
+        self.cont_gl4n = 0
         self.cont_glna = 0
         self.cont_glv = 0
 
@@ -141,6 +142,7 @@ class Loader:
         self.med_gl1n = None
         self.med_gl2n = None
         self.med_gl3n = None
+        self.med_gl4n = None
         self.med_glna = None
         self.med_glv = None
 
@@ -611,12 +613,16 @@ class Loader:
                         self.cont_glv += 1
                     elif codeArray[i][4] == 5599:
                         self.cont_glv += 1
+                    elif codeArray[i][4] == 5999:
+                        self.cont_glv += 1
                     elif codeArray[i][4] == 5552:
                         self.cont_gl1n += 1
                     elif codeArray[i][4] == 5529:
                         self.cont_gl2n += 1
                     elif codeArray[i][4] == 5299:
                         self.cont_gl3n += 1
+                    elif codeArray[i][4] == 2999:
+                        self.cont_gl4n += 1
                     elif codeArray[i][4] == -5555:
                         self.flag_gl = 1
                     elif codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
@@ -838,6 +844,7 @@ class Loader:
             self.med_gl1n = (self.cont_gl1n * 100) / self.numberOfRows
             self.med_gl2n = (self.cont_gl2n * 100) / self.numberOfRows
             self.med_gl3n = (self.cont_gl3n * 100) / self.numberOfRows
+            self.med_gl4n = (self.cont_gl4n * 100) / self.numberOfRows
             self.med_glna = ((self.cont_glna + self.cont_nagl) * 100) / self.numberOfRows
             self.med_glv = ((self.cont_glv + self.cont_vgl) * 100) / self.numberOfRows
 
@@ -923,15 +930,17 @@ class Loader:
 
             # Printing levels of each percentage variable
             if self.flag_gl == 0:
-                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.1f}%\n")
-                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.1f}%\n")
-                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.1f}%\n")
-                bfOut.write(f"Global Válido  = {self.med_glv:.1f}%\n")
-                bfOut.write(f"Global N/A     = {self.med_glna:.1f}%\n\n")
+                bfOut.write(f"Global Nível 1 = {self.med_gl1n:.2f}%\n")
+                bfOut.write(f"Global Nível 2 = {self.med_gl2n:.2f}%\n")
+                bfOut.write(f"Global Nível 3 = {self.med_gl3n:.2f}%\n")
+                bfOut.write(f"Global Nível 4 = {self.med_gl4n:.2f}%\n")
+                bfOut.write(f"Global Válido  = {self.med_glv:.2f}%\n")
+                bfOut.write(f"Global N/A     = {self.med_glna:.2f}%\n\n")
             else:
                 bfOut.write(f"Global Nível 1 = N/S\n")
                 bfOut.write(f"Global Nível 2 = N/S\n")
                 bfOut.write(f"Global Nível 3 = N/S\n")
+                bfOut.write(f"Global Nível 4 = N/S\n")
                 bfOut.write(f"Global Válido  = N/S\n")
                 bfOut.write(f"Global N/A     = N/S\n\n")
 
