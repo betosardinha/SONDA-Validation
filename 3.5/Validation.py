@@ -293,8 +293,8 @@ class Validation:
                 controller = Controller.Controller(os.path.abspath(fileName), fileName)
                 loader = Loader.Loader()
                 loader.buildsMatrixData(os.path.abspath(fileName))
-                loader.code = controller.validate(self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation(), int(self.infodata.getId()), int(self.infodata.getMonth()))
-                loader.writeData(self.infodata.getOutputData(), loader.data, self.infodata.getId())
+                loader.code, loader.clearSky = controller.validate(self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation(), int(self.infodata.getId()), int(self.infodata.getMonth()))
+                loader.writeData(self.infodata.getOutputData(), loader.data, loader.clearSky, self.infodata.getId())
                 loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId())
                 loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
                 self.cont_std = controller.cont_std

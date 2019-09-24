@@ -12,6 +12,7 @@ class Loader:
         self.data = np.array([])
         self.limits = np.array([])
         self.code = np.array([])
+        self.clearSky = np.array([])
 
         self.line = None
 
@@ -248,135 +249,141 @@ class Loader:
 
     # Método de arredondamento diferente do Java
     # Diminuir função
-    def writeData(self, output, dataArray, id):
+    def writeData(self, output, dataArray, clearSkyArray, id):
         try:
             bfOut = open(output, 'w')
-            for data in dataArray:
+            for i in range(len(dataArray)):
                 # Header
                 bfOut.write(f"{id};")
-                bfOut.write(f"{data[1]:.0f};")
-                bfOut.write(f"{data[2]:.0f};")
-                bfOut.write(f"{data[3]:.0f};")
+                bfOut.write(f"{dataArray[i][1]:.0f};")
+                bfOut.write(f"{dataArray[i][2]:.0f};")
+                bfOut.write(f"{dataArray[i][3]:.0f};")
 
                 # Print Global Radiation AVG 60s
-                if data[4] == 3333 or data[4] == -6999:
+                if dataArray[i][4] == 3333 or dataArray[i][4] == -6999:
                     bfOut.write("N/A;")
-                elif data[4] == -5555:
+                elif dataArray[i][4] == -5555:
                     bfOut.write("N/S;")
-                elif data[4] == 0:
-                    bfOut.write(f"{data[4]:.0f};")
+                elif dataArray[i][4] == 0:
+                    bfOut.write(f"{dataArray[i][4]:.0f};")
                 else:
-                    bfOut.write(f"{data[4]:5.3f};")
+                    bfOut.write(f"{dataArray[i][4]:5.3f};")
 
                 # Print Direct Radiation AVG 60s
-                if data[28] == 3333 or data[28] == -6999:
+                if dataArray[i][28] == 3333 or dataArray[i][28] == -6999:
                     bfOut.write("N/A;")
-                elif data[28] == -5555:
+                elif dataArray[i][28] == -5555:
                     bfOut.write("N/S;")
-                elif data[28] == 0:
-                    bfOut.write(f"{data[28]:.0f};")
+                elif dataArray[i][28] == 0:
+                    bfOut.write(f"{dataArray[i][28]:.0f};")
                 else:
-                    bfOut.write(f"{data[28]:5.3f};")
+                    bfOut.write(f"{dataArray[i][28]:5.3f};")
 
                 # Print Diffuse Radiation AVG 60s
-                if data[8] == 3333 or data[8] == -6999:
+                if dataArray[i][8] == 3333 or dataArray[i][8] == -6999:
                     bfOut.write("N/A;")
-                elif data[8] == -5555:
+                elif dataArray[i][8] == -5555:
                     bfOut.write("N/S;")
-                elif data[8] == 0:
-                    bfOut.write(f"{data[8]:.0f};")
+                elif dataArray[i][8] == 0:
+                    bfOut.write(f"{dataArray[i][8]:.0f};")
                 else:
-                    bfOut.write(f"{data[8]:5.3f};")
+                    bfOut.write(f"{dataArray[i][8]:5.3f};")
 
                 # Print LongWave Radiation AVG 60s
-                if data[32] == 3333 or data[32] == -6999:
+                if dataArray[i][32] == 3333 or dataArray[i][32] == -6999:
                     bfOut.write("N/A;")
-                elif data[32] == -5555:
+                elif dataArray[i][32] == -5555:
                     bfOut.write("N/S;")
-                elif data[32] == 0:
-                    bfOut.write(f"{data[32]:.0f};")
+                elif dataArray[i][32] == 0:
+                    bfOut.write(f"{dataArray[i][32]:.0f};")
                 else:
-                    bfOut.write(f"{data[32]:.1f};")
+                    bfOut.write(f"{dataArray[i][32]:.1f};")
 
                 # Print Par Radiation AVG 60s
-                if data[12] == 3333 or data[12] == -6999:
+                if dataArray[i][12] == 3333 or dataArray[i][12] == -6999:
                     bfOut.write("N/A;")
-                elif data[12] == -5555:
+                elif dataArray[i][12] == -5555:
                     bfOut.write("N/S;")
-                elif data[12] == 0:
-                    bfOut.write(f"{data[12]:.0f};")
+                elif dataArray[i][12] == 0:
+                    bfOut.write(f"{dataArray[i][12]:.0f};")
                 else:
-                    bfOut.write(f"{data[12]:5.3f};")
+                    bfOut.write(f"{dataArray[i][12]:5.3f};")
 
                 # Print Lux Radiation AVG 60s
-                if data[16] == 3333 or data[16] == -6999:
+                if dataArray[i][16] == 3333 or dataArray[i][16] == -6999:
                     bfOut.write("N/A;")
-                elif data[16] == -5555:
+                elif dataArray[i][16] == -5555:
                     bfOut.write("N/S;")
-                elif data[16] == 0:
-                    bfOut.write(f"{data[16]:.0f};")
+                elif dataArray[i][16] == 0:
+                    bfOut.write(f"{dataArray[i][16]:.0f};")
                 else:
-                    bfOut.write(f"{data[16]:5.3f};")
+                    bfOut.write(f"{dataArray[i][16]:5.3f};")
 
                 # Print Air Temperature AVG 60s
-                if data[20] == 3333 or data[20] == -6999:
+                if dataArray[i][20] == 3333 or dataArray[i][20] == -6999:
                     bfOut.write("N/A;")
-                elif data[20] == -5555:
+                elif dataArray[i][20] == -5555:
                     bfOut.write("N/S;")
-                elif data[20] == 0:
-                    bfOut.write(f"{data[20]:.0f};")
+                elif dataArray[i][20] == 0:
+                    bfOut.write(f"{dataArray[i][20]:.0f};")
                 else:
-                    bfOut.write(f"{data[20]:5.2f};")
+                    bfOut.write(f"{dataArray[i][20]:5.2f};")
 
                 # Print Relative Humidity AVG 60s
-                if data[21] == 3333 or data[21] == -6999:
+                if dataArray[i][21] == 3333 or dataArray[i][21] == -6999:
                     bfOut.write("N/A;")
-                elif data[21] == -5555:
+                elif dataArray[i][21] == -5555:
                     bfOut.write("N/S;")
-                elif data[21] == 0:
-                    bfOut.write(f"{data[21]:.0f};")
+                elif dataArray[i][21] == 0:
+                    bfOut.write(f"{dataArray[i][21]:.0f};")
                 else:
-                    bfOut.write(f"{data[21]:5.2f};")
+                    bfOut.write(f"{dataArray[i][21]:5.2f};")
 
                 # Print Atmospheric Pressure AVG 60s
-                if data[22] == 3333 or data[22] == -6999:
+                if dataArray[i][22] == 3333 or dataArray[i][22] == -6999:
                     bfOut.write("N/A;")
-                elif data[22] == -5555:
+                elif dataArray[i][22] == -5555:
                     bfOut.write("N/S;")
-                elif data[22] == 0:
-                    bfOut.write(f"{data[22]:.0f};")
+                elif dataArray[i][22] == 0:
+                    bfOut.write(f"{dataArray[i][22]:.0f};")
                 else:
-                    bfOut.write(f"{data[22]:5.2f};")
+                    bfOut.write(f"{dataArray[i][22]:5.2f};")
 
                 # Print Accumulated Precipitation AVG 60s
-                if data[23] == 3333 or data[23] == -6999:
+                if dataArray[i][23] == 3333 or dataArray[i][23] == -6999:
                     bfOut.write("N/A;")
-                elif data[23] == -5555:
+                elif dataArray[i][23] == -5555:
                     bfOut.write("N/S;")
-                elif data[23] == 0:
-                    bfOut.write(f"{data[23]:.0f};")
+                elif dataArray[i][23] == 0:
+                    bfOut.write(f"{dataArray[i][23]:.0f};")
                 else:
-                    bfOut.write(f"{data[23]:.1f};")
+                    bfOut.write(f"{dataArray[i][23]:.1f};")
 
                 # Print Wind Speed AVG 60s
-                if data[24] == 3333 or data[24] == -6999:
+                if dataArray[i][24] == 3333 or dataArray[i][24] == -6999:
                     bfOut.write("N/A;")
-                elif data[24] == -5555:
+                elif dataArray[i][24] == -5555:
                     bfOut.write("N/S;")
-                elif data[24] == 0:
-                    bfOut.write(f"{data[24]:.0f};")
+                elif dataArray[i][24] == 0:
+                    bfOut.write(f"{dataArray[i][24]:.0f};")
                 else:
-                    bfOut.write(f"{data[24]:5.3f};")
+                    bfOut.write(f"{dataArray[i][24]:5.3f};")
 
                 # Print Wind Direction AVG 60s
-                if data[25] == 3333 or data[25] == -6999:
-                    bfOut.write("N/A")
-                elif data[25] == -5555:
-                    bfOut.write("N/S")
-                elif data[25] == 0:
-                    bfOut.write(f"{data[25]:.0f}")
+                if dataArray[i][25] == 3333 or dataArray[i][25] == -6999:
+                    bfOut.write("N/A;")
+                elif dataArray[i][25] == -5555:
+                    bfOut.write("N/S;")
+                elif dataArray[i][25] == 0:
+                    bfOut.write(f"{dataArray[i][25]:.0f};")
                 else:
-                    bfOut.write(f"{data[25]:.1f}")
+                    bfOut.write(f"{dataArray[i][25]:.1f};")
+
+                # Print Clear Sky data
+                if clearSkyArray[i][0] is None:
+                    bfOut.write("N/A")
+                else:
+                    bfOut.write(f"{clearSkyArray[i][0]:5.3f}")
 
                 bfOut.write("\n")
 
@@ -1104,6 +1111,7 @@ class Loader:
         # Verificar se é necessário read()
         self.read(input)
         self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns))
+        self.clearSky = np.ndarray(shape=(self.numberOfRows, 2))
 
     def buildsMatrixLimits(self, input):
         self.numberOfColumns = 0

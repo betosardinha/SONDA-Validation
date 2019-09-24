@@ -144,6 +144,7 @@ class Controller:
         self.Isc = 1367.0
         self.Wo = 0.95
         self.Fc = 0.84
+        self.Iglob = None
 
 
         self.kt = None
@@ -1771,21 +1772,27 @@ class Controller:
                 Idiff = Idr+Ida+Idm
 
                 # Total global irradiance on a horizontal surface
-                Iglob = Ib + Idiff
+                self.Iglob = Ib + Idiff
 
                 # Validation for global irradiance
                 if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529 and self.loader.code[i][4] != 299:
-                    if Iglob > 1367 or Idiff <= 0:
-                        self.loader.code[i][4] = 2999
-                    else:
-                        if self.loader.data[i][4] <= Iglob:
-                            self.loader.code[i][4] = 9999
+                    if self.loader.data[i][4]:
+                        if self.Iglob > 1367 or Idiff <= 0:
+                            self.loader.code[i][4] += 2000
                         else:
-                            self.loader.code[i][4] = 2999
-                elif self.loader.code[i][4] == 552 or self.loader.code[i][4] == 529 or self.loader.code[i][4] == 299 or self.loader.code[i][4] == 599:
+                            if self.loader.data[i][4] <= self.Iglob:
+                                self.loader.code[i][4] += 9000
+                            else:
+                                self.loader.code[i][4] += 2000
+                elif self.loader.code[i][4] == 552 or self.loader.code[i][4] == 529 or self.loader.code[i][4] == 299:
                     self.loader.code[i][4] += 5000
             elif self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999:
                 self.loader.code[i][4] += 5000
+
+            # Write global irradiance
+            self.loader.clearSky[0] = self.Iglob
+            self.loader.clearSky[1] = self.loader.code[i][4]
+            self.Iglob = None
 
 
             # Sum count
@@ -1794,5 +1801,5 @@ class Controller:
             self.cont += 1
 
         self.pb.close()
-        return self.loader.code
+        return self.loader.code, self.loader.clearSky
 
