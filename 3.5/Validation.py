@@ -290,7 +290,7 @@ class Validation:
                     self.infodata.setLongitudeOfStation(-47.900)
                     self.infodata.setMonth(fileName[5:7])
                     self.infodata.setYear("20" + fileName[3:5])
-                self.infodata.setClearSkyReport(fileName[:7] + ".CS.csv")
+                self.infodata.setClearSkyReport(fileName[:7] + "CS.csv")
 
                 controller = Controller.Controller(os.path.abspath(fileName), fileName)
                 loader = Loader.Loader()
