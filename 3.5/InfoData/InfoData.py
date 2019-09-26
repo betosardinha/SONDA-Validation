@@ -11,7 +11,7 @@ def doubleToLongBits(double):
 class InfoData:
 
     # Init function, setting parameters to the respective attributes (None if not passed)
-    def __init__(self, id=None, inputData=None, outputData=None, outputCode=None, outputReport=None, station=None,
+    def __init__(self, id=None, inputData=None, outputData=None, outputCode=None, outputReport=None, clearSkyReport=None, station=None,
                  observation=None, dateOfValidation=None, latitudeOfStation=None, longitudeOfStation=None, month=None,
                  year=None):
         self.id = id
@@ -19,6 +19,7 @@ class InfoData:
         self.outputData = outputData
         self.outputCode = outputCode
         self.outputReport = outputReport
+        self.clearSkyReport = clearSkyReport
         self.station = station
         self.observation = observation
         self.dateOfValidation = dateOfValidation
@@ -57,6 +58,12 @@ class InfoData:
 
     def setOutputReport(self, outputReport):
         self.outputReport = outputReport
+
+    def getClearSkyReport(self):
+        return self.clearSkyReport
+
+    def setClearSkyReport(self, clearSkyReport):
+        self.clearSkyReport = clearSkyReport
 
     def getStation(self):
         return self.station

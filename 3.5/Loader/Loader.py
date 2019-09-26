@@ -586,6 +586,34 @@ class Loader:
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
+    def writeClearSky(self, output, dataArray, codeArray, clearSkyArray, id):
+        try:
+            bfOut = open(output, 'w')
+            for i in range(len(clearSkyArray)):
+                bfOut.write(f"{id};")
+                bfOut.write(f"{dataArray[i][1]:.0f};")
+                bfOut.write(f"{dataArray[i][2]:.0f};")
+                bfOut.write(f"{dataArray[i][3]:.0f};")
+
+                if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
+                    bfOut.write("N/A;")
+                elif codeArray[i][4] == -5555:
+                    bfOut.write("N/S;")
+                else:
+                    bfOut.write(f"{codeArray[i][4]:.0f};")
+
+                if np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367:
+                    bfOut.write("N/A;")
+                else:
+                    bfOut.write(f"{clearSkyArray[i][0]:5.3f};")
+                bfOut.write(f"{clearSkyArray[i][1]:5.3f}")
+                bfOut.write("\n")
+            bfOut.close()
+        except IOError:
+            raise IOError("Erro durante a escrita do arquivo: ", output)
+
+
+
     # Diminuir função
     def writeReportData(self, output, station, year, month, id, codeArray, latitude, longitude):
         try:
@@ -930,7 +958,7 @@ class Loader:
             self.med_wdv = (self.cont_wdv * 100) / self.numberOfRows
 
             bfOut.write("Valores em Porcentagem dos Dados Suspeitos\n")
-            bfOut.write("E ou Reprovados nos Níveis 1, 2 e 3, e Gaps N/A.\n\n\n")
+            bfOut.write("e ou Reprovados nos Níveis 1, 2 e 3, e Gaps N/A.\n\n\n")
             bfOut.write("Estação: {} ({} {})\n".format(station, output[0:3], id))
             bfOut.write("Data: {}-{}\n".format(month, year))
             bfOut.write("Qtde total de dados: {}\n\n".format(self.numberOfRows))

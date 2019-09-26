@@ -3,6 +3,7 @@ import sys
 from InfoData import InfoData
 from Controller import Controller
 from Loader import Loader
+from Plot import Plot
 
 class Validation:
     def __init__(self, args):
@@ -289,6 +290,7 @@ class Validation:
                     self.infodata.setLongitudeOfStation(-47.900)
                     self.infodata.setMonth(fileName[5:7])
                     self.infodata.setYear("20" + fileName[3:5])
+                self.infodata.setClearSkyReport(fileName[:7] + ".CS.csv")
 
                 controller = Controller.Controller(os.path.abspath(fileName), fileName)
                 loader = Loader.Loader()
@@ -297,6 +299,8 @@ class Validation:
                 loader.writeData(self.infodata.getOutputData(), loader.data, loader.clearSky, self.infodata.getId())
                 loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId())
                 loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
+                loader.writeClearSky(self.infodata.getClearSkyReport(), loader.data, loader.code, loader.clearSky, self.infodata.getId())
+
                 self.cont_std = controller.cont_std
                 if self.cont_std > 0:
                     print("\nValidação Concluída com Sucesso!!! - Obs: Existem dados com desvio padrão 0\n")

@@ -1790,8 +1790,8 @@ class Controller:
                 self.loader.code[i][4] += 5000
 
             # Write global irradiance
-            self.loader.clearSky[0] = self.Iglob
-            self.loader.clearSky[1] = self.loader.code[i][4]
+            self.loader.clearSky[i][0] = self.Iglob
+            self.loader.clearSky[i][1] = self.loader.data[i][4]
             self.Iglob = None
 
 
