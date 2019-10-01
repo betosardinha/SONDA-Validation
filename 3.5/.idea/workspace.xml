@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/InfoData/InfoData.py" line="12" />
-    <bookmark url="file://$PROJECT_DIR$/Loader/Loader.py" line="578" />
-    <bookmark url="file://$PROJECT_DIR$/Controller/Controller.py" line="1434" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="" />
+    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BRB1301.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BRB1301.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BRB1301ED.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BRB1301ED.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plot/Plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Plot/Plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Validation.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,64 +31,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="3.5" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-              <folding>
-                <element signature="e#49#62#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17867">
-              <caret line="1051" column="78" selection-start-line="1051" selection-start-column="78" selection-end-line="1051" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Plot/Plot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30498">
-              <caret line="1794" column="29" selection-start-line="1794" selection-start-column="25" selection-end-line="1794" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Validation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -141,53 +85,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/InfoData.py" />
-        <option value="$PROJECT_DIR$/Loader.py" />
-        <option value="$PROJECT_DIR$/InfoData/InfoData.py" />
-        <option value="$PROJECT_DIR$/Controller/Controller.py" />
-        <option value="$PROJECT_DIR$/Loader/Loader.py" />
-        <option value="$PROJECT_DIR$/Plot/plot.py" />
-        <option value="$PROJECT_DIR$/Validation.py" />
-        <option value="$PROJECT_DIR$/Plot/Plot.py" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="912" />
     <option name="y" value="157" />
     <option name="width" value="934" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectId" id="1RbJUM3eeYZJGRfLSqbHXaF2Ma2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="3.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3.5" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -467,34 +380,6 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="51" y="25" width="1869" height="1055" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984326" visible="true" weight="0.13921994" />
-      <window_info id="Structure" order="1" sideWeight="0.5015674" side_tool="true" weight="0.13921994" />
-      <window_info id="Favorites" order="2" sideWeight="0.5015674" side_tool="true" weight="0.13921994" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39848813" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5022194" side_tool="true" weight="0.5010799" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32829374" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4977806" visible="true" weight="0.31101513" />
-      <window_info anchor="bottom" id="Messages" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32911393" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32978016" />
-      <window_info anchor="right" x="0" y="0" width="143" height="675" id="Documentation" order="5" side_tool="true" weight="0.32911393" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -507,6 +392,19 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
@@ -549,68 +447,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/InfoData/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Loader/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/tqdm/_monitor.py" />
-    <entry file="file:///usr/lib/python3.7/posixpath.py" />
-    <entry file="file:///usr/lib/python3.7/_bootlocale.py" />
-    <entry file="file:///usr/lib/python3.7/codecs.py" />
-    <entry file="file:///usr/lib/python3.6/posixpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="377" selection-start-line="377" selection-end-line="377" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InfoData/InfoData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-          <folding>
-            <element signature="e#49#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Loader/Loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17867">
-          <caret line="1051" column="78" selection-start-line="1051" selection-start-column="78" selection-end-line="1051" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30498">
-          <caret line="1794" column="29" selection-start-line="1794" selection-start-column="25" selection-end-line="1794" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Plot/Plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
