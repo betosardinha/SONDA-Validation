@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/plot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BRB1301.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BRB1301.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BRB1301ED.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BRB1301ED.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plot/Plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Plot/Plot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

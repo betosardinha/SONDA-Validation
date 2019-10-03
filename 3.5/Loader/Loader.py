@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Loader:
 
     # Init function, setting parameters to the respective attributes (None if not passed)
@@ -380,7 +379,7 @@ class Loader:
                     bfOut.write(f"{dataArray[i][25]:.1f};")
 
                 # Print Clear Sky data
-                if clearSkyArray[i][0] is None or np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367:
+                if clearSkyArray[i][0] is None or np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367 or clearSkyArray[i][0] < -1367:
                     bfOut.write("N/A")
                 else:
                     bfOut.write(f"{clearSkyArray[i][0]:5.3f}")
@@ -602,7 +601,7 @@ class Loader:
                 else:
                     bfOut.write(f"{codeArray[i][4]:.0f};")
 
-                if np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367:
+                if np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367 or clearSkyArray[i][0] < -1367:
                     bfOut.write("N/A;")
                 else:
                     bfOut.write(f"{clearSkyArray[i][0]:5.3f};")

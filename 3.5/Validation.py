@@ -1,9 +1,7 @@
 import os
-import sys
 from InfoData import InfoData
 from Controller import Controller
 from Loader import Loader
-from Plot import Plot
 
 class Validation:
     def __init__(self, args):
@@ -300,7 +298,6 @@ class Validation:
                 loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId())
                 loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
                 loader.writeClearSky(self.infodata.getClearSkyReport(), loader.data, loader.code, loader.clearSky, self.infodata.getId())
-                Plot.clearSkyPlot(loader.data, loader.code, loader.clearSky)
 
                 self.cont_std = controller.cont_std
                 if self.cont_std > 0:
