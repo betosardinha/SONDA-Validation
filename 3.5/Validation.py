@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 from InfoData import InfoData
 from Controller import Controller
