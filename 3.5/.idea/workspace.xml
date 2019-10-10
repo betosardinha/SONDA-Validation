@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/clearsky.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InfoData/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loader/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,44 +34,6 @@
         <option value="Python Script" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>DIFUSE_MI</find>
-      <find>self.loader.code[i][28]</find>
-      <find>self.loader.code[i][8]</find>
-      <find>tempera</find>
-      <find>self.loader.code[i][20] = 529</find>
-      <find>self.loader.data[i][20]</find>
-      <find>self.loader.code[i][20]</find>
-      <find>self.code</find>
-      <find>self.numberOfColumns</find>
-      <find>extractLines</find>
-      <find>hashCode</find>
-      <find>toString</find>
-      <find>equals</find>
-      <find>buildsMatrixData</find>
-      <find>buildsMatrixLimits</find>
-      <find>InfoData</find>
-      <find>accept</find>
-      <find>getTempMax</find>
-      <find>self.loader.data[i][3]</find>
-      <find>25</find>
-      <find>solar</find>
-      <find>humidi</find>
-      <find>Humidi</find>
-      <find>read</find>
-      <find>pb</find>
-      <find>-6999</find>
-      <find>codeArray[i][4]</find>
-      <find>8333</find>
-      <find>getC</find>
-      <find>get</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>and</replace>
-      <replace>self.loader</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -124,9 +84,6 @@
       <module name="3.5" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -360,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569508486133</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Código separado para céu claro">
+      <created>1570632696844</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1570632696844</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -422,7 +386,8 @@
     <MESSAGE value="Debug código completo + testes" />
     <MESSAGE value="Escrita das variáveis de céu claro em ED" />
     <MESSAGE value="Geração de documento com informações de céu claro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Geração de documento com informações de céu claro" />
+    <MESSAGE value="Código separado para céu claro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Código separado para céu claro" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/3_5$Validation.coverage" NAME="Validation Coverage Results" MODIFIED="1560347829805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
