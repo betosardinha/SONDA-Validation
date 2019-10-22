@@ -1369,23 +1369,43 @@ class Controller:
 
             if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 29:
                 if self.loader.code[i][8] != 3333 and self.loader.code[i][8] != -5555 and self.loader.code[i][8] != -6999 and self.loader.code[i][8] != 552 and self.loader.code[i][8] != 29 and self.loader.code[i][28] != 3333 and self.loader.code[i][28] != -5555 and self.loader.code[i][28] != -6999 and self.loader.code[i][28] != 552 and self.loader.code[i][28] != 29:
-                    sumSw = self.loader.data[i][8] + (self.loader.data[i][28] * self.u0)
-
-                    # ////////////////////// TEST BSRN LEVEL 3 ////////////////////////
-                    if sumSw > 50:
-                        if self.zenith_angle < 75:
-                            if divSw > 0.90 and divSw < 1.10:
+                    if self.loader.data[i][4] >= 50:
+                        if self.zenith_angle >= 75:
+                            if self.loader.data[i][8] / self.loader.data[i][4] < 1.10:
                                 self.loader.code[i][4] = 999
                             else:
                                 self.loader.code[i][4] = 299
-
-                        if self.zenith_angle > 75 and self.zenith_angle < 93:
-                            if divSw > 0.85 and divSw < 1.15:
+                        else:
+                            if self.loader.data[i][8] / self.loader.data[i][4] < 1.05:
                                 self.loader.code[i][4] = 999
                             else:
                                 self.loader.code[i][4] = 299
                     else:
-                        self.loader.code[i][4] = 599
+                        if self.loader.data[i][4] < 50:
+                            if self.loader.data[i][8] - self.loader.data[i][4] < 15:
+                                self.loader.code[i][4] = 999
+                            else:
+                                self.loader.code[i][4] = 299
+                        else:
+                            self.loader.code[i][4] = 599
+
+                    # sumSw = self.loader.data[i][8] + (self.loader.data[i][28] * self.u0)
+                    #
+                    # # ////////////////////// TEST BSRN LEVEL 3 ////////////////////////
+                    # if sumSw > 50:
+                    #     if self.zenith_angle < 75:
+                    #         if divSw > 0.90 and divSw < 1.10:
+                    #             self.loader.code[i][4] = 999
+                    #         else:
+                    #             self.loader.code[i][4] = 299
+                    #
+                    #     if self.zenith_angle > 75 and self.zenith_angle < 93:
+                    #         if divSw > 0.85 and divSw < 1.15:
+                    #             self.loader.code[i][4] = 999
+                    #         else:
+                    #             self.loader.code[i][4] = 299
+                    # else:
+                    #     self.loader.code[i][4] = 599
 
                     # ////////////////////// TEST BSRN LEVEL 3 ////////////////////////
 
