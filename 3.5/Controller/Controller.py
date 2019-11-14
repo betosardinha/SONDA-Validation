@@ -145,6 +145,7 @@ class Controller:
         self.Wo = 0.95
         self.Fc = 0.84
         self.Iglob = None
+        self.porc = None
 
 
         self.kt = None
@@ -1678,6 +1679,7 @@ class Controller:
 
             # End of loop level 3
 
+        # Start level 4
         # Define vertical ozone layer thickness value (cm)
         # Iqbal average table (5.3.2)
         if latitude >= -10:
@@ -1794,13 +1796,16 @@ class Controller:
                 # Total global irradiance on a horizontal surface
                 self.Iglob = Ib + Idiff
 
+                self.porc = (self.loader.data[i][4] * 100) / self.Iglob
+
                 # Validation for global irradiance
                 if self.loader.code[i][4] != 3333 and self.loader.code[i][4] != -5555 and self.loader.code[i][4] != -6999 and self.loader.code[i][4] != 552 and self.loader.code[i][4] != 529 and self.loader.code[i][4] != 299:
                     if self.loader.data[i][4]:
                         if self.Iglob > 1367 or Idiff <= 0:
                             self.loader.code[i][4] += 2000
                         else:
-                            if self.loader.data[i][4] <= self.Iglob:
+                            porc_10 = self.Iglob * 0.1
+                            if self.loader.data[i][4] <= (self.Iglob + porc_10):
                                 self.loader.code[i][4] += 9000
                             else:
                                 self.loader.code[i][4] += 2000
@@ -1812,8 +1817,9 @@ class Controller:
             # Write global irradiance
             self.loader.clearSky[i][0] = self.Iglob
             self.loader.clearSky[i][1] = self.loader.data[i][4]
+            self.loader.clearSky[i][2] = self.porc
             self.Iglob = None
-
+            self.porc = None
 
             # Sum count
 

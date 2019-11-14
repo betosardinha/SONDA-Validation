@@ -605,7 +605,13 @@ class Loader:
                     bfOut.write("N/A;")
                 else:
                     bfOut.write(f"{clearSkyArray[i][0]:5.3f};")
-                bfOut.write(f"{clearSkyArray[i][1]:5.3f}")
+
+                bfOut.write(f"{clearSkyArray[i][1]:5.3f};")
+
+                if np.isnan(clearSkyArray[i][2]):
+                    bfOut.write("N/A")
+                else:
+                    bfOut.write(f"{clearSkyArray[i][2]:5.3f}")
                 bfOut.write("\n")
             bfOut.close()
         except IOError:
@@ -643,7 +649,7 @@ class Loader:
                 if self.zenith_angle < 90:
 
                     # Global Radiation
-                    if codeArray[i][4] == 9999:
+                    if codeArray[i][4] == 9999 or codeArray[i][4] == 9599:
                         self.cont_glv += 1
                     elif codeArray[i][4] == 5599:
                         self.cont_glv += 1
@@ -655,7 +661,7 @@ class Loader:
                         self.cont_gl2n += 1
                     elif codeArray[i][4] == 5299:
                         self.cont_gl3n += 1
-                    elif codeArray[i][4] == 2999:
+                    elif codeArray[i][4] == 2999 or codeArray[i][4] == 2599:
                         self.cont_gl4n += 1
                     elif codeArray[i][4] == -5555:
                         self.flag_gl = 1
@@ -1138,7 +1144,7 @@ class Loader:
         # Verificar se é necessário read()
         self.read(input)
         self.code = np.ndarray(shape=(self.numberOfRows, self.numberOfColumns))
-        self.clearSky = np.ndarray(shape=(self.numberOfRows, 2))
+        self.clearSky = np.ndarray(shape=(self.numberOfRows, 3))
 
     def buildsMatrixLimits(self, input):
         self.numberOfColumns = 0
