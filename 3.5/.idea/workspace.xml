@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="">
+    <list default="true" id="e062bc58-99a0-4b26-990b-961c11fa7eee" name="Default Changelist" comment="Update correção de plots e correção de difusa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loader/Loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Loader/Loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clearsky.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/corrige_difusa_anel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estacoes_anel.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.0/.idea/4.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.0/.idea/4.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.0/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.0/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.0/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +51,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../4.0" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -90,9 +87,6 @@
       <module name="3.5" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -361,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573734212143</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Update correção de plots e correção de difusa">
+      <created>1573734388172</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1573734388172</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
