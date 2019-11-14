@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/clearsky.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/corrige_difusa_anel.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/estacoes_anel.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -354,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572014955067</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Update correção de plots e correção de difusa">
+      <created>1573734212143</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1573734212143</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -420,7 +427,8 @@
     <MESSAGE value="Código separado para céu claro v2" />
     <MESSAGE value="Update de função de validação no estágio 3" />
     <MESSAGE value="Update correção de difusa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update correção de difusa" />
+    <MESSAGE value="Update correção de plots e correção de difusa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update correção de plots e correção de difusa" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/3_5$Validation.coverage" NAME="Validation Coverage Results" MODIFIED="1560347829805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
