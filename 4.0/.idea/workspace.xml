@@ -2,99 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be52f680-752e-491a-a6c5-cc2041a94419" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/clearsky_only/clearsky_only.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corrige_difusa/corrige_difusa_anel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corrige_difusa/estacoes_anel.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/BRB1301.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/CAI1904.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/CBA1211.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/CBA1212.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/CGR1301.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/CGR1312.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/PMA1407.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/PMA1411.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/PTR1707.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/PTR1708.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/SMS1607.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/SMS1609.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/SMS1612.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plot/plot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/BRB1301.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CAI1904ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1211ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CBA1212ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1301ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/CGR1312ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1407ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PMA1411ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1707ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/PTR1708ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1607ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1609ED_DQC.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612CS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612CS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612ED.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resultados/SMS1612ED_DQC.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../3.5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../3.5/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/4.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/4.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +18,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../3.5" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -164,6 +71,21 @@
       <workItem from="1554389572557" duration="6000" />
       <workItem from="1554894936511" duration="32000" />
     </task>
+    <task id="LOCAL-00001" summary="Passagem para a versão 4.0 e inicio dos aprimoramentos">
+      <created>1573742423100</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573742423100</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Passagem para a versão 4.0 e inicio dos aprimoramentos">
+      <created>1573742435855</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573742435855</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -184,5 +106,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Passagem para a versão 4.0 e inicio dos aprimoramentos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Passagem para a versão 4.0 e inicio dos aprimoramentos" />
   </component>
 </project>
