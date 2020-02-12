@@ -312,4 +312,3 @@ class Validation:
 # Função para ler da pasta input e escrever em output
 validation = Validation(".")
 validation.validate()
-
