@@ -9,7 +9,7 @@ def image_turbidity(latitude, longitude):
     files = []
 
     for name in file_list:
-        if name.endsWith('.tif'):
+        if name.endswith('.tif'):
             files.append(name)
 
     turbidity_values = np.zeros(len(files))
@@ -64,4 +64,5 @@ def image_turbidity(latitude, longitude):
         [col] = np.where(lon_s == lon)
         turbidity_values[f] = float(img[row, col])
         turbidity = dict(zip(files, turbidity_values))
-        return turbidity
+    os.chdir('../')
+    return turbidity

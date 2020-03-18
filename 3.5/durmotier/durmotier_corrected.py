@@ -9,7 +9,7 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
     days_year = 366 if calendar.isleap(year) else 365
     days = np.arange(1, days_year+1)
     hour_year = days_year*24
-    
+
     # QUANTOS MINUTOS E HORAS EXISTEM EM UM ANO
     minutes = []
     hours = []
@@ -18,7 +18,7 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
             minutes.append(j+1)
         for k in range(24):
             hours.append(k+1)
-    
+
     # FAZENDO O CABECARIO PARA A COLUNA DO ANO
     year_minutes = []
     year_hours = []
@@ -45,50 +45,50 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
                 month_minute.append(1)
             elif day_jul_minutes[i] > 31 and day_jul_minutes[i] <= 60:
                 month_minute.append(2)
-            elif day_jul_minutes[i] > 60 and day_jul_minutes[i] <= 91:   
+            elif day_jul_minutes[i] > 60 and day_jul_minutes[i] <= 91:
                 month_minute.append(3)
-            elif day_jul_minutes[i] > 91 and day_jul_minutes[i] <= 121:   
+            elif day_jul_minutes[i] > 91 and day_jul_minutes[i] <= 121:
                 month_minute.append(4)
-            elif day_jul_minutes[i] > 121 and day_jul_minutes[i] <= 152:   
+            elif day_jul_minutes[i] > 121 and day_jul_minutes[i] <= 152:
                 month_minute.append(5)
-            elif day_jul_minutes[i] > 152 and day_jul_minutes[i] <= 182:   
+            elif day_jul_minutes[i] > 152 and day_jul_minutes[i] <= 182:
                 month_minute.append(6)
-            elif day_jul_minutes[i] > 182 and day_jul_minutes[i] <= 213:   
+            elif day_jul_minutes[i] > 182 and day_jul_minutes[i] <= 213:
                 month_minute.append(7)
-            elif day_jul_minutes[i] > 213 and day_jul_minutes[i] <= 244:   
+            elif day_jul_minutes[i] > 213 and day_jul_minutes[i] <= 244:
                 month_minute.append(8)
-            elif day_jul_minutes[i] > 244 and day_jul_minutes[i] <= 274:   
+            elif day_jul_minutes[i] > 244 and day_jul_minutes[i] <= 274:
                 month_minute.append(9)
-            elif day_jul_minutes[i] > 274 and day_jul_minutes[i] <= 305:   
+            elif day_jul_minutes[i] > 274 and day_jul_minutes[i] <= 305:
                 month_minute.append(10)
-            elif day_jul_minutes[i] > 305 and day_jul_minutes[i] <= 335:   
+            elif day_jul_minutes[i] > 305 and day_jul_minutes[i] <= 335:
                 month_minute.append(11)
-            elif day_jul_minutes[i] > 335 and day_jul_minutes[i] <= 366:   
+            elif day_jul_minutes[i] > 335 and day_jul_minutes[i] <= 366:
                 month_minute.append(12)
         else:
             if day_jul_minutes[i] <= 31:
                 month_minute.append(1)
             elif day_jul_minutes[i] > 31 and day_jul_minutes[i] <= 59:
                 month_minute.append(2)
-            elif day_jul_minutes[i] > 59 and day_jul_minutes[i] <= 90:   
+            elif day_jul_minutes[i] > 59 and day_jul_minutes[i] <= 90:
                 month_minute.append(3)
-            elif day_jul_minutes[i] > 90 and day_jul_minutes[i] <= 120:   
+            elif day_jul_minutes[i] > 90 and day_jul_minutes[i] <= 120:
                 month_minute.append(4)
-            elif day_jul_minutes[i] > 120 and day_jul_minutes[i] <= 151:   
+            elif day_jul_minutes[i] > 120 and day_jul_minutes[i] <= 151:
                 month_minute.append(5)
-            elif day_jul_minutes[i] > 151 and day_jul_minutes[i] <= 181:   
+            elif day_jul_minutes[i] > 151 and day_jul_minutes[i] <= 181:
                 month_minute.append(6)
-            elif day_jul_minutes[i] > 181 and day_jul_minutes[i] <= 212:   
+            elif day_jul_minutes[i] > 181 and day_jul_minutes[i] <= 212:
                 month_minute.append(7)
-            elif day_jul_minutes[i] > 212 and day_jul_minutes[i] <= 243:   
+            elif day_jul_minutes[i] > 212 and day_jul_minutes[i] <= 243:
                 month_minute.append(8)
-            elif day_jul_minutes[i] > 243 and day_jul_minutes[i] <= 273:   
+            elif day_jul_minutes[i] > 243 and day_jul_minutes[i] <= 273:
                 month_minute.append(9)
-            elif day_jul_minutes[i] > 273 and day_jul_minutes[i] <= 304:   
+            elif day_jul_minutes[i] > 273 and day_jul_minutes[i] <= 304:
                 month_minute.append(10)
-            elif day_jul_minutes[i] > 304 and day_jul_minutes[i] <= 334:   
+            elif day_jul_minutes[i] > 304 and day_jul_minutes[i] <= 334:
                 month_minute.append(11)
-            elif day_jul_minutes[i] > 334 and day_jul_minutes[i] <= 365:   
+            elif day_jul_minutes[i] > 334 and day_jul_minutes[i] <= 365:
                 month_minute.append(12)
 
     # CALCULO DOS MESES COM BASE NO DIA JULIANO PARA CADA HORA
@@ -99,50 +99,50 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
                 month_hour.append(1)
             elif day_jul_hours[i] > 31 and day_jul_hours[i] <= 60:
                 month_hour.append(2)
-            elif day_jul_hours[i] > 60 and day_jul_hours[i] <= 91:   
+            elif day_jul_hours[i] > 60 and day_jul_hours[i] <= 91:
                 month_hour.append(3)
-            elif day_jul_hours[i] > 91 and day_jul_hours[i] <= 121:   
+            elif day_jul_hours[i] > 91 and day_jul_hours[i] <= 121:
                 month_hour.append(4)
-            elif day_jul_hours[i] > 121 and day_jul_hours[i] <= 152:   
+            elif day_jul_hours[i] > 121 and day_jul_hours[i] <= 152:
                 month_hour.append(5)
-            elif day_jul_hours[i] > 152 and day_jul_hours[i] <= 182:   
+            elif day_jul_hours[i] > 152 and day_jul_hours[i] <= 182:
                 month_hour.append(6)
-            elif day_jul_hours[i] > 182 and day_jul_hours[i] <= 213:   
+            elif day_jul_hours[i] > 182 and day_jul_hours[i] <= 213:
                 month_hour.append(7)
-            elif day_jul_hours[i] > 213 and day_jul_hours[i] <= 244:   
+            elif day_jul_hours[i] > 213 and day_jul_hours[i] <= 244:
                 month_hour.append(8)
-            elif day_jul_hours[i] > 244 and day_jul_hours[i] <= 274:   
+            elif day_jul_hours[i] > 244 and day_jul_hours[i] <= 274:
                 month_hour.append(9)
-            elif day_jul_hours[i] > 274 and day_jul_hours[i] <= 305:   
+            elif day_jul_hours[i] > 274 and day_jul_hours[i] <= 305:
                 month_hour.append(10)
-            elif day_jul_hours[i] > 305 and day_jul_hours[i] <= 335:   
+            elif day_jul_hours[i] > 305 and day_jul_hours[i] <= 335:
                 month_hour.append(11)
-            elif day_jul_hours[i] > 335 and day_jul_hours[i] <= 366:   
+            elif day_jul_hours[i] > 335 and day_jul_hours[i] <= 366:
                 month_hour.append(12)
         else:
             if day_jul_hours[i] <= 31:
                 month_hour.append(1)
             elif day_jul_hours[i] > 31 and day_jul_hours[i] <= 59:
                 month_hour.append(2)
-            elif day_jul_hours[i] > 59 and day_jul_hours[i] <= 90:   
+            elif day_jul_hours[i] > 59 and day_jul_hours[i] <= 90:
                 month_hour.append(3)
-            elif day_jul_hours[i] > 90 and day_jul_hours[i] <= 120:   
+            elif day_jul_hours[i] > 90 and day_jul_hours[i] <= 120:
                 month_hour.append(4)
-            elif day_jul_hours[i] > 120 and day_jul_hours[i] <= 151:   
+            elif day_jul_hours[i] > 120 and day_jul_hours[i] <= 151:
                 month_hour.append(5)
-            elif day_jul_hours[i] > 151 and day_jul_hours[i] <= 181:   
+            elif day_jul_hours[i] > 151 and day_jul_hours[i] <= 181:
                 month_hour.append(6)
-            elif day_jul_hours[i] > 181 and day_jul_hours[i] <= 212:   
+            elif day_jul_hours[i] > 181 and day_jul_hours[i] <= 212:
                 month_hour.append(7)
-            elif day_jul_hours[i] > 212 and day_jul_hours[i] <= 243:   
+            elif day_jul_hours[i] > 212 and day_jul_hours[i] <= 243:
                 month_hour.append(8)
-            elif day_jul_hours[i] > 243 and day_jul_hours[i] <= 273:   
+            elif day_jul_hours[i] > 243 and day_jul_hours[i] <= 273:
                 month_hour.append(9)
-            elif day_jul_hours[i] > 273 and day_jul_hours[i] <= 304:   
+            elif day_jul_hours[i] > 273 and day_jul_hours[i] <= 304:
                 month_hour.append(10)
-            elif day_jul_hours[i] > 304 and day_jul_hours[i] <= 334:   
+            elif day_jul_hours[i] > 304 and day_jul_hours[i] <= 334:
                 month_hour.append(11)
-            elif day_jul_hours[i] > 334 and day_jul_hours[i] <= 365:   
+            elif day_jul_hours[i] > 334 and day_jul_hours[i] <= 365:
                 month_hour.append(12)
 
     # CALCULO DOS DIAS COM BASE NOS MESES PARA CADA MINUTO E HORA
@@ -323,7 +323,7 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
         if Ees[i] < 0:
             Ees[i] = 0
         # CALCULO DA COMPOMENTE DIFUSSA DA RADIAÇÃO SOLAR
-        Eed.append(1367 * e0 *  (0.0065 + (-0.045 + (0.0646 * link_turbidity_minute[i] * np.sin(elevation_angle*(np.pi/180)) - (-0.014 + (0.0327 * link_turbidity_minute[i] * (np.sin(elevation_angle*(np.pi/180)) * (np.sin(elevation_angle*(np.pi/180))))))))))
+        Eed.append(1367 * e0 * (0.0065 + (-0.045 + (0.0646 * link_turbidity_minute[i] * np.sin(elevation_angle*(np.pi/180)) - (-0.014 + (0.0327 * link_turbidity_minute[i] * (np.sin(elevation_angle*(np.pi/180)) * (np.sin(elevation_angle*(np.pi/180))))))))))
         if Eed[i] < 0 or Eed[i] > 1367:
             Eed[i] = 0
         # CALCULO DA RADIAÇÃO SOLAR GLOBAL
@@ -343,9 +343,17 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
     starthour = np.arange(60, (day_jul_minutes[-1]*1440)+1, 60)
 
     for i in range(hour_year):
-        [zl,sl] = np.where(zeit_ref_min == starthour[i])
-        zl_min = max(1, zl-60)
-        zl_max = min(zl, day_jul_minutes[-1]*1440)
+        #[zl,sl] = np.where(starthour[i] == zeit_ref_min)
+        zl = np.where(starthour[i] == zeit_ref_min)
+        zl_min = max(1, zl[0][0]-60)
+        zl_max = min(zl[0][0], day_jul_minutes[-1]*1440)
+        TOA_mean = np.mean(TOA[zl_min:zl_max])
+        Ees_mean = np.mean(Ees[zl_min:zl_max])
+        Eed_mean = np.mean(Eed[zl_min:zl_max])
+        IRg_mean = np.mean(IRg[zl_min:zl_max])
+        clear_sky_hour[i].append(TOA_mean)
+        clear_sky_hour[i].append(Ees_mean)
+        clear_sky_hour[i].append(Eed_mean)
+        clear_sky_hour[i].append(IRg_mean)
 
-turbidity = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-corrected_hour(2015, -20, -40, 0.0, turbidity)
+    return clear_sky_minute, clear_sky_hour
