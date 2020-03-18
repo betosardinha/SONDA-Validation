@@ -1,6 +1,8 @@
 import calendar
 import numpy as np
 
+np.seterr(over='ignore')
+
 def corrected_hour(year, latitude, longitude, altitude, turbidity):
     # Ls A LONGITUDE PADRAO PARA O BRASIL É DE -45. SE QUISER USAR UTC, Ls = 0
     Ls = 0
