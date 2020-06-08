@@ -1,4 +1,5 @@
 import numpy as np
+import datetime
 
 class Loader:
 
@@ -248,7 +249,7 @@ class Loader:
 
     # Método de arredondamento diferente do Java
     # Diminuir função
-    def writeData(self, output, dataArray, clearSkyArray, id):
+    def writeData(self, output, dataArray, clearSkyArray, id, month):
         try:
             bfOut = open(output, 'w')
             for i in range(len(dataArray)):
@@ -257,6 +258,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                bfOut.write(f"{dt};")
 
                 # Print Global Radiation AVG 60s
                 if dataArray[i][4] == 3333 or dataArray[i][4] == -6999:
@@ -378,12 +381,6 @@ class Loader:
                 else:
                     bfOut.write(f"{dataArray[i][25]:.1f};")
 
-                # Print Clear Sky data
-                if clearSkyArray[i][0] is None or np.isnan(clearSkyArray[i][0]) or clearSkyArray[i][0] > 1367 or clearSkyArray[i][0] < -1367:
-                    bfOut.write("N/A")
-                else:
-                    bfOut.write(f"{clearSkyArray[i][0]:5.3f}")
-
                 bfOut.write("\n")
 
             bfOut.close()
@@ -391,7 +388,7 @@ class Loader:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
     # Diminuir função
-    def writeCode(self, output, dataArray, codeArray, id):
+    def writeCode(self, output, dataArray, codeArray, id, month):
         try:
             bfOut = open(output, 'w')
             for i in range(len(dataArray)):
@@ -400,6 +397,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                bfOut.write(f"{dt};")
 
                 # Global Radiation
                 if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
@@ -585,7 +584,7 @@ class Loader:
         except IOError:
             raise IOError("Erro durante a escrita do arquivo: ", output)
 
-    def writeClearSky(self, output, dataArray, codeArray, clearSkyArray, id):
+    def writeClearSky(self, output, dataArray, codeArray, clearSkyArray, id, month):
         try:
             bfOut = open(output, 'w')
             for i in range(len(clearSkyArray)):
@@ -593,6 +592,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                bfOut.write(f"{dt};")
 
                 if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
                     bfOut.write("N/A;")

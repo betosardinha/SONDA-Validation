@@ -1,7 +1,9 @@
 import calendar
 import numpy as np
 
-def corrected_hour(year, latitude, longitude, altitude, turbidity):
+np.seterr(over='ignore')
+
+def corrected_hour(year, month, latitude, longitude, altitude, turbidity):
     # Ls A LONGITUDE PADRAO PARA O BRASIL É DE -45. SE QUISER USAR UTC, Ls = 0
     Ls = 0
 
@@ -256,104 +258,85 @@ def corrected_hour(year, latitude, longitude, altitude, turbidity):
     link_turbidity_minute = []
     for i in range(day_jul_minutes[-1]*1440):
         if month_minute[i] == 1:
-            link_turbidity_minute.append(turbidity[4]/20)
+            link_turbidity_minute.append(turbidity['January.tif']/20)
         elif month_minute[i] == 2:
-            link_turbidity_minute.append(turbidity[12]/20)
+            link_turbidity_minute.append(turbidity['February.tif']/20)
         elif month_minute[i] == 3:
-            link_turbidity_minute.append(turbidity[7]/20)
+            link_turbidity_minute.append(turbidity['March.tif']/20)
         elif month_minute[i] == 4:
-            link_turbidity_minute.append(turbidity[1]/20)
+            link_turbidity_minute.append(turbidity['April.tif']/20)
         elif month_minute[i] == 5:
-            link_turbidity_minute.append(turbidity[8]/20)
+            link_turbidity_minute.append(turbidity['May.tif']/20)
         elif month_minute[i] == 6:
-            link_turbidity_minute.append(turbidity[6]/20)
+            link_turbidity_minute.append(turbidity['June.tif']/20)
         elif month_minute[i] == 7:
-            link_turbidity_minute.append(turbidity[5]/20)
+            link_turbidity_minute.append(turbidity['July.tif']/20)
         elif month_minute[i] == 8:
-            link_turbidity_minute.append(turbidity[2]/20)
+            link_turbidity_minute.append(turbidity['August.tif']/20)
         elif month_minute[i] == 9:
-            link_turbidity_minute.append(turbidity[11]/20)
+            link_turbidity_minute.append(turbidity['September.tif']/20)
         elif month_minute[i] == 10:
-            link_turbidity_minute.append(turbidity[10]/20)
+            link_turbidity_minute.append(turbidity['October.tif']/20)
         elif month_minute[i] == 11:
-            link_turbidity_minute.append(turbidity[9]/20)
+            link_turbidity_minute.append(turbidity['November.tif']/20)
         elif month_minute[i] == 12:
-            link_turbidity_minute.append(turbidity[3]/20)
+            link_turbidity_minute.append(turbidity['December.tif']/20)
 
     # LACO PARA SER EFETUADO OS CALCULOS DO CLEAR SKY USANDO O METODO DE DUMORTIER
     clear_sky_minute = []
     clear_sky_hour = []
-    TOA = []
-    Ees = []
-    Eed = []
-    IRg = []
     for i in range(day_jul_minutes[-1]*1440):
-        # CALCULO DA DECLINACAO SOLAR EM RADS
-        day_angle = (0.017201916*day_jul_minutes[i])
-        dec = (0.006918 - 0.399912 * np.cos(day_angle) + 0.070257 * np.sin(day_angle) - 0.006758 * np.cos(2* day_angle) + 0.000907 * np.sin(2* day_angle) - 0.002697 * np.cos(3* day_angle) + 0.001480 * np.sin(3* day_angle))
-        # CALCULO DA EQUACAO DO TEMPO EM HORA
-        eqtime = (0.000075 + 0.001868 * np.cos(day_angle) - 0.032077 * np.sin(day_angle) - 0.014615 * np.cos(2* day_angle) - 0.040849 * np.sin(2* day_angle))*(229.18)
-        # CALCULO DO TEMPO TOTAL TRANSCORRIDO OU HORA SOLAR EM MINUTO
-        tcorr = (minutes[i]/60 + ((longitude - Ls)/15) + eqtime/60)
-        # CALCULO DO ANGULO HORARIO EM GRAU
-        hour_angle = (12.00 - tcorr)* 15
-        # CALCULO DA DISTÂNCIA MÉDIA TERRA-SOL PARA CADA DIA JULIANO
-        e0 = 1.00011 + 0.034221 * np.cos(day_angle) + 0.00128 * np.sin(day_angle) + 0.000719 * np.cos(2 * day_angle) + 0.000077 * np.sin(2 * day_angle)
-        # CALCULO DO ÂNGULO ZÊNITAL, COSENO DO ANGULO ZENITAL E DO ANGULO DE ELEVAÇÃO
-        u0 = ((np.sin(dec) * np.sin(latitude*np.pi/180)) + (np.cos(dec) * np.cos(latitude*np.pi/180) * np.cos(hour_angle*np.pi/180)))
-        zenit_angle = (np.arccos(u0))*180/np.pi
-        elevation_angle = (90 - zenit_angle)
-        # CALCULO DA RADIAÇÃO SOLAR NO TOPO DA ATMOSFERA EM (W/m2)
-        TOA.append(1367 * e0 * u0)
-        if TOA[i] < 0:
-            TOA[i] = 0
-        # CALCULO DA RELATIVE OPTICAL AIR MASS (M)
-        delta_elevation_angle = ((0.061359 * (180/np.pi)) * (((0.1594 + ((1.1230) * (np.pi/180) * (elevation_angle))) + (0.065656 * ((np.pi/180)**2) * (elevation_angle**2))) / ((1 + (28.9344 * (np.pi/180) * elevation_angle)) + (277.3971 * ((np.pi/180)**2) * (elevation_angle**2)))))
-        true_elevation_angle = elevation_angle + delta_elevation_angle
-        M = np.real((np.exp((-altitude)/8434.5))/(np.sin(true_elevation_angle*(np.pi/180))+(0.50572*((6.07995 + true_elevation_angle)**-1.6364))))
-        # CALCULO DO Aer: IS THE OPTICAL THICKNESS OF RAYLEIGH
-        if M <= 20:
-            Aer = ((1)/(6.6296 + 1.7513*(M) - 0.1202*(M**2) + 0.0065*(M**3) - 0.00013*(M**4)))
-        elif M > 20:
-            Aer = ((1)/(10.4 + (0.718*(M))))
-        else:
-            Aer = 0
-        # CALCULO DA COMPOMENTE DIRETA DA RADIAÇÂO SOLAR
-        Ees.append(1367 * e0 * np.sin(elevation_angle*(np.pi/180)) * np.exp(-0.8662 * link_turbidity_minute[i] * M * Aer))
-        if Ees[i] < 0:
-            Ees[i] = 0
-        # CALCULO DA COMPOMENTE DIFUSSA DA RADIAÇÃO SOLAR
-        Eed.append(1367 * e0 * (0.0065 + (-0.045 + (0.0646 * link_turbidity_minute[i] * np.sin(elevation_angle*(np.pi/180)) - (-0.014 + (0.0327 * link_turbidity_minute[i] * (np.sin(elevation_angle*(np.pi/180)) * (np.sin(elevation_angle*(np.pi/180))))))))))
-        if Eed[i] < 0 or Eed[i] > 1367:
-            Eed[i] = 0
-        # CALCULO DA RADIAÇÃO SOLAR GLOBAL
-        IRg.append(Ees[i] + Eed[i])
+        if month_minute[i] == month:
+            # CALCULO DA DECLINACAO SOLAR EM RADS
+            day_angle = (0.017201916*day_jul_minutes[i])
 
-        # SALVANDO O CLEAR_SKY PARA CADA MINUTO DO ANO
-        data_array = [year_minutes[i], month_minute[i], day_minute[i], day_jul_minutes[i], minutes[i], TOA[i], Ees[i], Eed[i], IRg[i]]
-        clear_sky_minute.append(data_array)
+            dec = (0.006918 - 0.399912 * np.cos(day_angle) + 0.070257 * np.sin(day_angle) - 0.006758 * np.cos(2* day_angle) + 0.000907 * np.sin(2* day_angle) - 0.002697 * np.cos(3* day_angle) + 0.001480 * np.sin(3* day_angle))
 
-    # SALVANDO O CLEAR_SKY PARA CADA HORA DO ANO
-    for i in range(len(year_hours)):
-        data_array = [year_hours[i], month_hour[i], day_hour[i], day_jul_hours[i], hours[i]]
-        clear_sky_hour.append(data_array)
+            # CALCULO DA EQUACAO DO TEMPO EM HORA
+            eqtime = (0.000075 + 0.001868 * np.cos(day_angle) - 0.032077 * np.sin(day_angle) - 0.014615 * np.cos(2* day_angle) - 0.040849 * np.sin(2* day_angle))*(229.18)
 
-    # CALCULANDO A MÉDIA PARA CADA HORA
-    zeit_ref_min = np.arange(1, (day_jul_minutes[-1]*1440)+1)
-    starthour = np.arange(60, (day_jul_minutes[-1]*1440)+1, 60)
+            # CALCULO DO TEMPO TOTAL TRANSCORRIDO OU HORA SOLAR EM MINUTO
+            tcorr = (minutes[i]/60 + ((longitude - Ls)/15) + eqtime/60)
 
-    for i in range(hour_year):
-        #[zl,sl] = np.where(starthour[i] == zeit_ref_min)
-        zl = np.where(starthour[i] == zeit_ref_min)
-        zl_min = max(1, zl[0][0]-60)
-        zl_max = min(zl[0][0], day_jul_minutes[-1]*1440)
-        TOA_mean = np.mean(TOA[zl_min:zl_max])
-        Ees_mean = np.mean(Ees[zl_min:zl_max])
-        Eed_mean = np.mean(Eed[zl_min:zl_max])
-        IRg_mean = np.mean(IRg[zl_min:zl_max])
-        clear_sky_hour[i].append(TOA_mean)
-        clear_sky_hour[i].append(Ees_mean)
-        clear_sky_hour[i].append(Eed_mean)
-        clear_sky_hour[i].append(IRg_mean)
+            # CALCULO DO ANGULO HORARIO EM GRAU
+            hour_angle = (12.00 - tcorr)* 15
 
-    return clear_sky_minute, clear_sky_hour
+            # CALCULO DA DISTÂNCIA MÉDIA TERRA-SOL PARA CADA DIA JULIANO
+            e0 = 1.00011 + 0.034221 * np.cos(day_angle) + 0.00128 * np.sin(day_angle) + 0.000719 * np.cos(2 * day_angle) + 0.000077 * np.sin(2 * day_angle)
+
+            # CALCULO DO ÂNGULO ZÊNITAL, COSENO DO ANGULO ZENITAL E DO ANGULO DE ELEVAÇÃO
+            u0 = ((np.sin(dec) * np.sin(latitude*np.pi/180)) + (np.cos(dec) * np.cos(latitude*np.pi/180) * np.cos(hour_angle*np.pi/180)))
+            zenit_angle = (np.arccos(u0))*180/np.pi
+            elevation_angle = (90 - zenit_angle)
+
+            # CALCULO DA RADIAÇÃO SOLAR NO TOPO DA ATMOSFERA EM (W/m2)
+            TOA = 1367 * e0 * u0
+            if TOA < 0:
+                TOA = 0
+            # CALCULO DA RELATIVE OPTICAL AIR MASS (M)
+            delta_elevation_angle = ((0.061359 * (180/np.pi)) * (((0.1594 + ((1.1230) * (np.pi/180) * (elevation_angle))) + (0.065656 * ((np.pi/180)**2) * (elevation_angle**2))) / ((1 + (28.9344 * (np.pi/180) * elevation_angle)) + (277.3971 * ((np.pi/180)**2) * (elevation_angle**2)))))
+            true_elevation_angle = elevation_angle + delta_elevation_angle
+            M = np.real((np.exp((-altitude)/8434.5))/(np.sin(true_elevation_angle*(np.pi/180))+(0.50572*((6.07995 + np.array(true_elevation_angle, dtype=np.complex))**(-1.6364)))))
+            # CALCULO DO Aer: IS THE OPTICAL THICKNESS OF RAYLEIGH
+            if M <= 20:
+                Aer = ((1)/(6.6296 + 1.7513*(M) - 0.1202*(M**2) + 0.0065*(M**3) - 0.00013*(M**4)))
+            elif M > 20:
+                Aer = ((1)/(10.4 + (0.718*(M))))
+            else:
+                Aer = 0
+            # CALCULO DA COMPOMENTE DIRETA DA RADIAÇÂO SOLAR
+            Ees = 1367 * e0 * np.sin(elevation_angle*(np.pi/180)) * np.exp(-0.8662 * link_turbidity_minute[i] * M * Aer)
+            if Ees < 0:
+                Ees = 0
+            # CALCULO DA COMPOMENTE DIFUSSA DA RADIAÇÃO SOLAR
+            Eed = 1367 * e0 * (0.0065 + (-0.045 + (0.0646 * link_turbidity_minute[i] * np.sin(elevation_angle*(np.pi/180)) - (-0.014 + (0.0327 * link_turbidity_minute[i] * (np.sin(elevation_angle*(np.pi/180)) * (np.sin(elevation_angle*(np.pi/180)))))))))
+            if Eed < 0:
+                Eed = 0
+            # CALCULO DA RADIAÇÃO SOLAR GLOBAL
+            IRg = Ees + Eed
+
+            # SALVANDO O CLEAR_SKY PARA CADA MINUTO DO ANO
+            data_array = [year_minutes[i], month_minute[i], day_minute[i], day_jul_minutes[i], minutes[i], TOA, Ees, Eed, IRg]
+            clear_sky_minute.append(data_array)
+
+    return clear_sky_minute

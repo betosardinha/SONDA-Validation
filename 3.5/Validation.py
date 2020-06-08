@@ -295,10 +295,14 @@ class Validation:
                 loader = Loader.Loader()
                 loader.buildsMatrixData(os.path.abspath(fileName))
                 loader.code, loader.clearSky = controller.validate(self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation(), int(self.infodata.getId()), int(self.infodata.getMonth()))
-                loader.writeData(self.infodata.getOutputData(), loader.data, loader.clearSky, self.infodata.getId())
-                loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId())
+                
+                loader.writeData(self.infodata.getOutputData(), loader.data, loader.clearSky, self.infodata.getId(), self.infodata.getMonth())
+                
+                loader.writeCode(self.infodata.getOutputCode(), loader.data, loader.code, self.infodata.getId(), self.infodata.getMonth())
+                
                 loader.writeReportData(self.infodata.getOutputReport(), self.infodata.getStation(), int(self.infodata.getYear()), int(self.infodata.getMonth()), self.infodata.getId(), loader.code, self.infodata.getLatitudeOfStation(), self.infodata.getLongitudeOfStation())
-                loader.writeClearSky(self.infodata.getClearSkyReport(), loader.data, loader.code, loader.clearSky, self.infodata.getId())
+                
+                loader.writeClearSky(self.infodata.getClearSkyReport(), loader.data, loader.code, loader.clearSky, self.infodata.getId(), self.infodata.getMonth())
 
                 self.cont_std = controller.cont_std
                 if self.cont_std > 0:
