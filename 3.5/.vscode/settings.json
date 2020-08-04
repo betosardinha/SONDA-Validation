@@ -1,8 +1,8 @@
 {
-    "python.pythonPath": "/usr/bin/python3",
     "csv-preview.hasHeaders": false,
     "csv-preview.lineNumbers": "ordinal",
     "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.lintOnSave": true    
+    "python.linting.flake8Enabled": false,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true
 }

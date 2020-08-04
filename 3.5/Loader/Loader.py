@@ -258,7 +258,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
-                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                day = datetime.datetime.strptime((str(int(float(dataArray[i][2])))), '%j').date().day
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), day, int(dataArray[i][3]/60), int(dataArray[i][3])%60)
                 bfOut.write(f"{dt};")
 
                 # Print Global Radiation AVG 60s
@@ -397,7 +398,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
-                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                day = datetime.datetime.strptime((str(int(float(dataArray[i][2])))), '%j').date().day
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), day, int(dataArray[i][3]/60), int(dataArray[i][3])%60)
                 bfOut.write(f"{dt};")
 
                 # Global Radiation
@@ -592,7 +594,8 @@ class Loader:
                 bfOut.write(f"{dataArray[i][1]:.0f};")
                 bfOut.write(f"{dataArray[i][2]:.0f};")
                 bfOut.write(f"{dataArray[i][3]:.0f};")
-                dt = datetime.datetime(int(dataArray[i][1]), int(month), int(dataArray[i][2]), int(dataArray[i][3]/60), int(dataArray[i][3])%60)
+                day = datetime.datetime.strptime((str(int(float(dataArray[i][2])))), '%j').date().day
+                dt = datetime.datetime(int(dataArray[i][1]), int(month), day, int(dataArray[i][3]/60), int(dataArray[i][3])%60)
                 bfOut.write(f"{dt};")
 
                 if codeArray[i][4] == 3333 or codeArray[i][4] == -6999:
