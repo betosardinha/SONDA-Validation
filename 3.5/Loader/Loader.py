@@ -28,7 +28,7 @@ class Loader:
         self.tc1 = 0.001868
         self.tc2 = 0.014615
         self.ts1 = 0.032077
-        self.ts2 = 0.040890
+        self.ts2 = 004.00890
 
         self.u0 = None
         self.zenith_angle = None
@@ -412,15 +412,15 @@ class Loader:
 
                 # Direct Radiation
                 if codeArray[i][28] == 999:
-                    bfOut.write(f"{codeArray[i][28]:.0f};")
+                    bfOut.write(f"{codeArray[i][28]:04.0f};")
                 elif codeArray[i][28] == 599:
-                    bfOut.write(f"{codeArray[i][28]:.0f};")
+                    bfOut.write(f"{codeArray[i][28]:04.0f};")
                 elif codeArray[i][28] == 529:
-                    bfOut.write(f"{codeArray[i][28]:.0f};")
+                    bfOut.write(f"{codeArray[i][28]:04.0f};")
                 elif codeArray[i][28] == 299:
-                    bfOut.write(f"{codeArray[i][28]:.0f};")
+                    bfOut.write(f"{codeArray[i][28]:04.0f};")
                 elif codeArray[i][28] == 552:
-                    bfOut.write(f"{codeArray[i][28]:.0f};")
+                    bfOut.write(f"{codeArray[i][28]:04.0f};")
                 elif codeArray[i][28] == 3333 or codeArray[i][28] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][28] == -5555:
@@ -428,15 +428,15 @@ class Loader:
 
                 # Diffuse Radiation
                 if codeArray[i][8] == 999:
-                    bfOut.write(f"{codeArray[i][8]:.0f};")
+                    bfOut.write(f"{codeArray[i][8]:04.0f};")
                 elif codeArray[i][8] == 599:
-                    bfOut.write(f"{codeArray[i][8]:.0f};")
+                    bfOut.write(f"{codeArray[i][8]:04.0f};")
                 elif codeArray[i][8] == 529:
-                    bfOut.write(f"{codeArray[i][8]:.0f};")
+                    bfOut.write(f"{codeArray[i][8]:04.0f};")
                 elif codeArray[i][8] == 299:
-                    bfOut.write(f"{codeArray[i][8]:.0f};")
+                    bfOut.write(f"{codeArray[i][8]:04.0f};")
                 elif codeArray[i][8] == 552:
-                    bfOut.write(f"{codeArray[i][8]:.0f};")
+                    bfOut.write(f"{codeArray[i][8]:04.0f};")
                 elif codeArray[i][8] == 3333 or codeArray[i][8] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][8] == -5555:
@@ -444,15 +444,15 @@ class Loader:
 
                 # Long-Wave
                 if codeArray[i][32] == 999:
-                    bfOut.write(f"{codeArray[i][32]:.0f};")
+                    bfOut.write(f"{codeArray[i][32]:04.0f};")
                 elif codeArray[i][32] == 599:
-                    bfOut.write(f"{codeArray[i][32]:.0f};")
+                    bfOut.write(f"{codeArray[i][32]:04.0f};")
                 elif codeArray[i][32] == 529:
-                    bfOut.write(f"{codeArray[i][32]:.0f};")
+                    bfOut.write(f"{codeArray[i][32]:04.0f};")
                 elif codeArray[i][32] == 299:
-                    bfOut.write(f"{codeArray[i][32]:.0f};")
+                    bfOut.write(f"{codeArray[i][32]:04.0f};")
                 elif codeArray[i][32] == 552:
-                    bfOut.write(f"{codeArray[i][32]:.0f};")
+                    bfOut.write(f"{codeArray[i][32]:04.0f};")
                 elif codeArray[i][32] == 3333 or codeArray[i][32] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][32] == -5555:
@@ -460,15 +460,15 @@ class Loader:
 
                 # Par
                 if codeArray[i][12] == 999:
-                    bfOut.write(f"{codeArray[i][12]:.0f};")
+                    bfOut.write(f"{codeArray[i][12]:04.0f};")
                 elif codeArray[i][12] == 599:
-                    bfOut.write(f"{codeArray[i][12]:.0f};")
+                    bfOut.write(f"{codeArray[i][12]:04.0f};")
                 elif codeArray[i][12] == 529:
-                    bfOut.write(f"{codeArray[i][12]:.0f};")
+                    bfOut.write(f"{codeArray[i][12]:04.0f};")
                 elif codeArray[i][12] == 299:
-                    bfOut.write(f"{codeArray[i][12]:.0f};")
+                    bfOut.write(f"{codeArray[i][12]:04.0f};")
                 elif codeArray[i][12] == 552:
-                    bfOut.write(f"{codeArray[i][12]:.0f};")
+                    bfOut.write(f"{codeArray[i][12]:04.0f};")
                 elif codeArray[i][12] == 3333 or codeArray[i][12] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][12] == -5555:
@@ -476,15 +476,15 @@ class Loader:
 
                 # Lux
                 if codeArray[i][16] == 999:
-                    bfOut.write(f"{codeArray[i][16]:.0f};")
+                    bfOut.write(f"{codeArray[i][16]:04.0f};")
                 elif codeArray[i][16] == 599:
-                    bfOut.write(f"{codeArray[i][16]:.0f};")
+                    bfOut.write(f"{codeArray[i][16]:04.0f};")
                 elif codeArray[i][16] == 529:
-                    bfOut.write(f"{codeArray[i][16]:.0f};")
+                    bfOut.write(f"{codeArray[i][16]:04.0f};")
                 elif codeArray[i][16] == 299:
-                    bfOut.write(f"{codeArray[i][16]:.0f};")
+                    bfOut.write(f"{codeArray[i][16]:04.0f};")
                 elif codeArray[i][16] == 552:
-                    bfOut.write(f"{codeArray[i][16]:.0f};")
+                    bfOut.write(f"{codeArray[i][16]:04.0f};")
                 elif codeArray[i][16] == 3333 or codeArray[i][16] == -6999:
                     bfOut.write("N/A;")
                 elif codeArray[i][16] == -5555:
@@ -492,15 +492,15 @@ class Loader:
 
                 # Temperature
                 if codeArray[i][20] == 999:
-                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                    bfOut.write(f"{codeArray[i][20]:04.0f};")
                 elif codeArray[i][20] == 559:
-                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                    bfOut.write(f"{codeArray[i][20]:04.0f};")
                 elif codeArray[i][20] == 529:
-                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                    bfOut.write(f"{codeArray[i][20]:04.0f};")
                 elif codeArray[i][20] == 299:
-                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                    bfOut.write(f"{codeArray[i][20]:04.0f};")
                 elif codeArray[i][20] == 552:
-                    bfOut.write(f"{codeArray[i][20]:.0f};")
+                    bfOut.write(f"{codeArray[i][20]:04.0f};")
                 elif codeArray[i][20] == 3333:
                     bfOut.write("N/A;")
                 elif codeArray[i][20] == -5555:
@@ -508,9 +508,9 @@ class Loader:
 
                 # Humidity
                 if codeArray[i][21] == 9:
-                    bfOut.write(f"00{codeArray[i][21]:.0f};")
+                    bfOut.write(f"{codeArray[i][21]:04.0f};")
                 elif codeArray[i][21] == 552:
-                    bfOut.write(f"{codeArray[i][21]:.0f};")
+                    bfOut.write(f"{codeArray[i][21]:04.0f};")
                 elif codeArray[i][21] == 3333:
                     bfOut.write("N/A;")
                 elif codeArray[i][21] == -5555:
@@ -518,15 +518,15 @@ class Loader:
 
                 # Pressure
                 if codeArray[i][22] == 99:
-                    bfOut.write(f"0{codeArray[i][22]:.0f};")
+                    bfOut.write(f"{codeArray[i][22]:04.0f};")
                 elif codeArray[i][22] == 559:
-                    bfOut.write(f"{codeArray[i][22]:.0f};")
+                    bfOut.write(f"{codeArray[i][22]:04.0f};")
                 elif codeArray[i][22] == 529:
-                    bfOut.write(f"{codeArray[i][22]:.0f};")
+                    bfOut.write(f"{codeArray[i][22]:04.0f};")
                 elif codeArray[i][22] == 299:
-                    bfOut.write(f"{codeArray[i][22]:.0f};")
+                    bfOut.write(f"{codeArray[i][22]:04.0f};")
                 elif codeArray[i][22] == 552:
-                    bfOut.write(f"{codeArray[i][22]:.0f};")
+                    bfOut.write(f"{codeArray[i][22]:04.0f};")
                 elif codeArray[i][22] == 3333:
                     bfOut.write("N/A;")
                 elif codeArray[i][22] == -5555:
@@ -534,15 +534,15 @@ class Loader:
 
                 # Precipitation
                 if codeArray[i][23] == 999:
-                    bfOut.write(f"{codeArray[i][23]:.0f};")
+                    bfOut.write(f"{codeArray[i][23]:04.0f};")
                 elif codeArray[i][23] == 559:
-                    bfOut.write(f"{codeArray[i][23]:.0f};")
+                    bfOut.write(f"{codeArray[i][23]:04.0f};")
                 elif codeArray[i][23] == 529:
-                    bfOut.write(f"{codeArray[i][23]:.0f};")
+                    bfOut.write(f"{codeArray[i][23]:04.0f};")
                 elif codeArray[i][23] == 299:
-                    bfOut.write(f"{codeArray[i][23]:.0f};")
+                    bfOut.write(f"{codeArray[i][23]:04.0f};")
                 elif codeArray[i][23] == 552:
-                    bfOut.write(f"{codeArray[i][23]:.0f};")
+                    bfOut.write(f"{codeArray[i][23]:04.0f};")
                 elif codeArray[i][23] == 3333:
                     bfOut.write("N/A;")
                 elif codeArray[i][23] == -5555:
@@ -550,15 +550,15 @@ class Loader:
 
                 # Speed
                 if codeArray[i][24] == 999:
-                    bfOut.write(f"{codeArray[i][24]:.0f};")
+                    bfOut.write(f"{codeArray[i][24]:04.0f};")
                 elif codeArray[i][24] == 559:
-                    bfOut.write(f"{codeArray[i][24]:.0f};")
+                    bfOut.write(f"{codeArray[i][24]:04.0f};")
                 elif codeArray[i][24] == 529:
-                    bfOut.write(f"{codeArray[i][24]:.0f};")
+                    bfOut.write(f"{codeArray[i][24]:04.0f};")
                 elif codeArray[i][24] == 299:
-                    bfOut.write(f"{codeArray[i][24]:.0f};")
+                    bfOut.write(f"{codeArray[i][24]:04.0f};")
                 elif codeArray[i][24] == 552:
-                    bfOut.write(f"{codeArray[i][24]:.0f};")
+                    bfOut.write(f"{codeArray[i][24]:04.0f};")
                 elif codeArray[i][24] == 3333:
                     bfOut.write("N/A;")
                 elif codeArray[i][24] == -5555:
@@ -566,15 +566,15 @@ class Loader:
 
                 # Direction
                 if codeArray[i][25] == 999:
-                    bfOut.write(f"{codeArray[i][25]:.0f}")
+                    bfOut.write(f"{codeArray[i][25]:04.0f}")
                 elif codeArray[i][25] == 559:
-                    bfOut.write(f"{codeArray[i][25]:.0f}")
+                    bfOut.write(f"{codeArray[i][25]:04.0f}")
                 elif codeArray[i][25] == 529:
-                    bfOut.write(f"{codeArray[i][25]:.0f}")
+                    bfOut.write(f"{codeArray[i][25]:04.0f}")
                 elif codeArray[i][25] == 299:
-                    bfOut.write(f"{codeArray[i][25]:.0f}")
+                    bfOut.write(f"{codeArray[i][25]:04.0f}")
                 elif codeArray[i][25] == 552:
-                    bfOut.write(f"{codeArray[i][25]:.0f}")
+                    bfOut.write(f"{codeArray[i][25]:04.0f}")
                 elif codeArray[i][25] == 3333:
                     bfOut.write("N/A")
                 elif codeArray[i][25] == -5555:
